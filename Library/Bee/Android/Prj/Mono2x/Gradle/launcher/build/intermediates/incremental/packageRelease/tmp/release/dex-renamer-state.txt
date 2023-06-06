@@ -1,0 +1,4 @@
+#Sun May 21 23:27:52 KST 2023
+base.0=D\:\\Unity\\Github\\RaisingDragons\\RecognizeHandWrittenDigitsTest\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
