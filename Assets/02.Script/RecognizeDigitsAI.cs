@@ -16,7 +16,6 @@ public class RecognizeDigitsAI : MonoBehaviour
     float lastSample = -5f;
 
     public bool modelImportComplete = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +28,6 @@ public class RecognizeDigitsAI : MonoBehaviour
         {
             if ((Time.time - lastSample) > .1f)
             {
-                //TestMNISTDrawing();
                 lastSample = Time.time;
             }
         }
@@ -47,6 +45,11 @@ public class RecognizeDigitsAI : MonoBehaviour
         // Attempt to load network saved as a binary file
         // This is much faster than importing form a parameters file        
         bool status = net.LoadModel("Noedify-Model_Digit_Drawing_Test");
+        //bool status = net.LoadModel("PlayerModel");
+        if(status == true)
+        {
+            print("LoadModel");
+        }
         if (status == false)
         {
             print("Binary file not found. Importing Tensorflow parameters.");

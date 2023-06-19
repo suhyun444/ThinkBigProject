@@ -13,6 +13,11 @@ struct SketchedDigit
         this.index = index;
         this.camera = camera;
     }
+    public void CopyStruct(SketchedDigit other){
+        other.x = x;
+        other.index = index;
+        other.camera = camera;
+    }
 };
 public class MouseSketch : MonoBehaviour
 {
@@ -31,6 +36,7 @@ public class MouseSketch : MonoBehaviour
     GameObject drawStrokeToCalc;
     List<SketchedDigit> sketchedDigits = new List<SketchedDigit>();
     public float minX = 100000,maxX = -100000;
+    public float minY = 100000,maxY = -100000;
     public bool isDrawing = false;
 
 
@@ -51,11 +57,13 @@ public class MouseSketch : MonoBehaviour
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
             {
                 isDrawing = true;
-                if(transform.position.x < minX || transform.position.x > maxX)
+                if(transform.position.x < minX - 0.5f || transform.position.x > maxX + 0.5f)
                 {
                     index++;
                     minX = 100000;
                     maxX = -100000;
+                    minY = 100000;
+                    maxY = -100000;
                     Camera camera = Instantiate(cameraObject,this.transform.position + new Vector3(50 * index,-58.5f,-10),Quaternion.identity).GetComponent<Camera>();
                     sketchedDigits.Add(new SketchedDigit(transform.position.x,index,camera));
                 }
@@ -78,6 +86,8 @@ public class MouseSketch : MonoBehaviour
                 transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f));
                 minX = Mathf.Min(minX,transform.position.x);
                 maxX = Mathf.Max(maxX,transform.position.x);
+                minY = Mathf.Min(minY,transform.position.y);
+                maxY = Mathf.Max(maxY,transform.position.y);
                 Ray drawRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 float distance;
                 nonDrawingTime = 0.0f;
@@ -85,7 +95,8 @@ public class MouseSketch : MonoBehaviour
                 {
                     drawStroke.transform.position = drawRay.GetPoint(distance);
                     drawStrokeToCalc.transform.position = drawRay.GetPoint(distance) + new Vector3(50 * index,-50,0);
-                    sketchedDigits[index - 1].camera.transform.position = new Vector3(((minX + maxX) / 2) + (50 * index),-58.5f,-10);
+                    sketchedDigits[index - 1].camera.transform.position = new Vector3(((minX + maxX) / 2) + (50 * index),-50.0f + ((minY + maxY) / 2),-10);
+                    sketchedDigits[index - 1].camera.orthographicSize = Mathf.Max( Mathf.Lerp(0,4.87f,((maxY - minY) + 2.5f) / 10.0f),Mathf.Lerp(0, 4.87f, ((maxX - minX) + 2.5f) / 10.0f));
                 }
             }
         }
@@ -93,16 +104,16 @@ public class MouseSketch : MonoBehaviour
         {
             isDrawing = false;
         }
+        SortDigits();
+        int predictNumber = 0;
+        for (int i = 0; i < sketchedDigits.Count; i++)
+        {
+            drawingCalculator.BindCamera(sketchedDigits[i].camera);
+            predictNumber = predictNumber * 10 + ai.Calc(drawingCalculator);
+        }
+        guessText.text = "Guess : " + predictNumber.ToString();
         if(nonDrawingTime > 1.0f)
         {
-            SortDigits();
-            int predictNumber = 0;
-            for(int i=0;i<sketchedDigits.Count;i++)
-            {
-                drawingCalculator.BindCamera(sketchedDigits[i].camera);
-                predictNumber = predictNumber * 10  + ai.Calc(drawingCalculator);
-            }
-            guessText.text = "Guess : " + predictNumber.ToString();
             ai.Commit(predictNumber);
             EraseSketch();
             nonDrawingTime = -100000.0f;
@@ -120,6 +131,8 @@ public class MouseSketch : MonoBehaviour
         index = 0;
         minX = 100000;
         maxX = -100000;
+        minY = 100000;
+        maxY = -100000;
         nonDrawingTime = -100000.0f;
         for (int i = 0; i < drawParent.childCount; i++)
             Destroy(drawParent.GetChild(i).gameObject);
@@ -135,9 +148,10 @@ public class MouseSketch : MonoBehaviour
             {
                 if(sketchedDigits[j].x > sketchedDigits[j + 1].x)
                 {
-                    SketchedDigit temp = sketchedDigits[j];
-                    sketchedDigits[j] = sketchedDigits[j + 1];
-                    sketchedDigits[j] = temp;
+                    SketchedDigit temp = new SketchedDigit();
+                    sketchedDigits[j].CopyStruct(temp);
+                    sketchedDigits[j+1].CopyStruct(sketchedDigits[j]);
+                    temp.CopyStruct(sketchedDigits[j]);
                 }
             }
         }

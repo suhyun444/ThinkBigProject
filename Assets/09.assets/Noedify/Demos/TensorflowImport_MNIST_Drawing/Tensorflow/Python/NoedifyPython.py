@@ -15,7 +15,7 @@ def ExportModel(model, filename):
                 no_filters_prev = np.shape(model.layers[l].get_weights()[0])[2]
                 
                 print("Convolutional layer with {} filters.".format(no_filters_prev*no_filters_cur))
-                weights = model.layers[l].get_weights()[0]; # get weights
+                weights = model.layers[l].get_weights()[0] # get weights
                 print(np.shape(weights))
                 for f in range(0,no_filters_cur):
                     outString = ""
@@ -27,14 +27,14 @@ def ExportModel(model, filename):
                     paramFile.write(outString)
                     paramFile.write("\n")
                 paramFile.write("*\n")
-                biases = model.layers[l].get_weights()[1]; # get biases
+                biases = model.layers[l].get_weights()[1] # get biases
                 print(np.shape(biases))
                 for j in range(0,np.shape(biases)[0]):
                     paramFile.write("{}\n".format(biases[j]))
                 paramFile.write("***\n")
                 previousConvLayer = l
             elif (np.shape(np.shape(model.layers[l].get_weights()[0]))==(2,)): # fully-connected
-                weights = model.layers[l].get_weights()[0]; # get weights
+                weights = model.layers[l].get_weights()[0] # get weights
                 print(np.shape(weights))
                 if (previousConvLayer==-1): # if previous layer is FC
                     for j in range(0,np.shape(weights)[1]):
@@ -73,7 +73,7 @@ def ExportModel(model, filename):
                 previousConvLayer = -1
                     
                 paramFile.write("*\n")
-                biases = model.layers[l].get_weights()[1]; # get biases
+                biases = model.layers[l].get_weights()[1] # get biases
                 print(np.shape(biases))
                 for j in range(0,np.shape(biases)[0]):
                     paramFile.write("{}\n".format(biases[j]))

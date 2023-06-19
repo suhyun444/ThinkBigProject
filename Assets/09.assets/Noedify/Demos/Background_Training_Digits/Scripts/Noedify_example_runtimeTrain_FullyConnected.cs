@@ -115,7 +115,7 @@ public class Noedify_example_runtimeTrain_FullyConnected : MonoBehaviour
         //solver.suppressMessages = true; // suppress training messages from appearing in editor the console
         solver.TrainNetwork(net, trainingData, outputData, no_epochs, batch_size, trainingRate, costFunction, solverMethod, null, 8);
         float[] cost = solver.cost_report;
-
+        net.SaveModel("playerModel");
         StartCoroutine(PlotCostWhenComplete(solver, cost));
     }
 
