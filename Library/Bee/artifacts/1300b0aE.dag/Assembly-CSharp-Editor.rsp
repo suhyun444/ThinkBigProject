@@ -386,7 +386,18 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Unity-Logs-Viewer/Reporter/Editor/ReporterEditor.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/EditorObjectPool.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/EditorTEXUIQuickEditors.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/MiniThumbDrawer.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXBoxHighlighting.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TexConfigurationEditor.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXDraw3DEditor.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXDrawEditor.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXEditorMenus.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXFileImporter.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXPreferenceEditor.cs"
+"Assets/09.assets/Plugins/TEXDraw/Editor/TEXSharedEditor.cs"
+"Assets/09.assets/Unity-Logs-Viewer/Reporter/Editor/ReporterEditor.cs"
 -langversion:9.0
 
 /deterministic

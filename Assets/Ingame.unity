@@ -872,9 +872,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2599a921ffc8264fbdc842aed064f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guessText: {fileID: 0}
   drawObj: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
   drawParent: {fileID: 1194607401}
-  drawStroke: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
+  cameraObject: {fileID: 0}
+  ai: {fileID: 0}
+  index: 0
+  minX: 100000
+  maxX: -100000
+  minY: 100000
+  maxY: -100000
+  isDrawing: 0
 --- !u!4 &1270530407
 Transform:
   m_ObjectHideFlags: 0
@@ -1130,7 +1138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ad80c99163f3f49922e1b789980e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guessText: {fileID: 340121904}
+  monster: {fileID: 0}
+  curPredictNumber: 0
   net:
     layers: []
     trainingInProgress: 0
@@ -1139,7 +1148,6 @@ MonoBehaviour:
     total_no_weights: 0
     total_no_biases: 0
     nativeArraysInitialized: 0
-  drawingCalculator: {fileID: 1776682038}
   solver: {fileID: 0}
   modelImportComplete: 0
 --- !u!114 &1776682038
@@ -1169,9 +1177,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2599a921ffc8264fbdc842aed064f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guessText: {fileID: 0}
   drawObj: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
   drawParent: {fileID: 1194607401}
-  drawStroke: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
+  cameraObject: {fileID: 0}
+  ai: {fileID: 0}
+  index: 0
+  minX: 100000
+  maxX: -100000
+  minY: 100000
+  maxY: -100000
+  isDrawing: 0
 --- !u!4 &1776682040
 Transform:
   m_ObjectHideFlags: 0

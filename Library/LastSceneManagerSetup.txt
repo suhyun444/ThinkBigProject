@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< Updated upstream
-- path: Assets/Battle.unity
-=======
-- path: Assets/09.assets/WJ_API_2023/Scenes/SampleScene.unity
->>>>>>> Stashed changes
+- path: Assets/01.Scene/Battle.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
