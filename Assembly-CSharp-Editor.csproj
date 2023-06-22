@@ -36,7 +36,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXFileImporter.cs" />
+     <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXEditorMenus.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXDraw3DEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\MiniThumbDrawer.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXPreferenceEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TexConfigurationEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXDrawEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXBoxHighlighting.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\TEXSharedEditor.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\EditorObjectPool.cs" />
+     <Compile Include="Assets\09.assets\Plugins\TEXDraw\Editor\EditorTEXUIQuickEditors.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
