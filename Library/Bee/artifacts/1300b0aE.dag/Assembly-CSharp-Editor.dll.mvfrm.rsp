@@ -14,6 +14,12 @@ Library\Bee\artifacts\mvdfrm\Unity.2D.SpriteShape.Runtime.ref.dll_61D32A7E920E67
 Library\Bee\artifacts\mvdfrm\Unity.2D.Tilemap.Editor.ref.dll_C349DCD839D8880B.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.2D.Tilemap.Extras.Editor.ref.dll_4442349F8547BCD0.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.2D.Tilemap.Extras.ref.dll_B6FC041F98ADC4F1.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.BurstBLAS.ref.dll_6B49089DEB1CEB31.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.Editor.ref.dll_92C3434C986718EE.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.MacBLAS.ref.dll_3FC273E4EA138C90.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.ONNX.ref.dll_B7B0EDBCD67FBC4A.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.ref.dll_5386FBB18CEFBEF3.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Barracuda.iOSBLAS.ref.dll_894EA1C53BC10C8E.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Burst.Editor.ref.dll_222C82CECB47A66F.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Burst.ref.dll_3835BB91EC2C0D62.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEditorBridge.001.ref.dll_25F89DC3AAE256B8.mvfrm

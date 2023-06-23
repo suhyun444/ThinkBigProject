@@ -1621,23 +1621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2599a921ffc8264fbdc842aed064f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guessText: {fileID: 0}
-  drawObj: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
-  drawParent: {fileID: 1776835196}
-  cameraObject: {fileID: 0}
-  ai: {fileID: 0}
-  drawStartPos: {x: 0, y: 0, z: 0}
-  curLine: {fileID: 0}
-  curLineToCalc: {fileID: 0}
-  positionCount: 2
-  PrevPos: {x: 0, y: 0, z: 0}
-  nonDrawingTime: -100000
-  index: 0
-  minX: 200000000
-  maxX: 0
-  minY: 100000
-  maxY: -100000
-  isDrawing: 0
 --- !u!4 &1812573744
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,17 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1711926350}
-  curPredictNumber: 0
-  net:
-    layers: []
-    trainingInProgress: 0
-    total_no_nodes: 0
-    total_no_activeNodes: 0
-    total_no_weights: 0
-    total_no_biases: 0
-    nativeArraysInitialized: 0
-  solver: {fileID: 0}
-  modelImportComplete: 0
+  modelAsset: {fileID: 5022602860645237092, guid: ddf50cb907f5d5b42bf9a3676c592098, type: 3}
 --- !u!4 &2010087585
 Transform:
   m_ObjectHideFlags: 0

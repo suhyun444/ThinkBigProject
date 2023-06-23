@@ -12,32 +12,20 @@ public class DrawingCalculator
         this.camera = camera;
     }
     // This will retrive a 2D float representing the pixel data from a screenshot of the main camera
-    public float[] CalculateDrawing(int[] dim)
+    public Texture2D CalculateDrawing()
     {
-        float[] outputData = new float[dim[0] * dim[1]];
+        float[] outputData = new float[28 * 28];
 
-        Texture2D tex = new Texture2D(dim[0], dim[1], TextureFormat.RGB24, false);
-        RenderTexture rt = new RenderTexture(dim[0], dim[1], 24);
+        Texture2D tex = new Texture2D(28, 28, TextureFormat.RGB24, false);
+        RenderTexture rt = new RenderTexture(28, 28, 24);
         rt.depth = 24;
         camera.targetTexture = rt;
         camera.Render();
         RenderTexture.active = rt;
-        Rect rectReadPixels = new Rect(0, 0, dim[0], dim[1]);
+        Rect rectReadPixels = new Rect(0, 0, 28, 28);
         tex.ReadPixels(rectReadPixels, 0, 0);
         tex.Apply();
-
-        //camera.targetTexture = null;
-
-        for (int j = 0; j < tex.height; j++)
-        {
-            for (int i = 0; i < tex.width; i++)
-            {
-                Color pixelColor = tex.GetPixel(i, tex.height - j - 1); // y축 반전 Texture2D는 윈쪽위의 좌표가 (0,1)임
-                outputData[j * tex.width + i] = pixelColor.r;
-            }
-        }
-        //sampleMat.SetTexture("_MainTex", tex);
-        return outputData;
+        return tex;
     }
 
 }
