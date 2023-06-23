@@ -321,6 +321,9 @@
     <Reference Include="Unity.Burst.Cecil.Mdb">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>C:\Users\winds\Downloads\barracuda-release-release-3.0.0\barracuda-release-release-3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
@@ -735,14 +738,20 @@
     <Reference Include="UnityEditor.TestRunner">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Barracuda.ONNX">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.ONNX.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+    <Reference Include="Unity.Barracuda.iOSBLAS">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.iOSBLAS.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.BurstBLAS">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.BurstBLAS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
@@ -756,6 +765,9 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="PsdPlugin">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
     </Reference>
@@ -764,6 +776,9 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -852,8 +867,14 @@
     <Reference Include="Unity.2D.Common.Editor">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Barracuda.Editor">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.MacBLAS">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.Barracuda.MacBLAS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
