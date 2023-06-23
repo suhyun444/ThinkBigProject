@@ -5,31 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="079e4e68-9ab4-4db6-af38-d87e25e27306" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scene/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scene/Battle.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Script/RecognizeDigitsAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Script/RecognizeDigitsAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/Background_Training_Digits/Scenes/Background_Training_Digits.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/Background_Training_Digits/Scenes/Background_Training_Digits.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/Background_Training_Digits/Scripts/Noedify_example_runtimeTrain_FullyConnected.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/Background_Training_Digits/Scripts/Noedify_example_runtimeTrain_FullyConnected.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Prefabs/DrawObject.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Prefabs/DrawObject.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Scripts/MouseSketch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Scripts/MouseSketch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Tensorflow/Python/NoedifyPython.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Tensorflow/Python/NoedifyPython.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Prefab/DrawObject.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Prefab/DrawObject.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/Ground.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/Ground.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/balloon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/balloon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/balloon_shine.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/balloon_shine.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/button_arrow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/button_arrow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/cloud1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/cloud1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/cloud2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/cloud2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/obstacle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/obstacle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body_walk1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body_walk1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body_walk2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_body_walk2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_hat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_hat.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_head.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/player_head.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/sky.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/HoppyGame/Sprites/sky.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Scripts/MouseSketch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Scripts/MouseSketch.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/Border.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/Border.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/bar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/bar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/blackBox.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/09.assets/Noedify/Demos/TensorflowImport_MNIST_Drawing/Sprites/blackBox.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/01/01e07f6385d7b5bddde22e711c287312" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/0a/0a6ed9579d2ffc6fa8fb7c111841513c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/10/1021d65644a185a2fae3a090d168ffdd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/13/13fdce4f853a2f0bec2c377ba81a7ec5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/14/14c5b3c6d36a8dabfc87c7905dcd9be7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/19/194dd898e9425356f9976ecab0ede58a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1b/1b469943bb3cb0b6c45b04f1def40646" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1e/1e1c2a58c416adffd6623670a21c881b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1e/1ed5d4f3ce1bb35b320ef0308fa91662" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/21/2178a8a0fa8308fcfa83c6c3cf779a0c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/28/28468e44fbd0c29c92ac2f6ffa021ad8" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/28/2874c572144dcce0a1b599b05ba851cd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2e/2ea53b6808ba5d5fba564055d6efb2be" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/30/3022bb8e37e3e4304a20e494930bb039" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/32/32a901e58426ebe4c75287281f4fe770" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/37/37df6d083c146e94a8cae2eb3e44431d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/43/438aef2061a02b50d769407c16035901" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/48/481b86cb41f7e909e18dac8d3613e3b5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/4b/4b739005339a0f7e99bc887f22ac3d12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4d/4d6159196d7dbea539d3f5d07244736e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4d/4d9bc52e31bfe01f088cc933475fdf9c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4f/4f9495e8c07c629a6ffabd192dbb4a9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/58/5804a1adb3411a7bfc43b2b39756a8cd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5f/5f81a1d93ed18d015bcc8548c1e68d9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6c/6ca0ec1929bad82cb612822c8e106650" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6d/6d8f086ab166b267e8c5a5b0a0bfa838" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/71/71ec5cd7353c9d36abe914368edd7ec3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/74/744e988f83ca29dc48f1cb70e72124a9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/78/78830ada661c9387972e407342367e50" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/82/824211fdf6d8740feb243728420246d8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/83/83f52c4cf8c3e1b850d22566376fc055" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8d/8d369261332003645b7da31c01f8f601" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/8f/8f8203128727335d713c8c56f9b6d89e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/91/91ec5252d1507a7728ec579bad408959" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/94/949b5ced53a558c8ae2ba233ebbb71fc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/96/969d5daa11b223d486fed6f11cba8339" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9a/9a0c915efad0fe15d53fd67b2002cadc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9b/9b4a5726b7e5fc028782ac9426a7f9bc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9e/9e66b4994299e3c2a08e7e9874560dda" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9f/9f2586eb14b6cce2ac302ddd6201713a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a5/a5f83576f4d697b10a2a1fa6ac611b70" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a7/a7106c4ba75a33eee52fd3fc8497dc8f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a9/a992f342bf245f1c8671608a14ea873d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/af/af4258b33c1c438a86ff8f92eab924cd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b5/b597ac368f9429ab16e45c76693b57eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b6/b65978ef4225d85523d429195fea8747" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b8/b811a94968491aeeed0ed13f79bdffb3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b9/b9ce4d2349c85dc34c6dd7da537d5208" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/be/be086103d2b5367809041a6cfcf0490c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/c3/c39f07c18b9ab98086c15cf013bc8079" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d3/d3acc8edd3685729003cab0f63fc6fc8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d8/d8808f609165a3fd3b477189c109e7c8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e4/e42969a10dc09b2a7cfb1cf6ca0f9234" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e6/e64234ab640d389cb8fc2e06390258ab" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/e7/e761792c38d96c5a3708b5ee4f05041c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e7/e7c0901f4a928b106a525a5358f3bc89" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e8/e80398614189d03ff2d10d0e266153c7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ed/ed1873b190eeff9326707e9f96c94159" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ed/ed61b794595d51766da4b4d6a592c1ad" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f2/f256d27a7f9279a8166b9984118adf33" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ff/ff11bc729d140d64a8e3caf98d24de31" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aE-inputdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aE-inputdata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag_derived" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aE.dag_derived" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aP-inputdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aP-inputdata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aP.dag" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aP.dag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Bee/1300b0aP.dag.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Bee/1300b0aP.dag.json" afterDir="false" />
@@ -339,11 +404,10 @@
       <change beforePath="$PROJECT_DIR$/Library/BuildPlayerData/Player/TypeDb-All.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/BuildPlayerData/Player/TypeDb-All.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/BuildPlayerData/response.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/Library/BuildPlayerData/response.rsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/BurstCache/JIT/CacheManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/BurstCache/JIT/CacheManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/LastBuild.buildreport" beforeDir="false" afterPath="$PROJECT_DIR$/Library/LastBuild.buildreport" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,12 +422,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;pr/1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "suhyun"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

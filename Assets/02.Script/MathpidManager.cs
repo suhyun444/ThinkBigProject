@@ -92,14 +92,14 @@ public class MathpidManager : MonoBehaviour
         string correctAnswer;
         string[] wrongAnswers;
 
-        Debug.Log("Question : " + textCn);
+        //Debug.Log("Question : " + textCn);
         textEquation.text = qstCn;
         
         correctAnswer = qstCransr;
         wrongAnswers = qstWransr.Split(',');
 
         int ansrCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
-        Debug.Log("answer : " +correctAnswer);
+        //Debug.Log("answer : " +correctAnswer);
         int correctAnswerInt;
         System.Int32.TryParse(correctAnswer, out correctAnswerInt);
         monster.BindQuestion(correctAnswerInt);

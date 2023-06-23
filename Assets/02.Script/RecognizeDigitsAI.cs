@@ -12,7 +12,6 @@ public class RecognizeDigitsAI : MonoBehaviour
 
     public Noedify_Solver solver;
     Noedify.Net mnist_FC_net;
-    
     float lastSample = -5f;
 
     public bool modelImportComplete = false;
@@ -44,6 +43,7 @@ public class RecognizeDigitsAI : MonoBehaviour
 
         // Attempt to load network saved as a binary file
         // This is much faster than importing form a parameters file        
+        //bool status = net.LoadModel("Noedify-asd");
         bool status = net.LoadModel("Noedify-Model_Digit_Drawing_Test");
         //bool status = net.LoadModel("PlayerModel");
         if(status == true)
