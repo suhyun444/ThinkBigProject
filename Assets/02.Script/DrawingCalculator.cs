@@ -32,9 +32,8 @@ public class DrawingCalculator
         {
             for (int i = 0; i < tex.width; i++)
             {
-                Color pixelColor = tex.GetPixel(i, tex.height - j - 1); // flip y
-                float grayscale = (pixelColor.r + pixelColor.g + pixelColor.b) / 3f;
-                outputData[j * tex.width + i] = grayscale;
+                Color pixelColor = tex.GetPixel(i, tex.height - j - 1); // y축 반전 Texture2D는 윈쪽위의 좌표가 (0,1)임
+                outputData[j * tex.width + i] = pixelColor.r;
             }
         }
         //sampleMat.SetTexture("_MainTex", tex);

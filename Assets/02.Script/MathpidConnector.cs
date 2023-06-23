@@ -43,7 +43,6 @@ public class MathpidConnector : MonoBehaviour
 
     private void Awake()
     {
-        print("end");
         if (SystemInfo.deviceType == DeviceType.Desktop)
             strDeviceNm = "PC";
         else
@@ -62,7 +61,6 @@ public class MathpidConnector : MonoBehaviour
     {
         DateTime dt = DateTime.Now;
         strMBR_ID = string.Format("{0}{1:0000}{2:00}{3:00}{4:00}{5:00}{6:00}{7:000}", strGameCD, dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
-        print(strMBR_ID);
     }
 
     #region Function Progress
@@ -205,7 +203,7 @@ public class MathpidConnector : MonoBehaviour
 
             yield return uwr.SendWebRequest();
 
-            Debug.Log($"��Request => {strBody}");
+            //Debug.Log($"��Request => {strBody}");
 
             if (uwr.error == null)  //���� ��
             {
@@ -248,7 +246,7 @@ public class MathpidConnector : MonoBehaviour
                 Debug.LogError(uwr.error.ToString());
             }
 
-            Debug.Log($"��Response => {uwr.downloadHandler.text}");
+            //Debug.Log($"��Response => {uwr.downloadHandler.text}");
             uwr.Dispose();
         }
     }

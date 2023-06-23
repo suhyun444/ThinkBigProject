@@ -125,7 +125,6 @@
      <Compile Include="Assets\09.assets\Noedify\Demos\HoppyGame\Scripts\Hoppy_GroundControl.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ReflectionUtility.cs" />
-     <Compile Include="Assets\09.assets\Noedify\Demos\TensorflowImport_MNIST_Drawing\Scripts\MouseSketch.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\Background_Training_Digits\Scripts\Noedify_example_runtimeTrain_Convolutional.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\LayoutBox.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\HoppyGame\Scripts\Hoppy_Obstacle_Controller.cs" />
@@ -146,6 +145,7 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexConstantUpdater.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SpaceAtom.cs" />
+     <Compile Include="Assets\02.Script\DrawingLine.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\StrikeBox.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\TensorflowImport_MNIST_Drawing\Scripts\Noedify_DrawTest_Network.cs" />
      <Compile Include="Assets\09.assets\Noedify\Scripts\Noedify_Debugger.cs" />
@@ -173,6 +173,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\RotatedCharBox.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TEXPreference.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FrameAtom.cs" />
+     <Compile Include="Assets\02.Script\MouseSketch.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDraw.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputLogger.cs" />
@@ -196,7 +197,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\AlignmentAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
-     <Compile Include="Assets\02.Script\DrawingLine.cs" />
+     <Compile Include="Assets\02.Script\KNNAlgorithm.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
