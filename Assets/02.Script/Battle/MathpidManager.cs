@@ -14,7 +14,7 @@ public class MathpidManager : MonoBehaviour
     [SerializeField] BattleManager battleManager;
     [SerializeField] TEXDraw3D textEquation;           //���� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)  //식
     string correctAnswer;
-    string wrongAnswers;
+    string wrongAnswer;
 
     [Header("Status")]
     int currentQuestionIndex;
@@ -35,7 +35,7 @@ public class MathpidManager : MonoBehaviour
                 break;
         }
 
-        ButtonEvent_ChooseDifficulty(0);
+        ButtonEvent_ChooseDifficulty(3);
         if (conn != null)
         {
             conn.onGetDiagnosis.AddListener(() => GetDiagnosis());
@@ -47,6 +47,10 @@ public class MathpidManager : MonoBehaviour
     private void Update()
     {
         if (isSolvingQuestion) questionSolveTime += Time.deltaTime;
+        if (currentQuestionIndex >= 8)
+        {
+            conn.Learning_GetQuestion();
+        }
     }
 
     /// <summary>
@@ -87,18 +91,12 @@ public class MathpidManager : MonoBehaviour
     /// </summary>
     private void MakeQuestion(string textCn, string qstCn, string qstCransr, string qstWransr)
     {
-
-        string correctAnswer;
-        string[] wrongAnswers;
-
-        //Debug.Log("Question : " + textCn);
         textEquation.text = qstCn;
         
         correctAnswer = qstCransr;
         Debug.Log("Answer : " + correctAnswer);
-        wrongAnswers = qstWransr.Split(',');
+        wrongAnswer = qstWransr.Split(',')[0];
 
-        int ansrCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
         battleManager.BindAnswer(correctAnswer);
         isSolvingQuestion = true;
     }
@@ -109,7 +107,7 @@ public class MathpidManager : MonoBehaviour
     public void SelectAnswer(bool isCorrect) // 버튼으로 정답맞추기
     {
         string ansrCwYn = isCorrect ? "Y" : "N";
-        string ansText = isCorrect ? correctAnswer : wrongAnswers;
+        string ansText = isCorrect ? correctAnswer : wrongAnswer;
 
         switch (currentStatus)
         {
@@ -117,10 +115,6 @@ public class MathpidManager : MonoBehaviour
                 isSolvingQuestion = false;
                 conn.Diagnosis_SelectAnswer(ansText, ansrCwYn, (int)(questionSolveTime * 1000));
                 currentQuestionIndex++;
-                if(currentQuestionIndex >= 8)
-                {
-                    conn.Learning_GetQuestion();
-                }
 
                 questionSolveTime = 0;
                 break;
@@ -128,16 +122,10 @@ public class MathpidManager : MonoBehaviour
             case CurrentStatus.LEARNING:
 
                 isSolvingQuestion = false;
-                currentQuestionIndex++;
-
                 conn.Learning_SelectAnswer(currentQuestionIndex, ansText, ansrCwYn, (int)(questionSolveTime * 1000));
-                if (currentQuestionIndex >= 8)
-                {
-                    conn.Learning_GetQuestion();
-                }
-
-
-                else GetLearning(currentQuestionIndex);
+                currentQuestionIndex++;
+                if(currentQuestionIndex < 8)
+                    GetLearning(currentQuestionIndex);
 
                 questionSolveTime = 0;
                 break;

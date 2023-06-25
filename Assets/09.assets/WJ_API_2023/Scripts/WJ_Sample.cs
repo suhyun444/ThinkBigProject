@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using WjChallenge;
+using TexDrawLib;
 
 public class WJ_Sample : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class WJ_Sample : MonoBehaviour
     [SerializeField] GameObject         panel_question;         //���� �г�(����,�н�)
 
     [SerializeField] Text   textDescription;        //���� ���� �ؽ�Ʈ
-    [SerializeField] Text   textEquation;           //���� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)
+    [SerializeField] TEXDraw   textEquation;           //���� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)
     [SerializeField] Button[]           btAnsr = new Button[4]; //���� ��ư��
-    Text[]                textAnsr;                  //���� ��ư�� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)
+    TEXDraw[]                textAnsr;                  //���� ��ư�� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)
 
     [Header("Status")]
     int     currentQuestionIndex;
@@ -30,10 +31,10 @@ public class WJ_Sample : MonoBehaviour
 
     private void Awake()
     {
-        textAnsr = new Text[btAnsr.Length];
+        textAnsr = new TEXDraw[btAnsr.Length];
         for (int i = 0; i < btAnsr.Length; ++i)
 
-            textAnsr[i] = btAnsr[i].GetComponentInChildren<Text>();
+            textAnsr[i] = btAnsr[i].GetComponentInChildren<TEXDraw>();
 
         wj_displayText.SetState("�����", "", "", "");
     }
@@ -63,6 +64,10 @@ public class WJ_Sample : MonoBehaviour
     private void Update()
     {
         if (isSolvingQuestion) questionSolveTime += Time.deltaTime;
+        if (currentQuestionIndex >= 8)
+        {
+            wj_conn.Learning_GetQuestion();
+        }
     }
 
     /// <summary>
@@ -156,8 +161,9 @@ public class WJ_Sample : MonoBehaviour
             case CurrentStatus.DIAGNOSIS:
                 isCorrect   = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
                 ansrCwYn    = isCorrect ? "Y" : "N";
-
+                
                 isSolvingQuestion = false;
+                currentQuestionIndex++;
 
                 wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
@@ -168,6 +174,7 @@ public class WJ_Sample : MonoBehaviour
                 break;
 
             case CurrentStatus.LEARNING:
+                Debug.Log(wj_conn.cLearnSet);
                 isCorrect   = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
                 ansrCwYn    = isCorrect ? "Y" : "N";
 

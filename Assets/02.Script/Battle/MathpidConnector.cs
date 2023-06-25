@@ -286,14 +286,7 @@ public class MathpidConnector : MonoBehaviour
     public void Learning_SelectAnswer(int _index, string _cransr, string _ansrYn, long _slvTime = 5000)
     {
         if (cMyAnsrs == null) cMyAnsrs = new List<Learning_MyAnsr>();
-        try{
-            cMyAnsrs.Add(new Learning_MyAnsr(cLearnSet.data.qsts[_index - 1].qstCd, _cransr, _ansrYn, 0));
-        }
-        catch(Exception e)
-        {
-            Debug.LogError(_index-1);
-            Debug.LogError(e.Message);
-        }
+        cMyAnsrs.Add(new Learning_MyAnsr(cLearnSet.data.qsts[_index].qstCd, _cransr, _ansrYn, 0));
 
         if (cMyAnsrs.Count >= 8)
         {
