@@ -10,4 +10,12 @@ public class Monster : MonoBehaviour
     {
         
     }
+    private void Attack()
+    {
+
+    }
+    private void Dead()
+    {
+        
+    }
 }

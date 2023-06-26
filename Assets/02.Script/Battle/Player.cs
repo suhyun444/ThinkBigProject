@@ -18,12 +18,15 @@ public class Player : MonoBehaviour
     }
     public void Act(bool isCorrect)
     {
-        
+        if(isCorrect)
+        {
+            Attack();
+        }
     }
     public void Attack()
     {
         PlayAnimation(PlayerAnimationState.Attack);
-        Instantiate(effectObject,effectPosition,Quaternion.identity);
+        //Instantiate(effectObject,effectPosition,Quaternion.identity);
     }
 
     private void PlayAnimation(PlayerAnimationState state)
