@@ -12,7 +12,7 @@ public class MathpidManager : MonoBehaviour
     public CurrentStatus CurrentStatus => currentStatus;
 
     [SerializeField] BattleManager battleManager;
-    [SerializeField] TEXDraw3D textEquation;           //���� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)  //식
+    [SerializeField] QuestionBox textEquation;           //���� �ؽ�Ʈ(��TextDraw�� ���� �ʿ�)  //식
     string correctAnswer;
     string wrongAnswer;
 
@@ -35,7 +35,7 @@ public class MathpidManager : MonoBehaviour
                 break;
         }
 
-        ButtonEvent_ChooseDifficulty(3);
+        ButtonEvent_ChooseDifficulty(0);
         if (conn != null)
         {
             conn.onGetDiagnosis.AddListener(() => GetDiagnosis());
@@ -91,7 +91,7 @@ public class MathpidManager : MonoBehaviour
     /// </summary>
     private void MakeQuestion(string textCn, string qstCn, string qstCransr, string qstWransr)
     {
-        textEquation.text = qstCn;
+        textEquation.BindQuestion(qstCn);
         
         correctAnswer = qstCransr;
         Debug.Log("Answer : " + correctAnswer);

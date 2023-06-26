@@ -236,7 +236,7 @@ MonoBehaviour:
   conn: {fileID: 203528080}
   currentStatus: 0
   battleManager: {fileID: 1678649934}
-  textEquation: {fileID: 1140122172}
+  textEquation: {fileID: 1140122173}
 --- !u!114 &203528080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140122171}
   - component: {fileID: 1140122172}
+  - component: {fileID: 1140122173}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -741,6 +742,19 @@ MonoBehaviour:
     bottom: 0
   m_Overflow: 2
   m_Material: {fileID: 0}
+--- !u!114 &1140122173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140122170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc980a5a9d6e3d1408fb0c0904dc316b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 1317762960}
 --- !u!1 &1202425550
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-#Fri Jun 23 23:20:49 KST 2023
+#Mon Jun 26 12:53:17 KST 2023
 base.0=D\:\\Unity\\Github\\RecognizeHandWrittenDigitsTest\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
