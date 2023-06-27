@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmtcsc
   m_EditorClassIdentifier: 
   assetIndex: 24
@@ -2718,4 +2718,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: 2aa732da142c06e44830052fb1cd3193, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Extras/cmtcsc.ttf
+  asset: {fileID: 11400000, guid: b6970b522812146409632dcfcc7fbe0e, type: 2}

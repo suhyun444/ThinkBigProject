@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmsl
   m_EditorClassIdentifier: 
   assetIndex: 15
@@ -2718,4 +2718,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: 84990f0e75635ab4a8b9f302ea42338f, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Extras/cmsl.ttf
+  asset: {fileID: 11400000, guid: 50e55f16f4f69c84cbfe4984c405de0c, type: 2}

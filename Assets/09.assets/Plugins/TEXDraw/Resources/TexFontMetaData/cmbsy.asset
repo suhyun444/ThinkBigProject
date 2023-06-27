@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmbsy
   m_EditorClassIdentifier: 
   assetIndex: 5
@@ -2718,4 +2718,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: b823c02e6e3d977438a7ec4ca7cf4777, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Extras/cmbsy.ttf
+  asset: {fileID: 11400000, guid: 03f63b49bea66314689dd3b8a283fac8, type: 2}

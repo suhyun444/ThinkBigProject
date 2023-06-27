@@ -13,27 +13,45 @@ public class QuestionBox : MonoBehaviour
     }
     public void BindQuestion(string q)
     {
-        this.question.text = q;
-        if(q.Contains("frac") || q.Contains("hline"))
-            SetDefaultPreset();
+        if(q.Contains("hline"))
+            q = SetQuestionVerticalToHorizontal(q);
         else
-            SetHorizontalPreset();
-    }
-    private void SetDefaultPreset()
-    {
-        question.size = 0.6f;
-        question.rectTransform.localPosition = new Vector3(-0.6f,1.31f,0.0f);
-        question.rectTransform.sizeDelta = new Vector2(2.52f,2.07f);
-        box.transform.localPosition = new Vector3(-0.6f,1.26f,0.0f);
-        box.transform.localScale = new Vector3(2.6f,2.2f,0.0f);
-    }
-    private void SetHorizontalPreset()
-    {
-        question.size = 0.36f;
-        question.rectTransform.localPosition = new Vector3(-1.26f,1.02f,0.0f);
-        question.rectTransform.sizeDelta = new Vector2(4.04f,0.83f);
-        box.transform.localPosition = new Vector3(-1.26f,1.03f,0.0f);
-        box.transform.localScale = new Vector3(4.03f,0.8f,0.0f);
-    }
+        {
+            q = q.Replace("\\rightarrow","->").Replace('~', ' ').Replace("$x$", "x").Replace("\\left","")
+                .Replace("\\right","").Replace("\\begin{align}","").Replace("\\end{align}","").Replace("\\\\","")
+                .Replace("\\minus","-");
 
+        }
+        this.question.text = q;
+    }
+    private string SetQuestionVerticalToHorizontal(string q)
+    {
+        Debug.Log(q);
+        q = q.Replace("\\times", "*").Replace("&","").Replace("\\","").Replace(" ","");
+        char oper = ' ';
+        if(q.Contains('-'))
+            oper = '-';
+        else if (q.Contains('+'))
+            oper = '+';
+        else if (q.Contains('*'))
+            oper = '*';
+        string[] nums = q.Split(oper);
+        for(int i=nums[0].Length - 1;i>=0;i--)
+        {
+            if(nums[0][i] < '0' || '9' < nums[0][i])
+            {
+                nums[0] = nums[0].Substring(i + 1,nums[0].Length - i - 1);
+                break;
+            }
+        }
+        for(int i=0;i<nums[1].Length;i++)
+        {
+            if (nums[1][i] < '0' || '9' < nums[1][i])
+            {
+                nums[1] = nums[1].Substring(0, i);
+                break;
+            }
+        }
+        return nums[0] + " " + oper + " " + nums[1] + " = ?";
+    }
 }

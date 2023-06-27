@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f181994389177aa4e8807fb9cd14776f, type: 3}
   m_Name: TEXDrawPreference
   m_EditorClassIdentifier: 
-  MainFolderPath: Assets/Plugins/TEXDraw
+  MainFolderPath: Assets\09.assets\Plugins\TEXDraw
   editorReloading: 0
   defaultMaterial: {fileID: 2100000, guid: 9d473469be5a9fc448e911362f79b8a9, type: 2}
   spriteMaterial: {fileID: 2100000, guid: 37137b524c1bc134c93e4ef9471abc1c, type: 2}
@@ -48,6 +48,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22c23c08b4628c04b8592b9309584e15, type: 2}
   - {fileID: 11400000, guid: 4578b568985c89d428f612ba3325c88c, type: 2}
   - {fileID: 11400000, guid: 203e3a1ca102fc44da54f0a3bd32e5e7, type: 2}
+  - {fileID: 11400000, guid: b3e1b633c5e55694da8bfce47202da53, type: 2}
+  - {fileID: 11400000, guid: 00196cd2694b9f645ab42a52392f5a61, type: 2}
+  - {fileID: 11400000, guid: aac7b64c86048ad40a917ed72dbb9062, type: 2}
+  - {fileID: 11400000, guid: 38f77a4b699310b40a0454fe53823096, type: 2}
   - {fileID: 11400000, guid: 2281e009173047241917f55e92b405e2, type: 2}
   - {fileID: 11400000, guid: 4be6ceb1b3de2c14eb0d897458618931, type: 2}
   - {fileID: 11400000, guid: 9cb7d255bceaad3469416d2bb70e59d6, type: 2}
@@ -86,6 +90,10 @@ MonoBehaviour:
   - cmff
   - cmfi
   - cmu
+  - dnf
+  - dnfb
+  - dnfbi
+  - dnfi
   - opens
   - opensb
   - opensbi
@@ -124,11 +132,15 @@ MonoBehaviour:
   - 28 - cmff.ttf
   - 29 - cmfi.ttf
   - 30 - cmu.ttf
-  - 31 - opens.ttf
-  - 32 - opensb.ttf
-  - 33 - opensbi.ttf
-  - 34 - opensi.ttf
-  - 35 - iconic.ttf
+  - 31 - dnf.ttf
+  - 32 - dnfb.ttf
+  - 33 - dnfbi.ttf
+  - 34 - dnfi.ttf
+  - 35 - opens.ttf
+  - 36 - opensb.ttf
+  - 37 - opensbi.ttf
+  - 38 - opensi.ttf
+  - 39 - iconic.ttf
   FontIDsGUI:
   - m_Text: -1 (Use Default Typefaces)
     m_Image: {fileID: 0}
@@ -226,19 +238,31 @@ MonoBehaviour:
   - m_Text: 30 - cmu.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: 31 - opens.ttf
+  - m_Text: 31 - dnf.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: 32 - opensb.ttf
+  - m_Text: 32 - dnfb.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: 33 - opensbi.ttf
+  - m_Text: 33 - dnfbi.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: 34 - opensi.ttf
+  - m_Text: 34 - dnfi.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: 35 - iconic.ttf
+  - m_Text: 35 - opens.ttf
     m_Image: {fileID: 0}
     m_Tooltip: 
-  FontIndexs: ffffffff000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f00000020000000210000002200000023000000
+  - m_Text: 36 - opensb.ttf
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  - m_Text: 37 - opensbi.ttf
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  - m_Text: 38 - opensi.ttf
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  - m_Text: 39 - iconic.ttf
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  FontIndexs: ffffffff000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f0000002000000021000000220000002300000024000000250000002600000027000000

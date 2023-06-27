@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmr
   m_EditorClassIdentifier: 
   assetIndex: 10
@@ -2742,4 +2742,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: a863480d2d3ed4b4383f5fef8fc4090e, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Math/cmr.ttf
+  asset: {fileID: 11400000, guid: 4498e4303c0fbc748a426cf6dff630b1, type: 2}

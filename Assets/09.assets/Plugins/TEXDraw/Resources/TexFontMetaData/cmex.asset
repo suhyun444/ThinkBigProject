@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmex
   m_EditorClassIdentifier: 
   assetIndex: 0
@@ -2718,4 +2718,5 @@ MonoBehaviour:
         font: cmex
         character: 119
       horizontal: 0
-  asset: {fileID: 12800000, guid: 05e636abe7d96894a9a3b58f890a12e9, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Math/cmex.ttf
+  asset: {fileID: 11400000, guid: 8287975117f6e5f428e73c2337a7923a, type: 2}

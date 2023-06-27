@@ -12,6 +12,12 @@ public class BattleManager : MonoBehaviour
     {
         this.answer = answer;
     }
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            mathpidManager.SelectAnswer(true);
+        }
+    }
     public void CheckAnswer(string answer)
     {
         bool isCorrect = this.answer == answer;

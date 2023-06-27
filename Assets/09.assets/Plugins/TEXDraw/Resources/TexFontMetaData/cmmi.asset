@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmmi
   m_EditorClassIdentifier: 
   assetIndex: 1
@@ -2720,4 +2720,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: 1fde6bb96f6738c42aed9e1bcbaaa36e, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Math/cmmi.ttf
+  asset: {fileID: 11400000, guid: c6eb79cc50137fb4897cbb0d7b784c66, type: 2}

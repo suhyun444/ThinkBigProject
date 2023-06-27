@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3323630c18e2a9e4babea8cdc09f40f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f06751eb786776498a431c862bfe58d, type: 3}
   m_Name: cmvtt
   m_EditorClassIdentifier: 
   assetIndex: 26
@@ -2718,4 +2718,5 @@ MonoBehaviour:
         font: 
         character: 0
       horizontal: 0
-  asset: {fileID: 12800000, guid: dcb002f3779438143826d90470f444f5, type: 3}
+  rawpath: Assets/09.assets/Plugins/TEXDraw/Fonts/Extras/cmvtt.ttf
+  asset: {fileID: 11400000, guid: a21ab0eb032c9c847a7e86eae010ec63, type: 2}

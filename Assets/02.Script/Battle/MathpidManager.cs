@@ -35,7 +35,7 @@ public class MathpidManager : MonoBehaviour
                 break;
         }
 
-        ButtonEvent_ChooseDifficulty(0);
+        ButtonEvent_ChooseDifficulty(3);
         if (conn != null)
         {
             conn.onGetDiagnosis.AddListener(() => GetDiagnosis());

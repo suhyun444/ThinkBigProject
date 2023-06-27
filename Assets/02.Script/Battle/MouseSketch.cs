@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 struct SketchedDigit
 {
@@ -21,10 +22,7 @@ struct SketchedDigit
 };
 public class MouseSketch : MonoBehaviour
 {
-
-
-
-    [SerializeField] UnityEngine.UI.Text guessText;
+    [SerializeField] private TextMeshPro guessText;
     public GameObject drawObj;
     public Transform drawParent;
     public Plane drawBGplane;
@@ -115,7 +113,7 @@ public class MouseSketch : MonoBehaviour
             drawingCalculator.BindCamera(sketchedDigits[i].camera);
             predictNumber = predictNumber * 10 + ai.Calc(drawingCalculator);
         }
-        guessText.text = "Guess : " + predictNumber.ToString();
+        guessText.text = predictNumber.ToString();
         if(nonDrawingTime > 1.0f)
         {
             ai.Commit(predictNumber);
