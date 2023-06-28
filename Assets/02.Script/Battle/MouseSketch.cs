@@ -23,6 +23,7 @@ struct SketchedDigit
 public class MouseSketch : MonoBehaviour
 {
     [SerializeField] private TextMeshPro guessText;
+    [SerializeField] private EraseButton eraseButton;
     public GameObject drawObj;
     public Transform drawParent;
     public Plane drawBGplane;
@@ -49,6 +50,7 @@ public class MouseSketch : MonoBehaviour
     {
         drawBGplane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
         drawingCalculator = new DrawingCalculator();
+        eraseButton.BindClickEvent(EraseSketch);
     }
 
     // Update is called once per frame
