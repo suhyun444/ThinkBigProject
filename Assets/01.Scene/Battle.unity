@@ -181,7 +181,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 92
+  m_text: '99
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99f9b793e529b084eb46de2f74c3f162, type: 2}
   m_sharedMaterial: {fileID: 6416661860303200853, guid: 99f9b793e529b084eb46de2f74c3f162, type: 2}
@@ -796,7 +798,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104731972}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.6
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -805,7 +807,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -871,7 +873,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.26
+      scalar: 0.42
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1622,7 +1624,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 29.9
+      scalar: 60
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1739,21 +1741,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          time: 0.9793701
+          value: 0.5474243
+          inSlope: -0.8287767
+          outSlope: -0.8287767
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.0955741
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -2298,7 +2300,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.08
+      scalar: 8
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2883,10 +2885,10 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   LifetimeByEmitterSpeedModule:
-    enabled: 1
+    enabled: 0
     m_Curve:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 1
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -2896,16 +2898,25 @@ ParticleSystem:
           time: 0
           value: 1
           inSlope: 0
-          outSlope: -0.8
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
+          time: 0.07187688
+          value: 0.17880295
+          inSlope: 0.7365505
+          outSlope: 0.7365505
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.13927671
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 1
-          value: 0.2
+          value: 1
           inSlope: -0.8
-          outSlope: 0
+          outSlope: -0.8
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -5545,7 +5556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3b53ddf982d0646bef0007b7d57040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Text: TexDraw
+  m_Text: Question
   m_Size: 0.6
   m_PixelsPerUnit: 64
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5999,6 +6010,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0b3acaf159e224283a92c8fa3943a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystem: {fileID: 1104731975}
+  particleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.8245542
+      outSlope: 0.8245542
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.18779427
+      value: 0.15484655
+      inSlope: 1.8100542
+      outSlope: 1.8100542
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.26705012
+      outWeight: 0.28191322
+    - serializedVersion: 3
+      time: 0.37888992
+      value: 0.76605654
+      inSlope: 2.7084906
+      outSlope: 2.7084906
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5891745
+      value: 1.000656
+      inSlope: 0.025424233
+      outSlope: 0.025424233
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.6917742
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.0015968062
+      outSlope: -0.0015968062
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spriteRenderer: {fileID: 713115574}
 --- !u!1 &1732882878
 GameObject:
   m_ObjectHideFlags: 0
@@ -6234,7 +6298,7 @@ GameObject:
   - component: {fileID: 2138438213}
   - component: {fileID: 2138438215}
   m_Layer: 0
-  m_Name: DrawCanvas (1)
+  m_Name: DrawCanvas
   m_TagString: DrawingBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
