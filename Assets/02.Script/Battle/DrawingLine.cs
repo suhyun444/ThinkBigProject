@@ -35,20 +35,20 @@ public class DrawingLine : MonoBehaviour
     {
         positionCount = 2;
         GameObject line = new GameObject("Line");
-        LineRenderer lineRend = line.AddComponent<LineRenderer>();
+        LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
 
         line.transform.parent = cam.transform;
         line.transform.position = mousePos;
 
-        lineRend.startWidth = 0.1f;
-        lineRend.endWidth = 0.1f;
-        lineRend.numCornerVertices = 5;
-        lineRend.numCapVertices = 5;
-        lineRend.material = defaultMaterial;
-        lineRend.SetPosition(0, mousePos);
-        lineRend.SetPosition(1, mousePos);
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.numCornerVertices = 5;
+        lineRenderer.numCapVertices = 5;
+        lineRenderer.material = defaultMaterial;
+        lineRenderer.SetPosition(0, mousePos);
+        lineRenderer.SetPosition(1, mousePos);
 
-        curLine = lineRend;
+        curLine = lineRenderer;
     }
     void connectLine(Vector3 mousePos)
     {

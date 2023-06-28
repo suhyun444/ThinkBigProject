@@ -25,10 +25,13 @@ public class MouseSketch : MonoBehaviour
     [SerializeField] private TextMeshPro guessText;
     [SerializeField] private EraseButton eraseButton;
     public GameObject drawObj;
+    public GameObject drawObjToCalc;
     public Transform drawParent;
     public Plane drawBGplane;
     public GameObject cameraObject;
     [SerializeField] RecognizeDigitsAI ai;
+    [SerializeField] private Material drawingBookMaterial;
+    [SerializeField] private Material drawingMaterial;
     Vector3 drawStartPos;
     
     private LineRenderer curLine;  //Line which draws now
@@ -36,13 +39,14 @@ public class MouseSketch : MonoBehaviour
     private int positionCount = 2;  //Initial start and end position
     private Vector3 PrevPos = Vector3.zero; // 0,0,0 position variable
 
-    DrawingCalculator drawingCalculator;
-    float nonDrawingTime = -100000.0f;
-    public int index = 0;
-    List<SketchedDigit> sketchedDigits = new List<SketchedDigit>();
-    public float minX = 100000,maxX = -100000;
-    public float minY = 100000,maxY = -100000;
-    public bool isDrawing = false;
+    private DrawingCalculator drawingCalculator;
+    private float nonDrawingTime = -100000.0f;
+    private int index = 0;
+    private List<SketchedDigit> sketchedDigits = new List<SketchedDigit>();
+    private float minX = 100000,maxX = -100000;
+    private float minY = 100000,maxY = -100000;
+    private bool isDrawing = false;
+    private bool onAnimation = false;
 
 
     // Start is called before the first frame update
@@ -56,6 +60,7 @@ public class MouseSketch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(onAnimation)return;
         nonDrawingTime += Time.deltaTime;
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f));
         if(-8.47f <= transform.position.x && transform.position.x <= 1.79 && -14.42f <= transform.position.y && transform.position.y <= -4.08f)
@@ -78,7 +83,7 @@ public class MouseSketch : MonoBehaviour
                         sketchedDigits.Add(new SketchedDigit(transform.position.x,index,camera));
                     }
                     curLine = Instantiate(drawObj,this.transform.position,Quaternion.identity).GetComponent<LineRenderer>();
-                    curLineToCalc = Instantiate(drawObj,this.transform.position,Quaternion.identity).GetComponent<LineRenderer>();
+                    curLineToCalc = Instantiate(drawObjToCalc,this.transform.position,Quaternion.identity).GetComponent<LineRenderer>();
                     curLine.gameObject.transform.SetParent(drawParent);
                     curLineToCalc.gameObject.transform.SetParent(drawParent);
 
@@ -115,12 +120,17 @@ public class MouseSketch : MonoBehaviour
             drawingCalculator.BindCamera(sketchedDigits[i].camera);
             predictNumber = predictNumber * 10 + ai.Calc(drawingCalculator);
         }
-        guessText.text = predictNumber.ToString();
+        guessText.text = "Guess: " + predictNumber.ToString();
         if(nonDrawingTime > 1.0f)
         {
-            ai.Commit(predictNumber);
-            EraseSketch();
             nonDrawingTime = -100000.0f;
+            if(ai.Commit(predictNumber))
+            {
+                StartCoroutine(RuneEngrave());
+            }
+            else{
+                EraseSketch();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -129,6 +139,33 @@ public class MouseSketch : MonoBehaviour
         }
 
 
+    }
+    IEnumerator RuneEngrave()
+    {
+        onAnimation = true;
+        float time = 0;
+        float t = 0.7f;
+        while(time < 1)
+        {
+            time += Time.deltaTime / t;
+            drawingMaterial.SetFloat("_HighLightedAmount",Mathf.Lerp(1,0.4f,time));
+            drawingBookMaterial.SetFloat("_OutLineAlpha",Mathf.Lerp(0,1,time));
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.4f);
+        time = 0;
+        t = 0.25f;
+        while (time < 1)
+        {
+            time += Time.deltaTime / t;
+            drawingMaterial.SetFloat("_Alpha", Mathf.Lerp(1, 0, time));
+            drawingBookMaterial.SetFloat("_OutLineAlpha", Mathf.Lerp(1, 0, time));
+            yield return null;
+        }
+        EraseSketch();
+        drawingMaterial.SetFloat("_Alpha", 1);
+        drawingMaterial.SetFloat("_HighLightedAmount", 1);
+        onAnimation = false;
     }
     void createLine(Vector3 mousePos,Vector3 calcPos)
     {
@@ -183,4 +220,5 @@ public class MouseSketch : MonoBehaviour
             }
         }
     }
+
 }
