@@ -84,6 +84,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputEvents.cs" />
      <Compile Include="Assets\02.Script\Battle\BattleManager.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TEXImporterUtility.cs" />
+     <Compile Include="Assets\02.Script\Const.cs" />
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />

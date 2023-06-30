@@ -144,7 +144,7 @@ public class MouseSketch : MonoBehaviour
     {
         onAnimation = true;
         float time = 0;
-        float t = 0.7f;
+        float t = 0.35f;
         while(time < 1)
         {
             time += Time.deltaTime / t;
@@ -154,7 +154,7 @@ public class MouseSketch : MonoBehaviour
         }
         yield return new WaitForSeconds(0.4f);
         time = 0;
-        t = 0.25f;
+        t = 0.7f;
         while (time < 1)
         {
             time += Time.deltaTime / t;

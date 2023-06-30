@@ -104,7 +104,7 @@ public class MathpidManager : MonoBehaviour
     /// <summary>
     /// ���� ������ �¾Ҵ� �� üũ
     /// </summary>
-    public void SelectAnswer(bool isCorrect) // 버튼으로 정답맞추기
+    public float SelectAnswer(bool isCorrect) // 버튼으로 정답맞추기
     {
         string ansrCwYn = isCorrect ? "Y" : "N";
         string ansText = isCorrect ? correctAnswer : wrongAnswer;
@@ -130,6 +130,7 @@ public class MathpidManager : MonoBehaviour
                 questionSolveTime = 0;
                 break;
         }
+        return questionSolveTime;
     }
 
 

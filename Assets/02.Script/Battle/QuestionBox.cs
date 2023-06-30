@@ -7,9 +7,13 @@ public class QuestionBox : MonoBehaviour
 {
     private TEXDraw3D question;
     [SerializeField] private GameObject box;
+    private string curQuestion;
     // Start is called before the first frame update
     private void Awake() {
         question = GetComponent<TEXDraw3D>();
+    }
+    private void Start() {
+        SetProblemText();
     }
     public void BindQuestion(string q)
     {
@@ -22,7 +26,46 @@ public class QuestionBox : MonoBehaviour
                 .Replace("\\minus","-");
 
         }
-        this.question.text = q;
+        curQuestion = q;
+        if(this.question.text == "Question")
+        {
+            SetProblemText();
+        }
+    }
+    public void SetCorrectText(float solveTime)
+    {
+        if(solveTime < 5)
+        {
+            this.question.text = "PERFECT";
+        }
+        else if(solveTime < 7)
+        {
+            this.question.text = "GREAT";
+        }
+        else 
+        {
+            this.question.text = "GOOD";
+        }
+    }
+    public void SetIncorrectText()
+    {
+        int type = Random.Range(0,3);
+        if(type == 0)
+        {
+            this.question.text = "OOPS!";
+        }
+        else if (type == 1)
+        {
+            this.question.text = "BAD!";
+        }
+        else
+        {
+            this.question.text = "MISS!";
+        }
+    }
+    public void SetProblemText()
+    {
+        this.question.text = curQuestion;
     }
     private string SetQuestionVerticalToHorizontal(string q)
     {
