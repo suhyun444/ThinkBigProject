@@ -55,6 +55,9 @@ public class MouseSketch : MonoBehaviour
         drawBGplane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
         drawingCalculator = new DrawingCalculator();
         eraseButton.BindClickEvent(EraseSketch);
+        drawingMaterial.SetFloat("_HighLightedAmount", 1);
+        drawingMaterial.SetFloat("_Alpha", 1);
+        drawingBookMaterial.SetFloat("_OutLineAlpha", 0);
     }
 
     // Update is called once per frame
@@ -162,10 +165,10 @@ public class MouseSketch : MonoBehaviour
             drawingBookMaterial.SetFloat("_OutLineAlpha", Mathf.Lerp(1, 0, time));
             yield return null;
         }
-        EraseSketch();
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingMaterial.SetFloat("_HighLightedAmount", 1);
         onAnimation = false;
+        EraseSketch();
     }
     void createLine(Vector3 mousePos,Vector3 calcPos)
     {
@@ -192,6 +195,7 @@ public class MouseSketch : MonoBehaviour
     }
     public void EraseSketch()
     {
+        if(onAnimation) return;
         index = 0;
         minX = 100000;
         maxX = -100000;

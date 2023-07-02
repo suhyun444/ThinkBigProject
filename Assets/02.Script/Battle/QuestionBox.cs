@@ -34,6 +34,7 @@ public class QuestionBox : MonoBehaviour
     }
     public void SetCorrectText(float solveTime)
     {
+        Debug.Log("Time : " + solveTime.ToString());
         if(solveTime < 5)
         {
             this.question.text = "PERFECT";

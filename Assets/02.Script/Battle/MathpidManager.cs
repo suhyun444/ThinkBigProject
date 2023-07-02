@@ -108,6 +108,7 @@ public class MathpidManager : MonoBehaviour
     {
         string ansrCwYn = isCorrect ? "Y" : "N";
         string ansText = isCorrect ? correctAnswer : wrongAnswer;
+        float ret = questionSolveTime;
 
         switch (currentStatus)
         {
@@ -130,7 +131,7 @@ public class MathpidManager : MonoBehaviour
                 questionSolveTime = 0;
                 break;
         }
-        return questionSolveTime;
+        return ret;
     }
 
 

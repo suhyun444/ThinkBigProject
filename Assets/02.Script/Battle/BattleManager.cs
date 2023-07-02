@@ -7,7 +7,7 @@ using TMPro;
 struct BattleUI
 {
     public Material staminaProgressMaterial;
-    public TextMeshPro goldText;
+    public TextMeshPro crystalText;
     public TextMeshPro ComboCountText;
     public TextMeshPro ComboText;
     public TextMeshPro ScoreText;
@@ -20,18 +20,24 @@ public class BattleManager : MonoBehaviour
     private string answer;
 
     [SerializeField] private BattleUI battleUI;
-    float leftTimeAmount = 1.0f;
-    int comboCount = 0;
-    int score = 0;
+    private float leftTimeAmount = 1.0f;
+    private int comboCount = 0;
+    private int score = 0;
+    private int totalCrystal;
+    private int crystal = 0;
 
     
+    private void Awake() {
+        totalCrystal = SaveManager.Instance.GetCrystalData();
+    }
     public void BindAnswer(string answer)
     {
         this.answer = answer;
     }
     private void Update() {
-        leftTimeAmount -= Time.deltaTime / Const.Battle.BattleTime;
+        leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
+        battleUI.crystalText.text = "C " +totalCrystal.ToString();
         if(Input.GetKeyDown(KeyCode.Space))
         {
             mathpidManager.SelectAnswer(true);
@@ -41,10 +47,15 @@ public class BattleManager : MonoBehaviour
     {
         bool isCorrect = this.answer == answer;
         float solveTime = mathpidManager.SelectAnswer(isCorrect);
-        player.Act(isCorrect);
+        StartCoroutine(CorrectAnimation());
         monster.Act(isCorrect,solveTime);
         Act(isCorrect,solveTime);
         return isCorrect;
+    }
+    public IEnumerator CorrectAnimation()
+    {
+        yield return new WaitForSeconds(0.25f);
+        player.Act(true);
     }
     private void Act(bool isCorrect,float solveTime)
     {

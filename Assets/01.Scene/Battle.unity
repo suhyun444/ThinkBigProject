@@ -1144,7 +1144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.4637, y: 4.88}
+  m_AnchoredPosition: {x: -2.71, y: 4.88}
   m_SizeDelta: {x: 5.7077, y: 0.7432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659920297
@@ -1201,8 +1201,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1291,8 +1291,9 @@ GameObject:
   m_Component:
   - component: {fileID: 713115573}
   - component: {fileID: 713115574}
+  - component: {fileID: 713115575}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: MonsterSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,7 +1307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713115572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 0.74757653}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1353,18 +1354,39 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 17
-  m_Sprite: {fileID: 21300000, guid: c3d119e9a801d844fad60dfa5af07b90, type: 3}
+  m_SortingOrder: -9
+  m_Sprite: {fileID: 1544608979, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &713115575
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713115572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a1334ec3cb7af94599c67fc5bb3f5bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &772594195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1742,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 0.42
       minScalar: 5
       maxCurve:
@@ -1728,7 +1750,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.8261986
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1736,7 +1758,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
+          time: 0.99609375
           value: 1
           inSlope: 0
           outSlope: 0
@@ -6626,7 +6648,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 59b892b6ceffde845a7318cfb5fd7f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6988,7 +7010,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -999
   m_Sprite: {fileID: 21300000, guid: bdf38db3f45563c41b3aec56950fb36d, type: 3}
   m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_FlipX: 0
@@ -7063,7 +7085,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1525619591
 BoxCollider:
@@ -7078,6 +7100,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1554241086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1554241088}
+  - component: {fileID: 1554241087}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1554241087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554241086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007a7bba6d213e54c9e44620b34232af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1554241088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554241086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6149833, y: 13.441903, z: -0.039001923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678649933
 GameObject:
   m_ObjectHideFlags: 0
@@ -7112,7 +7178,7 @@ MonoBehaviour:
   mathpidManager: {fileID: 203528079}
   battleUI:
     staminaProgressMaterial: {fileID: 2100000, guid: 72a4f730871348f47b93125d74491884, type: 2}
-    goldText: {fileID: 1722132661}
+    crystalText: {fileID: 1722132661}
     ComboCountText: {fileID: 2115628550}
     ComboText: {fileID: 415140868}
     ScoreText: {fileID: 659920297}
@@ -7438,6 +7504,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spriteRenderer: {fileID: 713115574}
+  animator: {fileID: 713115575}
 --- !u!1 &1722132659
 GameObject:
   m_ObjectHideFlags: 0
@@ -7450,7 +7517,7 @@ GameObject:
   - component: {fileID: 1722132662}
   - component: {fileID: 1722132661}
   m_Layer: 0
-  m_Name: GoldText
+  m_Name: CrystalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7473,7 +7540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.17, y: 4.88}
+  m_AnchoredPosition: {x: -3.181, y: 3.976}
   m_SizeDelta: {x: 4.7452, y: 0.7432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722132661
@@ -7531,7 +7598,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7708,8 +7775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52bd0199ecf19943b7634e1429f7d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPosition: {x: 0, y: 0, z: 0}
-  effectObject: {fileID: 0}
+  effectPosition: {x: 5, y: 13.5, z: 0}
+  effectObject: {fileID: 8420579125608807717, guid: 52382da41eb25e846af11a7c84162e8a, type: 3}
+  monster: {fileID: 1711926350}
 --- !u!95 &1732882882
 Animator:
   serializedVersion: 5
@@ -8080,7 +8148,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115628548
 GameObject:

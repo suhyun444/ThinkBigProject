@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private AnimationCurve particleCurve;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
@@ -17,7 +18,6 @@ public class Monster : MonoBehaviour
     }
     public void Act(bool isCorrect,float solveTime)
     {
-        Dead();
         if(isCorrect)questionBox.SetCorrectText(solveTime);
         else questionBox.SetIncorrectText();
     }
@@ -25,21 +25,14 @@ public class Monster : MonoBehaviour
     {
 
     }
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Q))
-            Dead();
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
-            spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);
-        }
-    }
-    private void Dead()
+    public void Hitted()
     {
+        animator.Play("JarHitted");
         StartCoroutine(DeadAnimation());
     }
     private IEnumerator DeadAnimation()
     {
+        yield return new WaitForSeconds(0.45f);
         float time = 0;
         particleSystem.Play();
         while(time < 1)
@@ -56,6 +49,7 @@ public class Monster : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
+        animator.Play("JarIdle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
         spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);
         Vector3 start = new Vector3(4.37f,-4.48f,0.0f);

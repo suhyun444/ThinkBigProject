@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     public Vector3 effectPosition;
     public GameObject effectObject;
+    [SerializeField] private Monster monster;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -26,7 +27,17 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         PlayAnimation(PlayerAnimationState.Attack);
-        //Instantiate(effectObject,effectPosition,Quaternion.identity);
+    }
+    public void InsEffect()
+    {
+        StartCoroutine(effect());
+    }
+    private IEnumerator effect()
+    {
+        GameObject effect = Instantiate(effectObject,effectPosition,Quaternion.identity);
+        Destroy(effect,0.5f);
+        yield return new WaitForSeconds(0.3f);
+        monster.Hitted();
     }
 
     private void PlayAnimation(PlayerAnimationState state)
