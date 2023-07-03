@@ -12,6 +12,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private Player player;
+    [SerializeField] private GameObject crystal;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
@@ -45,6 +46,7 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(0.45f);
         float time = 0;
         particleSystem.Play();
+        bool spawnCrystal = false;
         while(time < 1)
         {
             time += Time.deltaTime;
@@ -53,6 +55,11 @@ public class Monster : MonoBehaviour
             var emission = particleSystem.emission;
             emission.rateOverTime = Mathf.Lerp(0,100,time / 0.5f);
             yield return null;
+            if(time > 0.5f && !spawnCrystal)
+            {
+                Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,1.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
+                spawnCrystal = true;
+            }
         }
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(Spawn());

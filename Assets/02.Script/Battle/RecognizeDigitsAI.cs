@@ -33,8 +33,8 @@ public class RecognizeDigitsAI : MonoBehaviour
         return predictedValue;
     }
 
-    public bool Commit(int predictionNumber)
+    public bool Commit(string predictionNumber)
     {
-        return battleManager.CheckAnswer(predictionNumber.ToString());
+        return battleManager.CheckAnswer(predictionNumber);
     }
 }

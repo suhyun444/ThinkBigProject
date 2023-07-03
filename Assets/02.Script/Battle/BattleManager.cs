@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Monster monster;
     [SerializeField] private MathpidManager mathpidManager;
+    [SerializeField] private MouseSketch mouseSketch;
     private string answer;
 
     [SerializeField] private BattleUI battleUI;
@@ -34,11 +35,12 @@ public class BattleManager : MonoBehaviour
     public void BindAnswer(string answer)
     {
         this.answer = answer;
+        mouseSketch.SetDrawType(answer.Contains("frac"));
     }
     private void Update() {
         if(!isInHitAnimation) leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
-        battleUI.crystalText.text = "C " +totalCrystal.ToString();
+        battleUI.crystalText.text = "x" +totalCrystal.ToString();
         if(Input.GetKeyDown(KeyCode.Space))
         {
             mathpidManager.SelectAnswer(true);
