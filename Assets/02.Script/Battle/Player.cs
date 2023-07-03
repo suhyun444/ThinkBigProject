@@ -5,7 +5,7 @@ using UnityEngine;
 enum PlayerAnimationState{
     Idle,
     Attack,
-    Hit,
+    Hitted,
 }
 public class Player : MonoBehaviour
 {
@@ -13,20 +13,36 @@ public class Player : MonoBehaviour
     public Vector3 effectPosition;
     public GameObject effectObject;
     [SerializeField] private Monster monster;
+    [SerializeField] private GameObject hitParticle;
+    private Vector3 hitParticlePivot;
 
     private void Awake() {
         animator = GetComponent<Animator>();
+        hitParticlePivot = hitParticle.transform.position;
     }
     public void Act(bool isCorrect)
     {
         if(isCorrect)
         {
-            Attack();
+            StartCoroutine(Attack());
         }
     }
-    public void Attack()
+    public IEnumerator Attack()
     {
+        yield return new WaitForSeconds(0.25f);
         PlayAnimation(PlayerAnimationState.Attack);
+    }
+    public void Hitted()
+    {
+        PlayAnimation(PlayerAnimationState.Hitted);
+        hitParticle.transform.localPosition = Random.insideUnitCircle * 0.1f;
+        hitParticle.SetActive(true);
+        StartCoroutine(DisableHitParticle());
+    }
+    public IEnumerator DisableHitParticle()
+    {
+        yield return new WaitForSeconds(0.5f);
+        hitParticle.SetActive(false);
     }
     public void InsEffect()
     {

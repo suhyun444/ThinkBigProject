@@ -21,6 +21,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private BattleUI battleUI;
     private float leftTimeAmount = 1.0f;
+    bool isInHitAnimation = false;
     private int comboCount = 0;
     private int score = 0;
     private int totalCrystal;
@@ -35,7 +36,7 @@ public class BattleManager : MonoBehaviour
         this.answer = answer;
     }
     private void Update() {
-        leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
+        if(!isInHitAnimation) leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
         battleUI.crystalText.text = "C " +totalCrystal.ToString();
         if(Input.GetKeyDown(KeyCode.Space))
@@ -47,15 +48,11 @@ public class BattleManager : MonoBehaviour
     {
         bool isCorrect = this.answer == answer;
         float solveTime = mathpidManager.SelectAnswer(isCorrect);
-        StartCoroutine(CorrectAnimation());
+        player.Act(isCorrect);
         monster.Act(isCorrect,solveTime);
         Act(isCorrect,solveTime);
+        if(!isCorrect)StartCoroutine(DecreaseStamina());
         return isCorrect;
-    }
-    public IEnumerator CorrectAnimation()
-    {
-        yield return new WaitForSeconds(0.25f);
-        player.Act(true);
     }
     private void Act(bool isCorrect,float solveTime)
     {
@@ -74,6 +71,23 @@ public class BattleManager : MonoBehaviour
             comboCount = 0;
         }
         
+    }
+    private IEnumerator DecreaseStamina()
+    {
+        float decreaseAmount = 1.0f / 12.0f;
+        yield return new WaitForSeconds(0.4f);
+        isInHitAnimation = true;
+        float start = leftTimeAmount;
+        float end = leftTimeAmount - decreaseAmount;
+        float time = 0;
+        float t = 0.3f;
+        while(time < 1)
+        {
+            time += Time.deltaTime / t;
+            leftTimeAmount = Mathf.Lerp(start,end,time);
+            yield return null;
+        }
+        isInHitAnimation = false;
     }
     private void GetScore(float solveTime)
     {

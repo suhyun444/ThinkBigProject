@@ -11,6 +11,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private AnimationCurve particleCurve;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
+    [SerializeField] private Player player;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
@@ -19,11 +20,20 @@ public class Monster : MonoBehaviour
     public void Act(bool isCorrect,float solveTime)
     {
         if(isCorrect)questionBox.SetCorrectText(solveTime);
-        else questionBox.SetIncorrectText();
+        else
+        {
+            StartCoroutine(Attack());
+            questionBox.SetIncorrectText();
+        } 
+        
     }
-    private void Attack()
+    private IEnumerator Attack()
     {
-
+        animator.Play("JarAttack");
+        yield return new WaitForSeconds(0.4f);
+        player.Hitted();
+        yield return new WaitForSeconds(0.6f);
+        questionBox.SetProblemText();
     }
     public void Hitted()
     {
