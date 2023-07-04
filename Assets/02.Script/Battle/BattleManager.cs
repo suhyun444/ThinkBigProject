@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 struct BattleUI
@@ -12,6 +13,17 @@ struct BattleUI
     public TextMeshPro ComboText;
     public TextMeshPro ScoreText;
 }
+[System.Serializable]
+struct ResultUI
+{
+    public GameObject parentObject;
+    public SpriteRenderer padeOutRenderer;
+    public TextMeshPro scoreText;
+    public TextMeshPro comboText;
+    public TextMeshPro accuracyText;
+    public TextMeshPro crystalText;
+    public CustomButton exitButton;
+}
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Player player;
@@ -21,14 +33,17 @@ public class BattleManager : MonoBehaviour
     private string answer;
 
     [SerializeField] private BattleUI battleUI;
-    private float leftTimeAmount = 1.0f;
+    [SerializeField] private ResultUI resultUI;
+    private float leftTimeAmount = 0.03f;
     bool isInHitAnimation = false;
+    private int maxCombo = 0;
     private int comboCount = 0;
     private int score = 0;
     private int totalCrystal;
     private int crystal = 0;
-
-    
+    private bool isEnd = false;
+    private float correctCount = 0;
+    private float problemCount = 0;
     private void Awake() {
         totalCrystal = SaveManager.Instance.GetCrystalData();
     }
@@ -39,12 +54,38 @@ public class BattleManager : MonoBehaviour
     }
     private void Update() {
         if(!isInHitAnimation) leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
+        if(!isEnd && leftTimeAmount < 0)
+        {
+            isEnd = true;
+            mouseSketch.isEnd = true;
+            StartCoroutine(LoadResultScene());
+        }
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
         battleUI.crystalText.text = "x" +totalCrystal.ToString();
         if(Input.GetKeyDown(KeyCode.Space))
         {
             mathpidManager.SelectAnswer(true);
         }
+    }
+    private IEnumerator LoadResultScene()
+    {
+        yield return new WaitForSeconds(0.1f);
+        float time = 0;
+        float t = 1f;
+        resultUI.padeOutRenderer.gameObject.SetActive(true);
+        while(time < 1)
+        {
+            time += Time.deltaTime / t;
+            resultUI.padeOutRenderer.color = new Color(0,0,0,Mathf.Lerp(0,130.0f/255.0f,time));
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+        resultUI.scoreText.text = score.ToString();
+        resultUI.comboText.text = "최대 콤보 : " + maxCombo.ToString();
+        resultUI.accuracyText.text = "정확도 : " + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
+        resultUI.crystalText.text = "+" + crystal.ToString();
+        resultUI.exitButton.BindClickEvent(()=>SceneManager.LoadScene(0));
+        resultUI.parentObject.SetActive(true);
     }
     public bool CheckAnswer(string answer)
     {
@@ -58,12 +99,16 @@ public class BattleManager : MonoBehaviour
     }
     private void Act(bool isCorrect,float solveTime)
     {
+        problemCount++;
         if(isCorrect)
         {
+            correctCount++;
             comboCount++;
+            maxCombo = Mathf.Max(maxCombo,comboCount);
             if(comboCount >= 3)
                 ComboAnimation();
             GetScore(solveTime);
+            GetCrystal();
         }   
         
         else
@@ -73,6 +118,11 @@ public class BattleManager : MonoBehaviour
             comboCount = 0;
         }
         
+    }
+    private void GetCrystal()
+    {
+        crystal++;
+        totalCrystal++;
     }
     private IEnumerator DecreaseStamina()
     {

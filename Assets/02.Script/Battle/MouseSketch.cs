@@ -18,7 +18,7 @@ struct SketchedDigit
 public class MouseSketch : MonoBehaviour
 {
     [SerializeField] private TextMeshPro guessText;
-    [SerializeField] private EraseButton eraseButton;
+    [SerializeField] private CustomButton eraseButton;
     public GameObject drawObj;
     public GameObject drawObjToCalc;
     public Transform drawParent;
@@ -47,6 +47,7 @@ public class MouseSketch : MonoBehaviour
     private SketchedDigit[] sketchedDigitsOnFrac = new SketchedDigit[3];
     [SerializeField]private int drawSpaceInFrac = -1;
     private bool isInit = false;
+    public bool isEnd = false;
 
     private void Awake() {
         for(int i=0;i<3;i++)sketchedDigitsOnFrac[i] = new SketchedDigit();
@@ -65,6 +66,7 @@ public class MouseSketch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isEnd) return;
         if(onAnimation)return;
         nonDrawingTime += Time.deltaTime;
         string predicteValue = "";

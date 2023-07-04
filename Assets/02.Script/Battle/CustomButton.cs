@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EraseButton : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
+public class CustomButton : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
 {
     public delegate void ButtonClickFunc();
     private ButtonClickFunc onClick;
