@@ -9,8 +9,7 @@ struct BattleUI
 {
     public Material staminaProgressMaterial;
     public TextMeshPro crystalText;
-    public TextMeshPro ComboCountText;
-    public TextMeshPro ComboText;
+    public ComboText comboText;
     public TextMeshPro ScoreText;
 }
 [System.Serializable]
@@ -34,7 +33,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private BattleUI battleUI;
     [SerializeField] private ResultUI resultUI;
-    private float leftTimeAmount = 0.03f;
+    private float leftTimeAmount = 1.0f;
     bool isInHitAnimation = false;
     private int maxCombo = 0;
     private int comboCount = 0;
@@ -85,6 +84,8 @@ public class BattleManager : MonoBehaviour
         resultUI.accuracyText.text = "정확도 : " + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>SceneManager.LoadScene(0));
+        SaveManager.Instance.SetCrystalData(totalCrystal);
+        SaveManager.Instance.SaveData();
         resultUI.parentObject.SetActive(true);
     }
     public bool CheckAnswer(string answer)
@@ -106,15 +107,13 @@ public class BattleManager : MonoBehaviour
             comboCount++;
             maxCombo = Mathf.Max(maxCombo,comboCount);
             if(comboCount >= 3)
-                ComboAnimation();
+                battleUI.comboText.ComboAnimation(comboCount);
             GetScore(solveTime);
             GetCrystal();
         }   
-        
         else
         {
-            battleUI.ComboCountText.gameObject.SetActive(false);
-            battleUI.ComboText.gameObject.SetActive(false);
+            battleUI.comboText.ResetCombo();
             comboCount = 0;
         }
         
@@ -156,29 +155,4 @@ public class BattleManager : MonoBehaviour
         battleUI.ScoreText.text = "Score : " + score.ToString();
     }
     
-    private void ComboAnimation()
-    {
-        battleUI.ComboCountText.gameObject.SetActive(true);
-        battleUI.ComboText.gameObject.SetActive(true);
-        battleUI.ComboCountText.text = comboCount.ToString();
-        StartCoroutine(ComboHighLight());
-    }
-    private IEnumerator ComboHighLight()
-    {
-        float time = 0;
-        float t = 0.1f;
-        while(time < 1)
-        {
-            time += Time.deltaTime / t;
-            battleUI.ComboCountText.fontSize = Mathf.Lerp(16.5f,23,time);
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.05f);
-        while (time > 0)
-        {
-            time -= Time.deltaTime / t;
-            battleUI.ComboCountText.fontSize = Mathf.Lerp(16.5f, 23, time);
-            yield return null;
-        }
-    }
 }

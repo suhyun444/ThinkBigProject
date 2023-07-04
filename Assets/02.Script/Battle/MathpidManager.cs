@@ -25,8 +25,8 @@ public class MathpidManager : MonoBehaviour
     private void OnEnable()
     {
         Setup();
+        textEquation.BindShowProblemCallBack(()=>questionSolveTime = 0);
     }
-
     private void Setup()
     {
         switch (currentStatus)

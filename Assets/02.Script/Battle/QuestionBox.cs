@@ -5,6 +5,8 @@ using TexDrawLib;
 
 public class QuestionBox : MonoBehaviour
 {
+    public delegate void ShowProblemCallBack();
+    private ShowProblemCallBack showProblemCallBack;
     private TEXDraw3D question;
     [SerializeField] private GameObject box;
     private string curQuestion;
@@ -14,6 +16,10 @@ public class QuestionBox : MonoBehaviour
     }
     private void Start() {
         SetProblemText();
+    }
+    public void BindShowProblemCallBack(ShowProblemCallBack showProblemCallBack)
+    {
+        this.showProblemCallBack = showProblemCallBack;     
     }
     public void BindQuestion(string q)
     {
@@ -67,6 +73,7 @@ public class QuestionBox : MonoBehaviour
     public void SetProblemText()
     {
         this.question.text = curQuestion;
+        showProblemCallBack.Invoke();
     }
     private string SetQuestionVerticalToHorizontal(string q)
     {

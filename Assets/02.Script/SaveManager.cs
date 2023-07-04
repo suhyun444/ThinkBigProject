@@ -14,7 +14,7 @@ public class SaveData
 }
 public class SaveManager : Singleton<SaveManager>
 {
-    public SaveData data;
+    private SaveData data;
     private void Awake() {
         Init();
     }
@@ -49,7 +49,6 @@ public class SaveManager : Singleton<SaveManager>
     public void SetCrystalData(int crystal)
     {
         data.crystal = crystal;
-        SaveData();
     }
     public int GetCrystalData()
     {
