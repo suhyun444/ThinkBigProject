@@ -23,6 +23,14 @@ struct ResultUI
     public TextMeshPro crystalText;
     public CustomButton exitButton;
 }
+[System.Serializable]
+struct PauseUI
+{
+    public GameObject pauseObject;
+    public CustomButton pauseButton; 
+    public CustomButton resumeButton;
+    public CustomButton exitButton;
+}
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Player player;
@@ -33,6 +41,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private BattleUI battleUI;
     [SerializeField] private ResultUI resultUI;
+    [SerializeField] private PauseUI pauseUI;
     private float leftTimeAmount = 1.0f;
     bool isInHitAnimation = false;
     private int maxCombo = 0;
@@ -45,6 +54,7 @@ public class BattleManager : MonoBehaviour
     private float problemCount = 0;
     private void Awake() {
         totalCrystal = SaveManager.Instance.GetCrystalData();
+        InitPauseUI();
     }
     public void BindAnswer(string answer)
     {
@@ -65,6 +75,21 @@ public class BattleManager : MonoBehaviour
         {
             mathpidManager.SelectAnswer(true);
         }
+    }
+    private void InitPauseUI()
+    {
+        pauseUI.pauseButton.BindClickEvent(()=>PauseOn());
+        pauseUI.resumeButton.BindClickEvent(()=>PauseOff());
+    }
+    private void PauseOn()
+    {
+        Time.timeScale = 0.0f;
+        pauseUI.pauseObject.SetActive(true);
+    }
+    private void PauseOff()
+    {
+        Time.timeScale = 1.0f;
+        pauseUI.pauseObject.SetActive(false);
     }
     private IEnumerator LoadResultScene()
     {

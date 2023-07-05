@@ -91,13 +91,13 @@ public class MathpidManager : MonoBehaviour
     /// </summary>
     private void MakeQuestion(string textCn, string qstCn, string qstCransr, string qstWransr)
     {
-        textEquation.BindQuestion(qstCn);
         
         correctAnswer = qstCransr;
         Debug.Log("Answer : " + correctAnswer);
         wrongAnswer = qstWransr.Split(',')[0];
-
         battleManager.BindAnswer(correctAnswer);
+        textEquation.BindQuestion(qstCn);
+
         isSolvingQuestion = true;
     }
 

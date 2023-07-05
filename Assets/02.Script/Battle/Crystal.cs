@@ -28,7 +28,7 @@ public class Crystal : MonoBehaviour
             //float curScale = Mathf.Lerp(startScale,endScale,time);
             //transform.localScale = new Vector3(curScale,curScale,1);
             transform.position = Vector3.Lerp(start,end,time);
-            sr.color = new Color(121.0f/255.0f,191.0f/255.0f,1,Mathf.Lerp(1,0,c.Evaluate(time)));
+            sr.color = new Color(1,1,1,Mathf.Lerp(1,0,c.Evaluate(time)));
             text.color = new Color(1,1,1,Mathf.Lerp(1,0,c.Evaluate(time)));
             yield return null;
         }

@@ -9,17 +9,14 @@ public class QuestionBox : MonoBehaviour
     private ShowProblemCallBack showProblemCallBack;
     private TEXDraw3D question;
     [SerializeField] private GameObject box;
-    private string curQuestion;
+    private string curQuestion = "";
     // Start is called before the first frame update
     private void Awake() {
         question = GetComponent<TEXDraw3D>();
     }
-    private void Start() {
-        SetProblemText();
-    }
     public void BindShowProblemCallBack(ShowProblemCallBack showProblemCallBack)
     {
-        this.showProblemCallBack = showProblemCallBack;     
+        this.showProblemCallBack += showProblemCallBack;     
     }
     public void BindQuestion(string q)
     {

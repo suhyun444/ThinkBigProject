@@ -19,6 +19,7 @@ public class MouseSketch : MonoBehaviour
 {
     [SerializeField] private TextMeshPro guessText;
     [SerializeField] private CustomButton eraseButton;
+    [SerializeField] private QuestionBox questionBox;
     public GameObject drawObj;
     public GameObject drawObjToCalc;
     public Transform drawParent;
@@ -46,11 +47,11 @@ public class MouseSketch : MonoBehaviour
     [SerializeField] private GameObject fracHelper;
     private SketchedDigit[] sketchedDigitsOnFrac = new SketchedDigit[3];
     [SerializeField]private int drawSpaceInFrac = -1;
-    private bool isInit = false;
     public bool isEnd = false;
 
     private void Awake() {
         for(int i=0;i<3;i++)sketchedDigitsOnFrac[i] = new SketchedDigit();
+        questionBox.BindShowProblemCallBack(()=>ShowDrawingBoxByType());
     }
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,7 @@ public class MouseSketch : MonoBehaviour
                 StartCoroutine(RuneEngrave());
             }
             else{
+                fracHelper.SetActive(isOnFracDrawing);
                 EraseSketch();
             }
         }
@@ -103,12 +105,11 @@ public class MouseSketch : MonoBehaviour
     }
     public void SetDrawType(bool isFrac)
     {
-        if(!isInit)
-        {
-            fracHelper.SetActive(isFrac);
-            isInit = true;
-        }
         isOnFracDrawing = isFrac;
+    }
+    private void ShowDrawingBoxByType()
+    {
+        fracHelper.SetActive(isOnFracDrawing);
     }
     public string DrawFrac()
     {
