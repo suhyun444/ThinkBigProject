@@ -112,6 +112,7 @@
      <Compile Include="Assets\09.assets\WJ_API_2023\Scripts\WJ_DisplayText.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexSampleTryPractice.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\TexEnums.cs" />
+     <Compile Include="Assets\02.Script\Main\CostumeUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexImporterSDF.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\Background_Training_Digits\Scripts\Noedify_example_runtimeTrain_FullyConnected.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
