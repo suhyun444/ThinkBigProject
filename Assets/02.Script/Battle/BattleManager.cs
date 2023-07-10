@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Utils;
 
 [System.Serializable]
 struct BattleUI
@@ -78,8 +79,8 @@ public class BattleManager : MonoBehaviour
     }
     private void InitPauseUI()
     {
-        pauseUI.pauseButton.BindClickEvent(()=>PauseOn());
-        pauseUI.resumeButton.BindClickEvent(()=>PauseOff());
+        pauseUI.pauseButton.BindClickEvent(PauseOn);
+        pauseUI.resumeButton.BindClickEvent(PauseOff);
     }
     private void PauseOn()
     {
@@ -104,12 +105,13 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        resultUI.scoreText.text = score.ToString();
+        resultUI.scoreText.text = Util.SplitIntByComma(score);
         resultUI.comboText.text = "최대 콤보 : " + maxCombo.ToString();
         resultUI.accuracyText.text = "정확도 : " + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>SceneManager.LoadScene(0));
         SaveManager.Instance.SetCrystalData(totalCrystal);
+        SaveManager.Instance.SetExpAmountData(100);
         SaveManager.Instance.SaveData();
         resultUI.parentObject.SetActive(true);
     }

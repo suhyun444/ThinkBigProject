@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProgressMaterial
+  m_Name: MainExpProgressMateral
   m_Shader: {fileID: -6465566751694194690, guid: d651b183fcc999041af4795cd0d4c129, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -51,7 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _FillAmount: 0.9852481
+    - _FillAmount: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

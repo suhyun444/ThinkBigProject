@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DrawingBox
+  - PetBoundary
   layers:
   - Default
   - TransparentFX
