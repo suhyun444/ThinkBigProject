@@ -5,17 +5,19 @@ using System;
 
 public class Pet : MonoBehaviour
 {
+    public int index = 0;
     [SerializeField] private CustomButton earnedButton;
     private SpriteRenderer spriteRenderer;
     private bool isLeft = true;
     private DateTime lastEarnedTime;
     private float time = 0.0f;
-    private float moveTerm = 2.0f;
+    private float moveTerm;
     // Start is called before the first frame update
     void Start()
     {
+        moveTerm = UnityEngine.Random.Range(2.0f,2.8f);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        lastEarnedTime = SaveManager.Instance.GetLastEarnedTimeData();
+        lastEarnedTime = SaveManager.Instance.GetLastEarnedTimeData(index);
         earnedButton.BindClickEvent(EarnCrystal);
     }
 
@@ -33,6 +35,7 @@ public class Pet : MonoBehaviour
         if(time > moveTerm)
         {
             time = 0.0f;
+            moveTerm = UnityEngine.Random.Range(2.0f, 2.8f);
             StartCoroutine(Move());
         }
     }
@@ -40,7 +43,7 @@ public class Pet : MonoBehaviour
     {
         int curCrystal = SaveManager.Instance.GetCrystalData();
         SaveManager.Instance.SetCrystalData(curCrystal + 10);
-        SaveManager.Instance.SetLastEarnedTimeDate(DateTime.Now);
+        SaveManager.Instance.SetLastEarnedTimeDate(index,DateTime.Now);
         SaveManager.Instance.SaveData();
         lastEarnedTime = DateTime.Now;
         earnedButton.gameObject.SetActive(false);
@@ -51,10 +54,13 @@ public class Pet : MonoBehaviour
         {
             float angle = UnityEngine.Random.Range(0,360);
             Vector3 destination = transform.position + new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad),Mathf.Sin(angle * Mathf.Deg2Rad),0.0f) * UnityEngine.Random.Range(3.0f,4.0f);
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(destination, transform.forward, 999);
-            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("PetBoundary"))
+            RaycastHit2D[] raycastHits2D = Physics2D.RaycastAll(destination, transform.forward, 999);
+            for(int i=0;i<raycastHits2D.Length;i++)
             {
-                return destination;
+                if (raycastHits2D[i].transform.CompareTag("PetBoundary"))
+                {
+                    return destination;
+                }
             }
 
         }

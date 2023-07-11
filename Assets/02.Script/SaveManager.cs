@@ -10,13 +10,20 @@ public class SaveData
     public int level;
     public int expAmount;
     public int crystal;
-    public string lastEarnedTime;
+    public List<string> lastEarnedTimeList;
+    public List<int> petList;
     public SaveData()
     {
         level = 0;
         expAmount = 0;
         crystal = 0;
-        lastEarnedTime = DateTime.Now.ToString();
+        lastEarnedTimeList = new List<string>(); 
+        petList = new List<int>();
+        for(int i=0;i<4;i++)
+        {
+            lastEarnedTimeList.Add(DateTime.Now.ToString());
+            petList.Add(-1);
+        }
     }
 }
 public class SaveManager : Singleton<SaveManager>
@@ -62,13 +69,13 @@ public class SaveManager : Singleton<SaveManager>
     {
         return data.crystal;
     }
-    public void SetLastEarnedTimeDate(DateTime time)
+    public void SetLastEarnedTimeDate(int index,DateTime time)
     {
-        data.lastEarnedTime = time.ToString();
+        data.lastEarnedTimeList[index] = time.ToString();
     }
-    public DateTime GetLastEarnedTimeData()
+    public DateTime GetLastEarnedTimeData(int index)
     {
-        return Convert.ToDateTime(data.lastEarnedTime);
+        return Convert.ToDateTime(data.lastEarnedTimeList[index]);
     }
     public void SetLevelData(int level)
     {
@@ -85,5 +92,13 @@ public class SaveManager : Singleton<SaveManager>
     public int GetExpAmountData()
     {
         return data.expAmount;
+    }
+    public void ChangePetList(int index,int item)
+    {
+        data.petList[index] = item;
+    }
+    public List<int> GetPetList()
+    {
+        return data.petList;
     }
 }

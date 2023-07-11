@@ -42,6 +42,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\TabularCellAtom.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexCharPresets.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\ScriptsAtom.cs" />
+     <Compile Include="Assets\02.Script\Main\PetDataUI.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\RuleBox.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\TensorflowImport_MNIST_Drawing\Scripts\FollowPointer.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\02.Script\Main\SortingOrder.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\FillHelper.cs" />
      <Compile Include="Assets\02.Script\Battle\Crystal.cs" />
+     <Compile Include="Assets\02.Script\Main\PetCollectionUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexBoxingState.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawRendererFactory.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInput.cs" />
@@ -214,6 +216,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\AlignmentAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
+     <Compile Include="Assets\02.Script\SaveManagerEditor.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -225,7 +228,6 @@
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Fonts\User\opens-LICENSE.txt" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Readme.txt" />
-     <None Include="Assets\Resources\Noedify\ModelParameterFiles\FC_mnist_600x300x140_parameters.txt" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawShaderUIE.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

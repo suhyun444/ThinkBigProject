@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider2D))]
-public class CustomButton : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
+public class CustomButton : MonoBehaviour,IPointerClickHandler//,IPointerDownHandler,IPointerUpHandler
 {
     public delegate void ButtonClickFunc();
     private ButtonClickFunc onClick;
@@ -21,13 +21,14 @@ public class CustomButton : MonoBehaviour,IPointerClickHandler,IPointerDownHandl
     {
         onClick.Invoke();
     }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        spriteRenderer.color = Color.white;
-    }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        float grayScale = 150.0f / 255.0f;
-        spriteRenderer.color = new Color(grayScale,grayScale,grayScale);
-    }
+    // public void OnPointerUp(PointerEventData eventData)
+    // {
+    //     spriteRenderer.color = Color.white;
+    // }
+    // public void OnPointerDown(PointerEventData eventData)
+    // {
+    //     float grayScale = 150.0f / 255.0f;
+    //     spriteRenderer.color = new Color(grayScale,grayScale,grayScale);
+        
+    // }
 }
