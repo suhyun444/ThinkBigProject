@@ -18,8 +18,8 @@ public class CostumeUI : MonoBehaviour
     private int index = 0;
     
     private void Awake() {
-        GetComponent<CustomButton>().BindClickEvent(()=>OpenUI());
-        exitButton.BindClickEvent(()=>ExitUI());
+        GetComponent<CustomButton>().BindClickEvent(OpenUI);
+        exitButton.BindClickEvent(() => ui.SetActive(false));
         moveButton[0].BindClickEvent(()=>StartCoroutine(MoveLeft()));
         moveButton[1].BindClickEvent(()=>StartCoroutine(MoveRight()));
     }
@@ -28,10 +28,6 @@ public class CostumeUI : MonoBehaviour
         index = 0;
         ui.SetActive(true);
         Show();
-    }
-    private void ExitUI()
-    {
-        ui.SetActive(false);
     }
     private void Show()
     {

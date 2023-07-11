@@ -118,7 +118,6 @@ public class MouseSketch : MonoBehaviour
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
             {
-                Ray drawRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, transform.forward, 999);
                 if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("DrawingBox"))
                 {
@@ -146,7 +145,6 @@ public class MouseSketch : MonoBehaviour
             else if (isDrawing && (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0)))
             {
                 nonDrawingTime = 0.0f;
-                Ray drawRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, transform.forward, 999);
                 if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("DrawingBox"))
                 {

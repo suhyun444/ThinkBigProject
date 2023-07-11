@@ -98,6 +98,8 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexSprite.cs" />
      <Compile Include="Assets\02.Script\Battle\RecognizeDigitsAI.cs" />
+     <Compile Include="Assets\02.Script\Main\PetData.cs" />
+     <Compile Include="Assets\02.Script\Main\PetUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXEmbed.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\MathAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -157,6 +159,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SpaceAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\DrawingLine.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\StrikeBox.cs" />
+     <Compile Include="Assets\02.Script\Util.cs" />
      <Compile Include="Assets\02.Script\Main\MainManager.cs" />
      <Compile Include="Assets\09.assets\Noedify\Demos\TensorflowImport_MNIST_Drawing\Scripts\Noedify_DrawTest_Network.cs" />
      <Compile Include="Assets\09.assets\Noedify\Scripts\Noedify_Debugger.cs" />
@@ -211,8 +214,6 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\AlignmentAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
-     <Compile Include="Assets\02.Script\Util.cs" />
-     <Compile Include="Assets\02.Script\Main\PetData.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

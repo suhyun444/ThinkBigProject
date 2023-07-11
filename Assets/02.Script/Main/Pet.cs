@@ -6,12 +6,15 @@ using System;
 public class Pet : MonoBehaviour
 {
     [SerializeField] private CustomButton earnedButton;
+    private SpriteRenderer spriteRenderer;
+    private bool isLeft = true;
     private DateTime lastEarnedTime;
     private float time = 0.0f;
-    private float moveTerm = 3.0f;
+    private float moveTerm = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lastEarnedTime = SaveManager.Instance.GetLastEarnedTimeData();
         earnedButton.BindClickEvent(EarnCrystal);
     }
@@ -56,10 +59,15 @@ public class Pet : MonoBehaviour
 
         }
     }
+    private void ChangeViewDirection(bool isLeft)
+    {
+        spriteRenderer.flipX = isLeft;
+    }
     private IEnumerator Move()
     {
         Vector3 start = transform.position;
         Vector3 end = FindMoveDestination();
+        ChangeViewDirection((end.x - start.x < 0)?false:true);
         float moveTime = 0.0f;
         float t = 1.0f;
         while(moveTime < 1)

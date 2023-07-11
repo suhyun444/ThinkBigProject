@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DrawingBox
   - PetBoundary
+  - PetUI
   layers:
   - Default
   - TransparentFX
