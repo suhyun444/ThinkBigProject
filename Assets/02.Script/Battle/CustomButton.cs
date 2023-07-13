@@ -17,6 +17,10 @@ public class CustomButton : MonoBehaviour,IPointerClickHandler//,IPointerDownHan
     {
         onClick = func;
     }
+    public void AddClickEvent(ButtonClickFunc func)
+    {
+        onClick += func;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         onClick.Invoke();

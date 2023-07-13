@@ -7,7 +7,6 @@ using Utils;
 
 public class MainManager : MonoBehaviour
 {
-    [SerializeField] private CustomButton startButton;
     [SerializeField] private TextMeshPro crystalText;
     [SerializeField] private Material expBarProgressMaterial;
     [SerializeField] private TextMeshPro levelText;
@@ -17,7 +16,6 @@ public class MainManager : MonoBehaviour
     {
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
         expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / 100.0f);
-        startButton.BindClickEvent(()=>SceneManager.LoadScene(1));
         SpawnPet();
     }
 

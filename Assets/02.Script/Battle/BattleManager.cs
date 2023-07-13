@@ -38,6 +38,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Monster monster;
     [SerializeField] private MathpidManager mathpidManager;
     [SerializeField] private MouseSketch mouseSketch;
+    [SerializeField] private SpriteRenderer fadeIn;
     private string answer;
 
     [SerializeField] private BattleUI battleUI;
@@ -56,11 +57,24 @@ public class BattleManager : MonoBehaviour
     private void Awake() {
         totalCrystal = SaveManager.Instance.GetCrystalData();
         InitPauseUI();
+        StartCoroutine(FadeIn());
     }
     public void BindAnswer(string answer)
     {
         this.answer = answer;
         mouseSketch.SetDrawType(answer.Contains("frac"));
+    }
+    private IEnumerator FadeIn()
+    {
+        float time = 0.0f;
+        float t = 0.5f;
+        while(time < 1)
+        {
+            time += Time.deltaTime /t;
+            fadeIn.color = new Color(0,0,0,Mathf.Lerp(1,0,time));
+            yield return null;
+        }
+        fadeIn.gameObject.SetActive(false);
     }
     private void Update() {
         if(!isInHitAnimation) leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;

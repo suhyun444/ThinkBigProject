@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData2
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 1251743970, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
+  mainSprite: {fileID: 21300000, guid: aa45fa4b3ceec3a4a893ec954f8f4d4a, type: 3}
   lockSprite: {fileID: 0}
-  id: 1
-  name: "\uBAAC\uC2A4\uD130"
-  description: "\uD56D\uC544\uB9AC"
+  id: 2
+  name: "\uD06C\uB9AC\uC2A4\uD0C8"
+  description: "\uBC18\uC9DD\uC774\uB294 \uD06C\uB9AC\uC2A4\uD0C8"
+  farmingType: 1
+  cost: 0
+  requirementKey: Combo
+  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"

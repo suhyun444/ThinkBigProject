@@ -114,8 +114,8 @@ public class MouseSketch : MonoBehaviour
     public string DrawFrac()
     {
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f));
-        if (-8.47f <= transform.position.x && transform.position.x <= 1.79 && -14.42f <= transform.position.y && transform.position.y <= -4.08f)
-        {
+        // if (-8.47f <= transform.position.x && transform.position.x <= 1.79 && -14.42f <= transform.position.y && transform.position.y <= -4.08f)
+        // {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
             {
                 RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, transform.forward, 999);
@@ -158,7 +158,7 @@ public class MouseSketch : MonoBehaviour
                     sketchedDigitsOnFrac[drawSpaceInFrac].camera.orthographicSize = Mathf.Max(Mathf.Lerp(0, 4.87f, ((maxY - minY) + 2.5f) / 10.0f), Mathf.Lerp(0, 4.87f, ((maxX - minX) + 2.5f) / 10.0f));
                 }
             }
-        }
+        //}
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
             isDrawing = false;

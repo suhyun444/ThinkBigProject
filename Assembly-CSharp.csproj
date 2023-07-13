@@ -83,6 +83,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\BoxedAtom.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\ColorAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\02.Script\Main\StartButton.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexFont.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FractionAtom.cs" />
@@ -108,6 +109,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ListPool.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\TabularAtom.cs" />
+     <Compile Include="Assets\02.Script\SaveManagerEditor.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputCursor.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexModuleParser.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexShowcaseToggle.cs" />
@@ -216,7 +218,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\AlignmentAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
-     <Compile Include="Assets\02.Script\SaveManagerEditor.cs" />
+     <Compile Include="Assets\02.Script\SortPosition.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -14,6 +14,10 @@ public class PetDataUI : MonoBehaviour
     [SerializeField] private CustomButton acceptButton;
     [SerializeField] private TextMeshPro acceptText;
     [SerializeField] private CustomButton denyButton;
+    [SerializeField] private TextMeshPro requirementText;
+    [SerializeField] private TextMeshPro costText;
+    [SerializeField] private TextMeshPro warningText;
+    float warningTime = 0.0f;
 
     [Header("Slot")]
     //[SerializeField] private bool 
@@ -24,17 +28,25 @@ public class PetDataUI : MonoBehaviour
     private int petId;
 
     private void Awake() {
-        denyButton.BindClickEvent(petUI.ClosePetDataUI);
+        denyButton.BindClickEvent(()=>warningText.gameObject.SetActive(false));
+        denyButton.AddClickEvent(petUI.ClosePetDataUI);
         for(int i=0;i<4;i++)
         {
             int index = i;
             slots[i].BindClickEvent(()=>SelectSlot(index));
         }
     }
+    private void Update() {
+        warningTime -= Time.deltaTime;
+        if(warningTime < 0.0f)
+        {
+            warningText.gameObject.SetActive(false);
+        }
+    }
     public void OpenPetData(int page,int index)
     {
-        petId = index;
         index = page*6 + index;
+        petId = index;
         mainSprite.sprite = petUI.petDatas[index].mainSprite;
         name.text = petUI.petDatas[index].name;
         description.text = petUI.petDatas[index].description;
@@ -42,17 +54,64 @@ public class PetDataUI : MonoBehaviour
     }
     private void SetAcceptButton()
     {
-        if(SaveManager.Instance.GetPetList().Contains(petId))
+        acceptButton.gameObject.SetActive(true);
+        requirementText.gameObject.SetActive(false);
+        costText.transform.parent.gameObject.SetActive(false);
+        acceptText.gameObject.SetActive(true);
+        if(SaveManager.Instance.GetHavingPetList().Contains(petId))
         {
-            acceptButton.BindClickEvent(Despawn);
-            acceptText.text = "소환 해제";
+            if(SaveManager.Instance.GetPetList().Contains(petId))
+            {
+                acceptButton.BindClickEvent(Despawn);
+                acceptText.text = "소환 해제";
+            }
+            else
+            {
+                acceptButton.BindClickEvent(OpenSlotUI);
+                acceptText.text = "소환";
+            }
         }
         else
         {
-            acceptButton.BindClickEvent(OpenSlotUI);
-            acceptText.text = "소환";
+            if(petUI.petDatas[petId].farmingType == FarmingType.Buy)
+            {
+                SetBuyLayout();
+            }
+            else
+            {
+                SetRequirementLayout();
+            }
         }
-
+    }
+    private void SetBuyLayout()
+    {
+        costText.transform.parent.gameObject.SetActive(true);
+        acceptText.gameObject.SetActive(false);
+        acceptButton.BindClickEvent(BuyPet);
+        acceptText.text = "구매";
+        costText.text = petUI.petDatas[petId].cost.ToString();
+    }
+    private void BuyPet()
+    {
+        int curCrystal = SaveManager.Instance.GetCrystalData();
+        if(curCrystal >= petUI.petDatas[petId].cost)
+        {
+            SaveManager.Instance.SetCrystalData(curCrystal - petUI.petDatas[petId].cost);
+            SaveManager.Instance.AddHavingPetList(petId);
+            SaveManager.Instance.SaveData();
+            SetAcceptButton();
+        }
+        else
+        {
+            warningTime = 0.7f;
+            warningText.gameObject.SetActive(true);
+        }
+    }
+    private void SetRequirementLayout()
+    {
+        acceptButton.gameObject.SetActive(false);
+        requirementText.gameObject.SetActive(true);
+        requirementText.text = petUI.petDatas[petId].requirementDescription;
     }
     private void OpenSlotUI()
     {

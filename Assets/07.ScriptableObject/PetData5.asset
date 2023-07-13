@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData5
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 1544608979, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
+  mainSprite: {fileID: -798918522, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
   lockSprite: {fileID: 0}
-  id: 4
+  id: 5
   name: "\uC544\uBCF4\uCE74\uB3C4"
   description: "\uADC0\uC5EC\uC6B4 \uC544\uBCF4\uCE74\uB3C4"

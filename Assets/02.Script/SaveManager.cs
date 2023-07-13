@@ -12,6 +12,7 @@ public class SaveData
     public int crystal;
     public List<string> lastEarnedTimeList;
     public List<int> petList;
+    public List<int> havingPetList;
     public SaveData()
     {
         level = 0;
@@ -19,6 +20,7 @@ public class SaveData
         crystal = 0;
         lastEarnedTimeList = new List<string>(); 
         petList = new List<int>();
+        havingPetList = new List<int>();
         for(int i=0;i<4;i++)
         {
             lastEarnedTimeList.Add(DateTime.Now.ToString());
@@ -100,5 +102,13 @@ public class SaveManager : Singleton<SaveManager>
     public List<int> GetPetList()
     {
         return data.petList;
+    }
+    public void AddHavingPetList(int item)
+    {
+        data.havingPetList.Add(item);
+    }
+    public List<int> GetHavingPetList()
+    {
+        return data.havingPetList;
     }
 }
