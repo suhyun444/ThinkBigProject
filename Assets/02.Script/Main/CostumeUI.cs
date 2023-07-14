@@ -23,6 +23,23 @@ public class CostumeUI : MonoBehaviour
         moveButton[0].BindClickEvent(()=>StartCoroutine(MoveLeft()));
         moveButton[1].BindClickEvent(()=>StartCoroutine(MoveRight()));
     }
+    private void Update() {
+        SetSubCostumeSize();
+    }
+    private void SetSubCostumeSize()
+    {
+        float scaleAmount;
+        float size;
+        for (int i = 0; i < 3; i++)
+        {
+            scaleAmount = Mathf.Abs(miniatureCostume[i].transform.position.x) / 7.0f;
+            size = Mathf.Lerp(0.3f, 0, scaleAmount);
+            miniatureCostume[i].transform.localScale = new Vector3(size, size, 1);
+        }
+        scaleAmount = Mathf.Abs(miniatureSubCostume.transform.position.x) / 7.0f;
+        size = Mathf.Lerp(0.3f, 0, scaleAmount);
+        miniatureSubCostume.transform.localScale = new Vector3(size, size, 1);
+    }
     private void OpenUI()
     {
         index = 0;
@@ -36,6 +53,7 @@ public class CostumeUI : MonoBehaviour
         bigCostumeParent.localPosition = Vector3.zero;
         mainCostume.sprite = sprites[index];
         smallCostumeParent.localPosition = Vector3.zero;
+        SetSubCostumeSize();
         miniatureCostume[0].sprite = (index != 0) ? sprites[index - 1] : null;
         miniatureCostume[1].sprite = sprites[index];
         miniatureCostume[2].sprite = (index != sprites.Length - 1) ? sprites[index + 1] : null;
@@ -91,10 +109,10 @@ public class CostumeUI : MonoBehaviour
     private void SetSubCostume(int direction)
     {
         subCostume.sprite = sprites[index + (1*direction)];
-        subCostume.transform.localPosition = new Vector3(0.7f + (1.3f * direction), -1.3f, 0);
+        subCostume.transform.localPosition = new Vector3(1.3f * direction, -0.086f, 0);
         subCostume.gameObject.SetActive(true);
         miniatureSubCostume.sprite = (0 <= index + (2*direction) && index + (2 * direction) < sprites.Length) ? sprites[index + (2*direction)] : null;
-        miniatureSubCostume.transform.localPosition = new Vector3(0.7f + (0.6f * direction), -0.45f, 0);
+        miniatureSubCostume.transform.localPosition = new Vector3(0.6f * direction, 0.68f, 0);
         miniatureSubCostume.gameObject.SetActive(true);
     }
 

@@ -10,6 +10,10 @@ public class PetButtonData
     public void BindData(PetData petData)
     {
         spriteRenderer.sprite = petData.mainSprite;
+        if(petData.farmingType == FarmingType.Requirement && !SaveManager.Instance.GetHavingPetList().Contains(petData.id))
+            spriteRenderer.color = Color.black;
+        else
+            spriteRenderer.color = Color.white;
     }
 }
 public class PetUI : MonoBehaviour

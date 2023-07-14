@@ -58,6 +58,7 @@ public class PetDataUI : MonoBehaviour
         requirementText.gameObject.SetActive(false);
         costText.transform.parent.gameObject.SetActive(false);
         acceptText.gameObject.SetActive(true);
+        mainSprite.color = Color.white;
         if(SaveManager.Instance.GetHavingPetList().Contains(petId))
         {
             if(SaveManager.Instance.GetPetList().Contains(petId))
@@ -112,6 +113,7 @@ public class PetDataUI : MonoBehaviour
         acceptButton.gameObject.SetActive(false);
         requirementText.gameObject.SetActive(true);
         requirementText.text = petUI.petDatas[petId].requirementDescription;
+        mainSprite.color = Color.black;
     }
     private void OpenSlotUI()
     {
