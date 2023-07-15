@@ -8,8 +8,6 @@ using Unity.Barracuda;
 
 public class RecognizeDigitsAI : MonoBehaviour
 {
-    [SerializeField] BattleManager battleManager;
-
     public NNModel modelAsset;
     private Model _runtimeModel;
     private IWorker _engine;
@@ -33,8 +31,4 @@ public class RecognizeDigitsAI : MonoBehaviour
         return predictedValue;
     }
 
-    public bool Commit(string predictionNumber)
-    {
-        return battleManager.CheckAnswer(predictionNumber);
-    }
 }

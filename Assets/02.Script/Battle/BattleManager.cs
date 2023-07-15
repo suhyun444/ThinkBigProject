@@ -37,7 +37,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Monster monster;
     [SerializeField] private MathpidManager mathpidManager;
-    [SerializeField] private MouseSketch mouseSketch;
+    [SerializeField] private BattleSketchManager sketchManager;
     [SerializeField] private SpriteRenderer fadeIn;
     private string answer;
 
@@ -62,10 +62,11 @@ public class BattleManager : MonoBehaviour
     public void BindAnswer(string answer)
     {
         this.answer = answer;
-        mouseSketch.SetDrawType(answer.Contains("frac"));
+        sketchManager.SetDrawType(answer.Contains("frac"));
     }
     private IEnumerator FadeIn()
     {
+        fadeIn.gameObject.SetActive(true);
         float time = 0.0f;
         float t = 0.5f;
         while(time < 1)
@@ -81,7 +82,7 @@ public class BattleManager : MonoBehaviour
         if(!isEnd && leftTimeAmount < 0)
         {
             isEnd = true;
-            mouseSketch.isEnd = true;
+            sketchManager.isEnd = true;
             StartCoroutine(LoadResultScene());
         }
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);

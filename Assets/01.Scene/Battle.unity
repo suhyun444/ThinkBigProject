@@ -9443,7 +9443,7 @@ MonoBehaviour:
   player: {fileID: 1732882881}
   monster: {fileID: 1711926350}
   mathpidManager: {fileID: 203528079}
-  mouseSketch: {fileID: 2010087582}
+  sketchManager: {fileID: 2010087586}
   fadeIn: {fileID: 1834682257}
   battleUI:
     staminaProgressMaterial: {fileID: 2100000, guid: 72a4f730871348f47b93125d74491884, type: 2}
@@ -10723,7 +10723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1834682257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11230,6 +11230,7 @@ GameObject:
   - component: {fileID: 2010087585}
   - component: {fileID: 2010087582}
   - component: {fileID: 2010087583}
+  - component: {fileID: 2010087586}
   m_Layer: 0
   m_Name: DrawManager
   m_TagString: Untagged
@@ -11251,17 +11252,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guessText: {fileID: 200639886}
   eraseButton: {fileID: 1420839722}
-  questionBox: {fileID: 1140122173}
   drawObj: {fileID: 6958111308768976327, guid: 877bd4ce16ee4bf4a9f2f0062e4efebf, type: 3}
   drawObjToCalc: {fileID: 6958111308768976327, guid: eff2c357ef8427a44a87ea81cd6f09da, type: 3}
   drawParent: {fileID: 1776835196}
   cameraObject: {fileID: 3781934458783838207, guid: ccabc224288e1e44d9d8857c00212825, type: 3}
   ai: {fileID: 2010087583}
-  drawingBookMaterial: {fileID: 2100000, guid: e0bc3ede0ceca5040ad6384c5965b258, type: 2}
-  drawingMaterial: {fileID: 2100000, guid: 617ad189f0d6efb429dff1d0f1a833c3, type: 2}
+  nonDrawingTime: -100000
+  onAnimation: 0
   fracHelper: {fileID: 330531863}
   drawSpaceInFrac: -1
-  isEnd: 0
 --- !u!114 &2010087583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11274,7 +11273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ad80c99163f3f49922e1b789980e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 1678649934}
   modelAsset: {fileID: 5022602860645237092, guid: ddf50cb907f5d5b42bf9a3676c592098, type: 3}
 --- !u!4 &2010087585
 Transform:
@@ -11291,6 +11289,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010087586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010087581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403eaf6e1337b404989fdf4cac3ba399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionBox: {fileID: 1140122173}
+  battleManager: {fileID: 1678649934}
+  drawingBookMaterial: {fileID: 2100000, guid: e0bc3ede0ceca5040ad6384c5965b258, type: 2}
+  drawingMaterial: {fileID: 2100000, guid: 617ad189f0d6efb429dff1d0f1a833c3, type: 2}
+  isEnd: 0
 --- !u!1 &2031000088
 GameObject:
   m_ObjectHideFlags: 0

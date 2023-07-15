@@ -19,16 +19,11 @@ public class MouseSketch : MonoBehaviour
 {
     [SerializeField] private TextMeshPro guessText;
     [SerializeField] private CustomButton eraseButton;
-    [SerializeField] private QuestionBox questionBox;
     public GameObject drawObj;
     public GameObject drawObjToCalc;
     public Transform drawParent;
-    public Plane drawBGplane;
     public GameObject cameraObject;
     [SerializeField] RecognizeDigitsAI ai;
-    [SerializeField] private Material drawingBookMaterial;
-    [SerializeField] private Material drawingMaterial;
-    Vector3 drawStartPos;
     
     private LineRenderer curLine;  //Line which draws now
     private LineRenderer curLineToCalc;
@@ -36,61 +31,29 @@ public class MouseSketch : MonoBehaviour
     private Vector3 PrevPos = Vector3.zero; // 0,0,0 position variable
 
     private DrawingCalculator drawingCalculator;
-    private float nonDrawingTime = -100000.0f;
+    public float nonDrawingTime = -100000.0f;
     private int index = 0;
     private List<SketchedDigit> sketchedDigits = new List<SketchedDigit>();
     private float minX = 100000,maxX = -100000;
     private float minY = 100000,maxY = -100000;
     private bool isDrawing = false;
-    private bool onAnimation = false;
+    public bool onAnimation = false;
     private bool isOnFracDrawing = false;
     [SerializeField] private GameObject fracHelper;
     private SketchedDigit[] sketchedDigitsOnFrac = new SketchedDigit[3];
     [SerializeField]private int drawSpaceInFrac = -1;
-    public bool isEnd = false;
 
     private void Awake() {
         for(int i=0;i<3;i++)sketchedDigitsOnFrac[i] = new SketchedDigit();
-        questionBox.BindShowProblemCallBack(()=>ShowDrawingBoxByType());
     }
     // Start is called before the first frame update
     void Start()
     {
-        drawBGplane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
         drawingCalculator = new DrawingCalculator();
         eraseButton.BindClickEvent(EraseSketch);
-        drawingMaterial.SetFloat("_HighLightedAmount", 1);
-        drawingMaterial.SetFloat("_Alpha", 1);
-        drawingBookMaterial.SetFloat("_OutLineAlpha", 0);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(isEnd) return;
-        if(onAnimation)return;
-        nonDrawingTime += Time.deltaTime;
-        string predicteValue = "";
-        if(!isOnFracDrawing)predicteValue = DrawDefault();
-        else predicteValue = DrawFrac();
-        if(nonDrawingTime > 1.0f)
-        {
-            nonDrawingTime = -100000.0f;
-            if(ai.Commit(predicteValue))
-            {
-                StartCoroutine(RuneEngrave());
-            }
-            else{
-                fracHelper.SetActive(isOnFracDrawing);
-                EraseSketch();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            EraseSketch();
-        }
-    }
     public int CalcSpaceTypeInFrac(Vector3 position)
     {
         if(position.x < -3.35f)
@@ -107,7 +70,7 @@ public class MouseSketch : MonoBehaviour
     {
         isOnFracDrawing = isFrac;
     }
-    private void ShowDrawingBoxByType()
+    public void ShowDrawingBoxByType()
     {
         fracHelper.SetActive(isOnFracDrawing);
     }
@@ -249,34 +212,7 @@ public class MouseSketch : MonoBehaviour
         guessText.text = "Guess: " + predictNumber.ToString();
         return predictNumber.ToString();
     }
-    IEnumerator RuneEngrave()
-    {
-        onAnimation = true;
-        float time = 0;
-        float t = 0.35f;
-        while(time < 1)
-        {
-            time += Time.deltaTime / t;
-            drawingMaterial.SetFloat("_HighLightedAmount",Mathf.Lerp(1,0.4f,time));
-            drawingBookMaterial.SetFloat("_OutLineAlpha",Mathf.Lerp(0,1,time));
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.4f);
-        time = 0;
-        t = 0.7f;
-        while (time < 1)
-        {
-            time += Time.deltaTime / t;
-            drawingMaterial.SetFloat("_Alpha", Mathf.Lerp(1, 0, time));
-            drawingBookMaterial.SetFloat("_OutLineAlpha", Mathf.Lerp(1, 0, time));
-            yield return null;
-        }
-        drawingMaterial.SetFloat("_Alpha", 1);
-        drawingMaterial.SetFloat("_HighLightedAmount", 1);
-        onAnimation = false;
-        EraseSketch();
-        fracHelper.SetActive(isOnFracDrawing);
-    }
+
     void createLine(Vector3 mousePos,Vector3 calcPos)
     {
         positionCount = 2;
