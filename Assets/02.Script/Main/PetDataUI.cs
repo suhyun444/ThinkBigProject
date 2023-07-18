@@ -43,9 +43,8 @@ public class PetDataUI : MonoBehaviour
             warningText.gameObject.SetActive(false);
         }
     }
-    public void OpenPetData(int page,int index)
+    public void OpenPetData(int index)
     {
-        index = page*6 + index;
         petId = index;
         mainSprite.sprite = petUI.petDatas[index].mainSprite;
         name.text = petUI.petDatas[index].name;

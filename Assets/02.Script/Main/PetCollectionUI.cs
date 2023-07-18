@@ -1,25 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PetCollectionUI : MonoBehaviour
 {
     [HideInInspector] public PetUI petUI;
     [SerializeField] private GameObject petCollectionUI;
-    [SerializeField] private CustomButton[] petButtons;
-    [SerializeField] private PetButtonData[] petButtonDatas;
-    [SerializeField] private CustomButton[] moveButton;
+    [SerializeField] private GameObject buttonParents;
+    [SerializeField] private GameObject petButton;
     private int page = 0;
+    [SerializeField] private GameObject handle;
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
+    [SerializeField] private float dragSensitivy;
+    List<PetButton> petButtons = new List<PetButton>();
     private Vector3 prevMousePosition;
     private bool onDrag = false;
+    private bool firstDrag = true;
     private void Awake() {
-        for (int i = 0; i < 6; i++)
-        {
-            int index = i;
-            petButtons[i].BindClickEvent(() => petUI.OpenPetDataUI(page,index));
-        }
-        moveButton[0].BindClickEvent(() => BindData(page - 1));
-        moveButton[1].BindClickEvent(() => BindData(page + 1));
+        InstantiatePetButtons();
     }
     // Update is called once per frame
     void Update()
@@ -28,17 +28,28 @@ public class PetCollectionUI : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D raycastHit2D = Physics2D.Raycast(mousePosition, transform.forward, 999);
-            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("DrawingBox"))
+            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("PetSlider"))
             {
-                prevMousePosition = Input.mousePosition;
+                prevMousePosition = mousePosition;
                 onDrag = true;
+                firstDrag = true;
             }
         }
         else if(onDrag && Input.GetMouseButton(0))
         {
-            if(Mathf.Abs(prevMousePosition.y - mousePosition.y) < 0.5f)
+            if(Mathf.Abs(prevMousePosition.y - mousePosition.y) > 0.1f)
             {
-                
+                if(firstDrag)
+                {
+                for(int i=0;i<petButtons.Count;i++)
+                    petButtons[i].isClicked = false;
+                    firstDrag = false;
+                }
+                float nextY = buttonParents.transform.localPosition.y + (mousePosition.y - prevMousePosition.y) * dragSensitivy;
+                nextY = Mathf.Clamp(nextY,minY,maxY);
+                handle.transform.localPosition = new Vector3(1.3f,Mathf.Lerp(-0.54f,-2.15f, (nextY - minY) / (maxY - minY)),-1);
+                buttonParents.transform.localPosition = new Vector3(buttonParents.transform.localPosition.x,nextY,0.0f);
+                prevMousePosition = mousePosition;
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -46,29 +57,41 @@ public class PetCollectionUI : MonoBehaviour
             onDrag = false;
         }
     }
-    private void ShowButton()
+    public void SetButtonViewPosition(float ratio)
     {
-        if (page != 0) moveButton[0].gameObject.SetActive(true);
-        else moveButton[0].gameObject.SetActive(false);
-        if (page != petUI.petDatas.Length / 6) moveButton[1].gameObject.SetActive(true);
-        else moveButton[1].gameObject.SetActive(false);
+        float nextY = Mathf.Lerp(maxY, minY, ratio);
+        buttonParents.transform.localPosition = new Vector3(buttonParents.transform.localPosition.x, nextY, 0.0f);
     }
-    public void BindData(int page)
+    private void InstantiatePetButtons()
     {
-        Debug.Log(page);
-        this.page = page;
-        ShowButton();
-        for (int i = 0; i < 6; i++)
+        for(int i=0;i<petUI.petDatas.Length;i++)
         {
-            int curIndex = page * 6 + i;
-            if (curIndex >= petUI.petDatas.Length)
-                petButtons[i].gameObject.SetActive(false);
-            else
-            {
-                petButtons[i].gameObject.SetActive(true);
-                petButtonDatas[i].BindData(petUI.petDatas[curIndex]);
-            }
-
+            Vector3 position = new Vector3(0.345f + 0.62f * (i % 2),0.345f + -0.82f * (i/2 + 1),0);
+            GameObject gameObject = Instantiate(petButton,Vector3.zero,Quaternion.identity);
+            int index =  i;
+            petButtons.Add(gameObject.GetComponent<PetButton>());
+            petButtons[i].BindClickEvent(()=>petUI.OpenPetDataUI(index));
+            gameObject.transform.parent = buttonParents.transform;
+            gameObject.transform.localScale = new Vector3(1.2f,1.2f,1.0f);
+            gameObject.transform.localPosition = position;
+            BindData(gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>(),gameObject.GetComponentInChildren<TextMeshPro>(),i);
         }
+    }
+    public void BindData(SpriteRenderer spriteRenderer,TextMeshPro name, int index)
+    {
+        spriteRenderer.sprite = petUI.petDatas[index].mainSprite;
+        name.fontMaterial.SetFloat("_Stencil",1);
+        name.fontMaterial.SetFloat("_StencilComp",3);
+        if (petUI.petDatas[index].farmingType == FarmingType.Requirement && !SaveManager.Instance.GetHavingPetList().Contains(petUI.petDatas[index].id))
+        {
+            spriteRenderer.color = Color.black;
+            name.text = "???";
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+            name.text = petUI.petDatas[index].name;
+        }
+
     }
 }

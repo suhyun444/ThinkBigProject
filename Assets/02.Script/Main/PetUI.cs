@@ -3,19 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[System.Serializable]
-public class PetButtonData
-{
-    public SpriteRenderer spriteRenderer;
-    public void BindData(PetData petData)
-    {
-        spriteRenderer.sprite = petData.mainSprite;
-        if(petData.farmingType == FarmingType.Requirement && !SaveManager.Instance.GetHavingPetList().Contains(petData.id))
-            spriteRenderer.color = Color.black;
-        else
-            spriteRenderer.color = Color.white;
-    }
-}
 public class PetUI : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
@@ -40,13 +27,12 @@ public class PetUI : MonoBehaviour
     {
         petDataUI.gameObject.SetActive(false);
         petCollectionUI.gameObject.SetActive(true);
-        petCollectionUI.BindData(page);
     }
-    public void OpenPetDataUI(int page,int index)
+    public void OpenPetDataUI(int index)
     {
         petCollectionUI.gameObject.SetActive(false);
         petDataUI.gameObject.SetActive(true);
-        petDataUI.OpenPetData(page,index);
+        petDataUI.OpenPetData(index);
     }
     public void ClosePetDataUI()
     {
