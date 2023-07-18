@@ -10,8 +10,8 @@ public class PetCollectionUI : MonoBehaviour
     [SerializeField] private PetButtonData[] petButtonDatas;
     [SerializeField] private CustomButton[] moveButton;
     private int page = 0;
-    private Vector3 startMousePosition;
-    private bool onSwipe = false;
+    private Vector3 prevMousePosition;
+    private bool onDrag = false;
     private void Awake() {
         for (int i = 0; i < 6; i++)
         {
@@ -24,29 +24,26 @@ public class PetCollectionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f));
-            if (-7.72f <= mousePositionInWorld.x && mousePositionInWorld.x < 7.4f && -12.0f <= mousePositionInWorld.y && mousePositionInWorld.y <= 12.45f)
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(mousePosition, transform.forward, 999);
+            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("DrawingBox"))
             {
-                startMousePosition = Input.mousePosition;
-                onSwipe = true;
+                prevMousePosition = Input.mousePosition;
+                onDrag = true;
             }
         }
-        if (onSwipe && Input.GetMouseButton(0))
+        else if(onDrag && Input.GetMouseButton(0))
         {
-            if (startMousePosition.x - Input.mousePosition.x > 600.0f)
+            if(Mathf.Abs(prevMousePosition.y - mousePosition.y) < 0.5f)
             {
-                if (page != petUI.petDatas.Length / 6) BindData(page + 1);
-            }
-            if (startMousePosition.x - Input.mousePosition.x < -600.0f)
-            {
-                if (page != 0) BindData(page - 1);
+                
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            onSwipe = false;
+            onDrag = false;
         }
     }
     private void ShowButton()

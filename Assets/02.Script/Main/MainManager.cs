@@ -10,13 +10,29 @@ public class MainManager : MonoBehaviour
     [SerializeField] private TextMeshPro crystalText;
     [SerializeField] private Material expBarProgressMaterial;
     [SerializeField] private TextMeshPro levelText;
+    [SerializeField] private SpriteRenderer fadeIn;
     private Pet[] pets = new Pet[4];
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
+        StartCoroutine(FadeIn());
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
         expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / 100.0f);
         SpawnPet();
+    }
+    private IEnumerator FadeIn()
+    {
+        fadeIn.gameObject.SetActive(true);
+        float time = 0.0f;
+        float t = 0.5f;
+        while (time < 1.0f)
+        {
+            time += Time.deltaTime / t;
+            fadeIn.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, time));
+            yield return null;
+        }
+        fadeIn.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

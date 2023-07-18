@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class BattleSketchManager : MonoBehaviour
 {
@@ -11,11 +10,11 @@ public class BattleSketchManager : MonoBehaviour
     [SerializeField] private Material drawingMaterial;
 
 
-    private bool isOnFracDrawing = false;
     public bool isEnd = false;
     private MouseSketch mouseSketch;
     private void Awake() {
         mouseSketch = GetComponent<MouseSketch>();
+        mouseSketch.Init();
     }
     // Start is called before the first frame update
     void Start()
@@ -24,6 +23,7 @@ public class BattleSketchManager : MonoBehaviour
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingBookMaterial.SetFloat("_OutLineAlpha", 0);
         questionBox.BindShowProblemCallBack(() => mouseSketch.ShowDrawingBoxByType());
+        questionBox.BindShowProblemCallBack(()=>mouseSketch.onAnimation = false);
     }
     public void SetDrawType(bool isFrac)
     {
@@ -36,7 +36,7 @@ public class BattleSketchManager : MonoBehaviour
         if (mouseSketch.onAnimation) return;
         mouseSketch.nonDrawingTime += Time.deltaTime;
         string predicteValue = "";
-        if (!isOnFracDrawing) predicteValue = mouseSketch.DrawDefault();
+        if (!mouseSketch.isOnFracDrawing) predicteValue = mouseSketch.DrawDefault();
         else predicteValue = mouseSketch.DrawFrac();
         if (mouseSketch.nonDrawingTime > 1.0f)
         {
@@ -49,12 +49,8 @@ public class BattleSketchManager : MonoBehaviour
             {
                 mouseSketch.ShowDrawingBoxByType();
                 mouseSketch.EraseSketch();
+                mouseSketch.onAnimation = true;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            mouseSketch.EraseSketch();
         }
     }
     public IEnumerator RuneEngrave()
@@ -81,8 +77,11 @@ public class BattleSketchManager : MonoBehaviour
         }
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingMaterial.SetFloat("_HighLightedAmount", 1);
-        mouseSketch.onAnimation = false;
         mouseSketch.EraseSketch();
         mouseSketch.ShowDrawingBoxByType();
+    }
+    public void Dispose()
+    {
+        mouseSketch.Dispose();
     }
 }

@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
         animator.Play("JarHitted");
         StartCoroutine(DeadAnimation());
     }
+    public string GetProblemText(){return questionBox.GetProblemText();}
     private IEnumerator DeadAnimation()
     {
         yield return new WaitForSeconds(0.45f);

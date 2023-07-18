@@ -45,6 +45,7 @@ public class TEXDraw3DRenderer : MonoBehaviour, ITexRenderer
             renderer.material = m_TEXDraw.material;
         else
             renderer.material = mainMaterial;
+        renderer.sortingOrder = (int)m_TEXDraw.material.GetFloat("_SortingOrder");
         m_TEXDraw.material.SetTexture("_MainTex",mainTexture);
         m_block.SetTexture("_MainTex", mainTexture);
         renderer.SetPropertyBlock(m_block);

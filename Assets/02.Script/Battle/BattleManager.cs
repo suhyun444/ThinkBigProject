@@ -124,21 +124,52 @@ public class BattleManager : MonoBehaviour
         resultUI.comboText.text = "최대 콤보 : " + maxCombo.ToString();
         resultUI.accuracyText.text = "정확도 : " + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
         resultUI.crystalText.text = "+" + crystal.ToString();
-        resultUI.exitButton.BindClickEvent(()=>SceneManager.LoadScene(0));
+        resultUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetExpAmountData(100);
         SaveManager.Instance.SaveData();
         resultUI.parentObject.SetActive(true);
     }
+    private IEnumerator LoadMainScene()
+    {
+        fadeIn.gameObject.SetActive(true);
+        AsyncOperation op = SceneManager.LoadSceneAsync(0);
+        op.allowSceneActivation = false;
+        float timer = 0.0f;
+        float t = 0.5f;
+        while (!op.isDone)
+        {
+            timer += Time.deltaTime / t;
+            fadeIn.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, timer));
+            if (timer >= 1.0f)
+            {
+                sketchManager.Dispose();
+                op.allowSceneActivation = true;
+                yield break;
+            }
+            yield return null;
+        }
+
+    }
     public bool CheckAnswer(string answer)
     {
         bool isCorrect = this.answer == answer;
+        if(!isCorrect)
+        {
+            AddMagicBookData();
+            StartCoroutine(DecreaseStamina());
+        }
         float solveTime = mathpidManager.SelectAnswer(isCorrect);
         player.Act(isCorrect);
         monster.Act(isCorrect,solveTime);
         Act(isCorrect,solveTime);
-        if(!isCorrect)StartCoroutine(DecreaseStamina());
         return isCorrect;
+    }
+    private void AddMagicBookData()
+    {
+        string problem = monster.GetProblemText();
+        SaveManager.Instance.AddMagicBookData(problem,answer);
+        SaveManager.Instance.SaveMagicBookData();
     }
     private void Act(bool isCorrect,float solveTime)
     {

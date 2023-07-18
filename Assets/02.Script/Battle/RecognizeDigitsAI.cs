@@ -12,7 +12,7 @@ public class RecognizeDigitsAI : MonoBehaviour
     private Model _runtimeModel;
     private IWorker _engine;
     // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         _runtimeModel = ModelLoader.Load(modelAsset);
         _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.GPU);
@@ -28,7 +28,12 @@ public class RecognizeDigitsAI : MonoBehaviour
         float[] predicted = outputY.AsFloats();
         int predictedValue = Array.IndexOf(predicted, predicted.Max());
         inputX.Dispose();
+        outputY.Dispose();
         return predictedValue;
+    }
+    public void Dispose()
+    {
+        _engine.Dispose();
     }
 
 }

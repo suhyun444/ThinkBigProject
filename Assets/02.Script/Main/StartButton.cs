@@ -8,6 +8,7 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
     [SerializeField] private Material progressMateiral;
     [SerializeField] private SpriteRenderer fadeOut;
+    [SerializeField] private MagicBookUI magicBookUI;
     private float time;
     private readonly float needTimeToStart = 0.9f;
     private bool onPointer;
@@ -39,12 +40,14 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         AsyncOperation op = SceneManager.LoadSceneAsync(1);
         op.allowSceneActivation = false;
         float timer = 0.0f;
+        float t = 0.5f;
         while (!op.isDone)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime / t;
             fadeOut.color = new Color(0,0,0,Mathf.Lerp(0,1,timer));
             if (timer >= 1.0f) 
             { 
+                magicBookUI.Dispose();
                 op.allowSceneActivation = true; 
                 yield break; 
             }

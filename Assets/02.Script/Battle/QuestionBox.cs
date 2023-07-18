@@ -67,6 +67,7 @@ public class QuestionBox : MonoBehaviour
             this.question.text = "MISS!";
         }
     }
+    public string GetProblemText(){return curQuestion;}
     public void SetProblemText()
     {
         this.question.text = curQuestion;

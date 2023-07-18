@@ -9067,12 +9067,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -999
-  m_Sprite: {fileID: 21300000, guid: bdf38db3f45563c41b3aec56950fb36d, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.12, y: 20.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9087,7 +9087,7 @@ Transform:
   m_GameObject: {fileID: 1470031430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 15, z: 3.7946}
+  m_LocalScale: {x: 40, y: 50, z: 3.7946}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -11259,8 +11259,11 @@ MonoBehaviour:
   ai: {fileID: 2010087583}
   nonDrawingTime: -100000
   onAnimation: 0
+  isOnFracDrawing: 0
   fracHelper: {fileID: 330531863}
   drawSpaceInFrac: -1
+  fracSpaceHelpter: {x: -3.35, y: 12, z: 0}
+  lineOrderInLayer: 0
 --- !u!114 &2010087583
 MonoBehaviour:
   m_ObjectHideFlags: 0
