@@ -142,6 +142,10 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void AddMagicBookData(string problem,string answer)
     {
+        if(magicBookData.problems.Count >= 15)
+        {
+            RemoveMagicBookData(0);
+        }
         magicBookData.problems.Add(problem);
         magicBookData.answers.Add(answer);
     }
