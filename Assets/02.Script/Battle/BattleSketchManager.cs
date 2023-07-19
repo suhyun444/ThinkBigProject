@@ -8,6 +8,9 @@ public class BattleSketchManager : MonoBehaviour
     [SerializeField] private BattleManager battleManager;
     [SerializeField] private Material drawingBookMaterial;
     [SerializeField] private Material drawingMaterial;
+    [SerializeField] private Transform drawingCanvas;
+    [SerializeField] private LineRenderer fracHorizontalLine;
+    [SerializeField] private LineRenderer fracVerticalLine;
 
 
     public bool isEnd = false;
@@ -15,6 +18,17 @@ public class BattleSketchManager : MonoBehaviour
     private void Awake() {
         mouseSketch = GetComponent<MouseSketch>();
         mouseSketch.Init();
+        InitFracLine();
+    }
+    private void InitFracLine()
+    {
+        mouseSketch.SetFracSpaceHelper(drawingCanvas.position);
+        float ratio = (drawingCanvas.lossyScale.x - 11) / (13.23f - 11);
+        fracVerticalLine.SetPosition(0,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y - Mathf.Lerp(2.25f,2.75f,ratio),0));
+        fracVerticalLine.SetPosition(1,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y + Mathf.Lerp(2.25f,2.75f,ratio),0));
+        float centerX = Mathf.Lerp(-1.0f,-4.5f,ratio);
+        fracHorizontalLine.SetPosition(0, new Vector3(centerX - Mathf.Lerp(1.8f,2.5f,ratio), drawingCanvas.position.y, 0));
+        fracHorizontalLine.SetPosition(1, new Vector3(centerX + Mathf.Lerp(1.8f, 2.5f, ratio),drawingCanvas.position.y, 0));
     }
     // Start is called before the first frame update
     void Start()
@@ -77,6 +91,7 @@ public class BattleSketchManager : MonoBehaviour
         }
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingMaterial.SetFloat("_HighLightedAmount", 1);
+        mouseSketch.onAnimation = false;
         mouseSketch.EraseSketch();
         mouseSketch.ShowDrawingBoxByType();
     }

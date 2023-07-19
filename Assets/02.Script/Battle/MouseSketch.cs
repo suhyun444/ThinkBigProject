@@ -43,23 +43,27 @@ public class MouseSketch : MonoBehaviour
     private SketchedDigit[] sketchedDigitsOnFrac = new SketchedDigit[3];
     [SerializeField] private int drawSpaceInFrac = -1;
 
-    [SerializeField] private Vector3 fracSpaceHelpter = new Vector3(-3.35f, 12.0f);
+    [SerializeField] private Vector3 fracSpaceHelper = new Vector3(-3.35f, 12.0f);
     [SerializeField] private int lineOrderInLayer = 0;
     public void Init()
     {
+        ai.Init();
         for (int i = 0; i < 3; i++) sketchedDigitsOnFrac[i] = new SketchedDigit();
         drawingCalculator = new DrawingCalculator();
         eraseButton.BindClickEvent(EraseSketch);
     }
-
+    public void SetFracSpaceHelper(Vector3 spaceHelper)
+    {
+        fracSpaceHelper = spaceHelper;
+    }
     // Update is called once per frame
     public int CalcSpaceTypeInFrac(Vector3 position)
     {
-        if (position.x < fracSpaceHelpter.x)
+        if (position.x < fracSpaceHelper.x)
             return 0;
         else
         {
-            if (position.y > fracSpaceHelpter.y)
+            if (position.y > fracSpaceHelper.y)
                 return 1;
             else
                 return 2;
