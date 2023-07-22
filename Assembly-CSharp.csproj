@@ -56,6 +56,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexModuleInitiator.cs" />
      <Compile Include="Assets\02.Script\Main\Pet.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputActions.cs" />
+     <Compile Include="Assets\02.Script\Main\CostumeData.cs" />
      <Compile Include="Assets\02.Script\Main\SortingOrder.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\FillHelper.cs" />
      <Compile Include="Assets\02.Script\Battle\Crystal.cs" />

@@ -10,7 +10,7 @@ public class CostumeUI : MonoBehaviour
     [SerializeField] private Transform smallCostumeParent;
     [SerializeField] private SpriteRenderer[] miniatureCostume;
     [SerializeField] private SpriteRenderer miniatureSubCostume;
-    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private CostumeData[] costumeDatas;
     [SerializeField] CustomButton exitButton;
     [SerializeField] CustomButton[] moveButton;
     [SerializeField] CustomButton buyButton;
@@ -51,12 +51,12 @@ public class CostumeUI : MonoBehaviour
         subCostume.gameObject.SetActive(false);
         miniatureSubCostume.gameObject.SetActive(false);
         bigCostumeParent.localPosition = Vector3.zero;
-        mainCostume.sprite = sprites[index];
+        mainCostume.sprite = costumeDatas[index].sprite;
         smallCostumeParent.localPosition = Vector3.zero;
         SetSubCostumeSize();
-        miniatureCostume[0].sprite = (index != 0) ? sprites[index - 1] : null;
-        miniatureCostume[1].sprite = sprites[index];
-        miniatureCostume[2].sprite = (index != sprites.Length - 1) ? sprites[index + 1] : null;
+        miniatureCostume[0].sprite = (index != 0) ? costumeDatas[index - 1].sprite : null;
+        miniatureCostume[1].sprite = costumeDatas[index].sprite;
+        miniatureCostume[2].sprite = (index != costumeDatas.Length - 1) ? costumeDatas[index + 1].sprite : null;
         ShowButton();
     }
     private void HideButton()
@@ -69,7 +69,7 @@ public class CostumeUI : MonoBehaviour
     {
         if(index != 0)
             moveButton[0].gameObject.SetActive(true);
-        if(index != sprites.Length - 1)
+        if(index != costumeDatas.Length - 1)
             moveButton[1].gameObject.SetActive(true);
         buyButton.gameObject.SetActive(true);
 
@@ -108,10 +108,10 @@ public class CostumeUI : MonoBehaviour
     }
     private void SetSubCostume(int direction)
     {
-        subCostume.sprite = sprites[index + (1*direction)];
+        subCostume.sprite = costumeDatas[index + (1*direction)].sprite;
         subCostume.transform.localPosition = new Vector3(1.3f * direction, -0.086f, 0);
         subCostume.gameObject.SetActive(true);
-        miniatureSubCostume.sprite = (0 <= index + (2*direction) && index + (2 * direction) < sprites.Length) ? sprites[index + (2*direction)] : null;
+        miniatureSubCostume.sprite = (0 <= index + (2*direction) && index + (2 * direction) < costumeDatas.Length) ? costumeDatas[index + (2*direction)].sprite : null;
         miniatureSubCostume.transform.localPosition = new Vector3(0.6f * direction, 0.68f, 0);
         miniatureSubCostume.gameObject.SetActive(true);
     }

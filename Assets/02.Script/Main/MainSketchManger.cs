@@ -7,13 +7,14 @@ public class MainSketchManger : MonoBehaviour
     [SerializeField] private Material drawingBookMaterial;
     [SerializeField] private Material drawingMaterial;
     [SerializeField] private MagicBookUI magicBookUI;
-
+    [SerializeField] private Transform drawingCanvas;
 
     private MouseSketch mouseSketch;
     public void Init()
     {
         mouseSketch = GetComponent<MouseSketch>();
         mouseSketch.Init();
+        mouseSketch.SetFracSpaceHelper(drawingCanvas.position);
     }
     public void Open()
     {

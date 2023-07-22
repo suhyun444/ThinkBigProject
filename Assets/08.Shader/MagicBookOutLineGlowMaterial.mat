@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MainExpProgressMateral
-  m_Shader: {fileID: -6465566751694194690, guid: d651b183fcc999041af4795cd0d4c129, type: 3}
+  m_Name: MagicBookOutLineGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 2cb6f4f49f66eb14d879485a4595dcd1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 44a40b023264d5d479bbe49a02399e61, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -50,12 +50,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0
     - _EnableExternalAlpha: 0
-    - _FillAmount: 1
+    - _OutLineAlpha: 0
+    - _Thickness: 0.45
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _HightLightColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutLineColor: {r: 0, g: 1.3655695, b: 10.432951, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

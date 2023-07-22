@@ -96,6 +96,7 @@ public class BattleManager : MonoBehaviour
     {
         pauseUI.pauseButton.BindClickEvent(PauseOn);
         pauseUI.resumeButton.BindClickEvent(PauseOff);
+        pauseUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
     }
     private void PauseOn()
     {
@@ -128,6 +129,7 @@ public class BattleManager : MonoBehaviour
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetExpAmountData(100);
         SaveManager.Instance.SaveData();
+        SaveManager.Instance.SaveMagicBookData();
         resultUI.parentObject.SetActive(true);
     }
     private IEnumerator LoadMainScene()
@@ -139,11 +141,12 @@ public class BattleManager : MonoBehaviour
         float t = 0.5f;
         while (!op.isDone)
         {
-            timer += Time.deltaTime / t;
+            timer += Time.unscaledDeltaTime / t;
             fadeIn.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, timer));
             if (timer >= 1.0f)
             {
                 sketchManager.Dispose();
+                Time.timeScale = 1.0f;
                 op.allowSceneActivation = true;
                 yield break;
             }
@@ -169,7 +172,6 @@ public class BattleManager : MonoBehaviour
     {
         string problem = monster.GetProblemText();
         SaveManager.Instance.AddMagicBookData(problem,answer);
-        SaveManager.Instance.SaveMagicBookData();
     }
     private void Act(bool isCorrect,float solveTime)
     {
