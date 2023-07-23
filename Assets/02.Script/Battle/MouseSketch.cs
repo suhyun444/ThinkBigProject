@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-struct SketchedDigit
+class SketchedDigit
 {
     public float x;
     public int index;
     public Camera camera;
+    public SketchedDigit()
+    {
+
+    }
     public SketchedDigit(float x, int index, Camera camera)
     {
         this.x = x;
@@ -30,6 +34,7 @@ public class MouseSketch : MonoBehaviour
     private int positionCount = 2;  //Initial start and end position
     private Vector3 PrevPos = Vector3.zero; // 0,0,0 position variable
 
+    private SketchedDigit curSketchedDigit;
     private DrawingCalculator drawingCalculator;
     public float nonDrawingTime = -100000.0f;
     private int index = 0;
@@ -176,6 +181,7 @@ public class MouseSketch : MonoBehaviour
                     maxY = -100000;
                     Camera camera = Instantiate(cameraObject, this.transform.position + new Vector3(50 * index, -58.5f, -10), Quaternion.identity).GetComponent<Camera>();
                     sketchedDigits.Add(new SketchedDigit(transform.position.x, index, camera));
+                    curSketchedDigit = sketchedDigits[sketchedDigits.Count - 1];
                 }
                 curLine = Instantiate(drawObj, this.transform.position, Quaternion.identity).GetComponent<LineRenderer>();
                 curLineToCalc = Instantiate(drawObjToCalc, this.transform.position, Quaternion.identity).GetComponent<LineRenderer>();
@@ -200,8 +206,9 @@ public class MouseSketch : MonoBehaviour
                 minY = Mathf.Min(minY, transform.position.y);
                 maxY = Mathf.Max(maxY, transform.position.y);
                 connectLine(raycastHit2D.point, (Vector3)raycastHit2D.point + new Vector3(50 * index, -50, 0));
-                sketchedDigits[index - 1].camera.transform.position = new Vector3(((minX + maxX) / 2) + (50 * index), -50.0f + ((minY + maxY) / 2), -10);
-                sketchedDigits[index - 1].camera.orthographicSize = Mathf.Max(Mathf.Lerp(0, 4.87f, ((maxY - minY) + 2.5f) / 10.0f), Mathf.Lerp(0, 4.87f, ((maxX - minX) + 2.5f) / 10.0f));
+                curSketchedDigit.x = (minX + maxX) / 2;
+                curSketchedDigit.camera.transform.position = new Vector3(((minX + maxX) / 2) + (50 * index), -50.0f + ((minY + maxY) / 2), -10);
+                curSketchedDigit.camera.orthographicSize = Mathf.Max(Mathf.Lerp(0, 4.87f, ((maxY - minY) + 2.5f) / 10.0f), Mathf.Lerp(0, 4.87f, ((maxX - minX) + 2.5f) / 10.0f));
             }
         }
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
@@ -209,6 +216,7 @@ public class MouseSketch : MonoBehaviour
             isDrawing = false;
         }
         int predictNumber = 0;
+        Sort();
         for (int i = 0; i < sketchedDigits.Count; i++)
         {
             drawingCalculator.BindCamera(sketchedDigits[i].camera);
@@ -260,6 +268,21 @@ public class MouseSketch : MonoBehaviour
                 Destroy(sketchedDigitsOnFrac[i].camera.gameObject);
         sketchedDigits.Clear();
         for (int i = 0; i < 3; i++) sketchedDigitsOnFrac[i] = new SketchedDigit();
+    }
+    public void Sort()
+    {
+        for(int i=0;i<sketchedDigits.Count - 1;++i)
+        {
+            for(int j=i + 1;j<sketchedDigits.Count;++j)
+            {
+                if(sketchedDigits[i].x > sketchedDigits[j].x)
+                {
+                    SketchedDigit tmp = sketchedDigits[i];
+                    sketchedDigits[i] = sketchedDigits[j];
+                    sketchedDigits[j] = tmp;
+                }
+            }
+        }
     }
 
 }

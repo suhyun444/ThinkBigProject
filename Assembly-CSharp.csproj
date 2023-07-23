@@ -60,6 +60,7 @@
      <Compile Include="Assets\02.Script\Main\SortingOrder.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\FillHelper.cs" />
      <Compile Include="Assets\02.Script\Battle\Crystal.cs" />
+     <Compile Include="Assets\02.Script\Main\SkillUI.cs" />
      <Compile Include="Assets\02.Script\Main\PetCollectionUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexBoxingState.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawRendererFactory.cs" />
@@ -186,6 +187,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDraw.cs" />
      <Compile Include="Assets\02.Script\Battle\KNNAlgorithm.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputLogger.cs" />
+     <Compile Include="Assets\02.Script\Main\SkillInformation.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexConfigStates.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SymbolAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\MathpidConnector.cs" />

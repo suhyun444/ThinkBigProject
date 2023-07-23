@@ -18,6 +18,8 @@ public class BattleSketchManager : MonoBehaviour
     private void Awake() {
         mouseSketch = GetComponent<MouseSketch>();
         mouseSketch.Init();
+        questionBox.BindShowProblemCallBack(() => mouseSketch.ShowDrawingBoxByType());
+        questionBox.BindShowProblemCallBack(()=>mouseSketch.onAnimation = false);
         InitFracLine();
     }
     private void InitFracLine()
@@ -31,13 +33,11 @@ public class BattleSketchManager : MonoBehaviour
         fracHorizontalLine.SetPosition(1, new Vector3(centerX + Mathf.Lerp(1.8f, 2.5f, ratio),drawingCanvas.position.y, 0));
     }
     // Start is called before the first frame update
-    void Start()
+    void awa()
     {
         drawingMaterial.SetFloat("_HighLightedAmount", 1);
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingBookMaterial.SetFloat("_OutLineAlpha", 0);
-        questionBox.BindShowProblemCallBack(() => mouseSketch.ShowDrawingBoxByType());
-        questionBox.BindShowProblemCallBack(()=>mouseSketch.onAnimation = false);
     }
     public void SetDrawType(bool isFrac)
     {

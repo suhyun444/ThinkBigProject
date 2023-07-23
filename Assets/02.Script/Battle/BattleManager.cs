@@ -78,7 +78,7 @@ public class BattleManager : MonoBehaviour
         fadeIn.gameObject.SetActive(false);
     }
     private void Update() {
-        if(!isInHitAnimation) leftTimeAmount -= Time.deltaTime / Const.Battle.BATTLETIME;
+        if(!isInHitAnimation) leftTimeAmount -= (Time.deltaTime / Const.Battle.BATTLETIME) * (1.0f - (float)(Const.Skill.effectIncreaseAmount[(int)SkillType.Stamina] * SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
         if(!isEnd && leftTimeAmount < 0)
         {
             isEnd = true;
@@ -195,12 +195,13 @@ public class BattleManager : MonoBehaviour
     }
     private void GetCrystal()
     {
-        crystal++;
-        totalCrystal++;
+        int earnCrystal = (int)(10.0f * (1 + (float)(Const.Skill.effectIncreaseAmount[(int)SkillType.Combo] * SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f));
+        crystal += earnCrystal;
+        totalCrystal += earnCrystal;
     }
     private IEnumerator DecreaseStamina()
     {
-        float decreaseAmount = 1.0f / 12.0f;
+        float decreaseAmount = (1.0f / 12.0f) * (1.0f - (float)(Const.Skill.effectIncreaseAmount[(int)SkillType.Defense] * SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
         yield return new WaitForSeconds(0.4f);
         isInHitAnimation = true;
         float start = leftTimeAmount;
@@ -217,7 +218,7 @@ public class BattleManager : MonoBehaviour
     }
     private void GetScore(float solveTime)
     {
-        int plusScore = 50000;
+        float plusScore = 50000;
         if(solveTime < 5)
             plusScore += 50000;
         else if(solveTime < 7)
@@ -225,8 +226,8 @@ public class BattleManager : MonoBehaviour
         else
             plusScore += 15000;
         //if(tag == "다항식") 몬스터에서 문제 정보 가져와서 판정
-        plusScore *= 1 + (int)((comboCount) / 5);
-        score += plusScore;
+        plusScore *= (1.0f + (float)((comboCount) / 5)) * 1 + (float)(Const.Skill.effectIncreaseAmount[(int)SkillType.Combo] * SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f;
+        score += (int)plusScore;
         battleUI.ScoreText.text = "Score : " + score.ToString();
     }
     

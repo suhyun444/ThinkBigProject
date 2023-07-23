@@ -8,6 +8,8 @@ using System;
 public class SaveData
 {
     public int level;
+    public int usedSkillPoint;
+    public List<int> skillLevels;
     public int expAmount;
     public int crystal;
     public List<string> lastEarnedTimeList;
@@ -16,12 +18,16 @@ public class SaveData
     public SaveData()
     {
         level = 0;
+        usedSkillPoint = 0;
         expAmount = 0;
         crystal = 0;
-        lastEarnedTimeList = new List<string>(); 
-        petList = new List<int>();
+        skillLevels = new List<int>((int)SkillType.End);
+        lastEarnedTimeList = new List<string>(4); 
+        petList = new List<int>(4);
         havingPetList = new List<int>();
-        for(int i=0;i<4;i++)
+        for(int i=0;i<(int)SkillType.End;++i)
+            skillLevels.Add(0);
+        for(int i=0;i<4;++i)
         {
             lastEarnedTimeList.Add(DateTime.Now.ToString());
             petList.Add(-1);
@@ -49,10 +55,10 @@ public class SaveManager : Singleton<SaveManager>
     }
     private void Init()
     {
-        if (File.Exists(Const.data.USERDATA_SAVE_PATH) && File.Exists(Const.data.MAGICBOOKDATA_SAVE_PATH))
+        if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH))
         {
-            string userDataLoadJson = File.ReadAllText(Const.data.USERDATA_SAVE_PATH);
-            string magicBookDataLoadJson = File.ReadAllText(Const.data.MAGICBOOKDATA_SAVE_PATH);
+            string userDataLoadJson = File.ReadAllText(Const.Data.USERDATA_SAVE_PATH);
+            string magicBookDataLoadJson = File.ReadAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH);
             LoadData(userDataLoadJson,magicBookDataLoadJson);
         }
         else
@@ -69,20 +75,41 @@ public class SaveManager : Singleton<SaveManager>
     {
         SaveData initData = new SaveData();
         string json = JsonUtility.ToJson(initData);
-        File.WriteAllText(Const.data.USERDATA_SAVE_PATH, json);
+        File.WriteAllText(Const.Data.USERDATA_SAVE_PATH, json);
         MagicBookData initMagicBookData = new MagicBookData();
         string magicBookJson = JsonUtility.ToJson(initMagicBookData);
-        File.WriteAllText(Const.data.MAGICBOOKDATA_SAVE_PATH,magicBookJson);
+        File.WriteAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH,magicBookJson);
     }
     public void SaveData()
     {
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Const.data.USERDATA_SAVE_PATH,json);
+        File.WriteAllText(Const.Data.USERDATA_SAVE_PATH,json);
     }
     public void SaveMagicBookData()
     {
         string json = JsonUtility.ToJson(magicBookData);
-        File.WriteAllText(Const.data.MAGICBOOKDATA_SAVE_PATH,json);
+        File.WriteAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH,json);
+    }
+    public void ResetSkillPoint()
+    {
+        data.usedSkillPoint = 0;
+        for(int i=0;i<data.skillLevels.Count;++i)
+        {
+            data.skillLevels[i] = 0;
+        }
+    }
+    public void UseSkillPoint(SkillType skillType)
+    {
+        ++data.usedSkillPoint;
+        ++data.skillLevels[(int)skillType];
+    }
+    public int GetUsedSkillPoint()
+    {
+        return data.usedSkillPoint;
+    }
+    public int GetSkillLevel(SkillType skillType)
+    {
+        return data.skillLevels[(int)skillType];
     }
     public void SetCrystalData(int crystal)
     {
