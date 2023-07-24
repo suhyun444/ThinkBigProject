@@ -122,8 +122,8 @@ public class BattleManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         resultUI.scoreText.text = Util.SplitIntByComma(score);
-        resultUI.comboText.text = "최대 콤보 : " + maxCombo.ToString();
-        resultUI.accuracyText.text = "정확도 : " + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
+        resultUI.comboText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ? "최대 콤보 : " : "Max Combo : ") + maxCombo.ToString();
+        resultUI.accuracyText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ? "정확도 : " : "Accuracy : ") + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
         SaveManager.Instance.SetCrystalData(totalCrystal);

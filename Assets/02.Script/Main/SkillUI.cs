@@ -25,10 +25,12 @@ public class SkillUI : MonoBehaviour
         skillUI.SetActive(true);
         levelText.text = "Lv."+SaveManager.Instance.GetLevelData().ToString();
         UpdateSkillPointText();
+        for (int i = 0; i < skillInformations.Length; ++i)
+            skillInformations[i].BindInformation();
     }
     private void UpdateSkillPointText()
     {
-        skillPointText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ?  "보유 SP : " : "Remain SP : ")+ (SaveManager.Instance.GetLevelData() - SaveManager.Instance.GetUsedSkillPoint()).ToString();
+        skillPointText.text =  "SP : "+ (SaveManager.Instance.GetLevelData() - SaveManager.Instance.GetUsedSkillPoint()).ToString();
     }
     private void ResetSkillPoint()
     {

@@ -17,6 +17,7 @@ public class SkillInformation : MonoBehaviour
     [TextArea][SerializeField] private string description;
     [TextArea][SerializeField] private string engDescription;
     [SerializeField] private TextMeshPro descriptionText;
+    [SerializeField] private TextMeshPro levelText;
     [SerializeField] private CustomButton upgradeButton;
     public void Init()
     {
@@ -38,6 +39,7 @@ public class SkillInformation : MonoBehaviour
     {
         string curDescription = (LanguageManager.Instance.languageType == LanguageType.Korean) ? description : engDescription;
         descriptionText.text = curDescription.Replace("@",(Const.Skill.effectIncreaseAmount[(int)skillType] * SaveManager.Instance.GetSkillLevel(skillType)).ToString() + "%");
+        levelText.text = SaveManager.Instance.GetSkillLevel(skillType).ToString();
     }
     public void AddUpgradeButtonEvent(CustomButton.ButtonClickFunc clickEvent)
     {
