@@ -16,8 +16,11 @@ MonoBehaviour:
   lockSprite: {fileID: 0}
   id: 2
   name: "\uD06C\uB9AC\uC2A4\uD0C8"
+  engName: crystal
   description: "\uBC18\uC9DD\uC774\uB294 \uD06C\uB9AC\uC2A4\uD0C8"
+  engDescription: bling crystal
   farmingType: 1
   cost: 0
   requirementKey: Combo
   requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when Combo 10 is achieved

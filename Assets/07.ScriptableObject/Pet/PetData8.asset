@@ -16,4 +16,10 @@ MonoBehaviour:
   lockSprite: {fileID: 0}
   id: 8
   name: "\uC544\uBCF4\uCE74\uB3C4"
+  engName: avocado
   description: "\uADC0\uC5EC\uC6B4 \uC544\uBCF4\uCE74\uB3C4"
+  engDescription: cute avocado
+  farmingType: 0
+  cost: 0
+  requirementKey: 
+  requirementDescription: 

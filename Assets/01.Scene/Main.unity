@@ -819,7 +819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.156, y: -0.132}
+  m_AnchoredPosition: {x: 0.156, y: -0.094}
   m_SizeDelta: {x: 0.88731, y: 0.15033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114789977
@@ -1331,7 +1331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.156, y: -0.132}
+  m_AnchoredPosition: {x: 0.156, y: -0.09399994}
   m_SizeDelta: {x: 0.88731, y: 0.15033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156159793
@@ -3404,6 +3404,7 @@ GameObject:
   - component: {fileID: 391125980}
   - component: {fileID: 391125982}
   - component: {fileID: 391125981}
+  - component: {fileID: 391125983}
   m_Layer: 0
   m_Name: WarningText
   m_TagString: Untagged
@@ -3428,8 +3429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.691, y: -2.325}
-  m_SizeDelta: {x: 1.26536, y: 0.19138}
+  m_AnchoredPosition: {x: 0.691, y: -2.29611}
+  m_SizeDelta: {x: 1.4066, y: 0.1336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &391125981
 MonoBehaviour:
@@ -3478,8 +3479,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.99
-  m_fontSizeBase: 0.99
+  m_fontSize: 0.89
+  m_fontSizeBase: 0.89
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3565,6 +3566,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &391125983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391125979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uB9C8\uBC95 \uACB0\uC815\uC774 \uBD80\uC871\uD569\uB2C8\uB2E4."
+  englishText: Insufficient magic decisions.
 --- !u!1 &393063609
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,6 +5815,7 @@ GameObject:
   - component: {fileID: 669636940}
   - component: {fileID: 669636942}
   - component: {fileID: 669636941}
+  - component: {fileID: 669636943}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -5824,7 +5840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.007, y: 0.076}
+  m_AnchoredPosition: {x: 0.007, y: 0.093}
   m_SizeDelta: {x: 0.60462, y: 0.09893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669636941
@@ -5961,6 +5977,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &669636943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669636939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uC5F0\uC1C4 \uB9C8\uBC95"
+  englishText: Serial magic
 --- !u!1 &670978086
 GameObject:
   m_ObjectHideFlags: 0
@@ -6583,6 +6613,7 @@ GameObject:
   - component: {fileID: 838218571}
   - component: {fileID: 838218573}
   - component: {fileID: 838218572}
+  - component: {fileID: 838218574}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -6744,6 +6775,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &838218574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838218570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uC124\uC815"
+  englishText: Option
 --- !u!1 &847143295
 GameObject:
   m_ObjectHideFlags: 0
@@ -6779,7 +6824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.156, y: -0.132}
+  m_AnchoredPosition: {x: 0.156, y: -0.09399994}
   m_SizeDelta: {x: 0.88731, y: 0.15033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847143297
@@ -6927,6 +6972,7 @@ GameObject:
   - component: {fileID: 859630529}
   - component: {fileID: 859630531}
   - component: {fileID: 859630530}
+  - component: {fileID: 859630532}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -6951,7 +6997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.007, y: 0.076}
+  m_AnchoredPosition: {x: 0.007, y: 0.093}
   m_SizeDelta: {x: 0.60462, y: 0.09893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &859630530
@@ -7088,6 +7134,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &859630532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859630528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uB048\uAE30\uC758 \uBB3C\uC57D"
+  englishText: Potion of persistence
 --- !u!1 &865878299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,6 +8459,7 @@ GameObject:
   - component: {fileID: 1043378706}
   - component: {fileID: 1043378708}
   - component: {fileID: 1043378707}
+  - component: {fileID: 1043378709}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -8423,7 +8484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.007, y: 0.076}
+  m_AnchoredPosition: {x: 0.007, y: 0.093}
   m_SizeDelta: {x: 0.60462, y: 0.09893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043378707
@@ -8560,6 +8621,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1043378709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043378705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uC5F0\uAE08\uC220"
+  englishText: Alchemy
 --- !u!1 &1047042898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,8 +9339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  description: "\uCF64\uBCF4 \uBCF4\uB108\uC2A4 \uC810\uC218\uAC00 \nN \uB9CC\uD07C
+  description: "\uCF64\uBCF4 \uBCF4\uB108\uC2A4 \uC810\uC218\uAC00 \n@ \uB9CC\uD07C
     \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  engDescription: "The bonus score \nfor the combo\r\nIncrease by @."
   descriptionText: {fileID: 156159793}
   upgradeButton: {fileID: 1471875276}
 --- !u!1 &1088568293
@@ -9813,6 +9889,7 @@ GameObject:
   - component: {fileID: 1111615854}
   - component: {fileID: 1111615856}
   - component: {fileID: 1111615855}
+  - component: {fileID: 1111615857}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -9860,7 +9937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2EB\uAE30"
+  m_text: "\uCDE8\uC18C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99f9b793e529b084eb46de2f74c3f162, type: 2}
   m_sharedMaterial: {fileID: 6416661860303200853, guid: 99f9b793e529b084eb46de2f74c3f162, type: 2}
@@ -9974,6 +10051,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1111615857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111615853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uCDE8\uC18C"
+  englishText: Exit
 --- !u!1 &1129627544
 GameObject:
   m_ObjectHideFlags: 0
@@ -11229,7 +11320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.156, y: -0.132}
+  m_AnchoredPosition: {x: 0.156, y: -0.09399994}
   m_SizeDelta: {x: 0.88731, y: 0.15033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1222998680
@@ -11252,7 +11343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBAAC\uC2A4\uD130 \uC5D0\uAC8C \uBC1B\uB294 \uD53C\uD574\uAC00\nN% \uB9CC\uD07C
+  m_text: "\uBAAC\uC2A4\uD130 \uC5D0\uAC8C \uBC1B\uB294 \uD53C\uD574\uAC00 \nN% \uB9CC\uD07C
     \uAC10\uC18C\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99f9b793e529b084eb46de2f74c3f162, type: 2}
@@ -11665,6 +11756,7 @@ GameObject:
   - component: {fileID: 1277286003}
   - component: {fileID: 1277286005}
   - component: {fileID: 1277286004}
+  - component: {fileID: 1277286006}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -11689,7 +11781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.007, y: 0.076}
+  m_AnchoredPosition: {x: 0.007, y: 0.093}
   m_SizeDelta: {x: 0.60462, y: 0.09893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277286004
@@ -11826,6 +11918,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1277286006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277286002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uD22C\uBA85 \uB9DD\uD1A0"
+  englishText: Invisible cloak
 --- !u!1 &1307237529
 GameObject:
   m_ObjectHideFlags: 0
@@ -12497,6 +12603,10 @@ MonoBehaviour:
   selectLanguageButton:
   - {fileID: 1878136541}
   - {fileID: 1135303311}
+  languageTexts:
+  - {fileID: 838218574}
+  - {fileID: 1479784502}
+  - {fileID: 1111615857}
 --- !u!61 &1391160329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13213,8 +13323,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  description: "\uB9C8\uBC95 \uACB0\uC815 \uD68D\uB4DD\uB7C9\uC774 \nN \uB9CC\uD07C
+  description: "\uB9C8\uBC95 \uACB0\uC815 \uD68D\uB4DD\uB7C9\uC774 \n@ \uB9CC\uD07C
     \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  engDescription: "The amount of magic \ncrystal acquisition\r\nIncrease by @."
   descriptionText: {fileID: 114789977}
   upgradeButton: {fileID: 161278528}
 --- !u!1 &1471875274
@@ -13352,6 +13463,7 @@ GameObject:
   - component: {fileID: 1479784499}
   - component: {fileID: 1479784501}
   - component: {fileID: 1479784500}
+  - component: {fileID: 1479784502}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -13513,6 +13625,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1479784502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479784498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uC800\uC7A5"
+  englishText: Save
 --- !u!1 &1483243204
 GameObject:
   m_ObjectHideFlags: 0
@@ -15354,6 +15480,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1809908246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809908248}
+  - component: {fileID: 1809908247}
+  m_Layer: 0
+  m_Name: LanguageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1809908247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809908246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff09140c7bfb6442bb0b4f1b146d15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageType: 0
+  languageTexts: []
+--- !u!4 &1809908248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809908246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04147589, y: 3.958587, z: 0.055384886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814073189
 GameObject:
   m_ObjectHideFlags: 0
@@ -15537,6 +15709,7 @@ GameObject:
   - component: {fileID: 1817864704}
   - component: {fileID: 1817864706}
   - component: {fileID: 1817864705}
+  - component: {fileID: 1817864707}
   m_Layer: 0
   m_Name: WarningText
   m_TagString: Untagged
@@ -15561,8 +15734,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.587, y: -1.331}
-  m_SizeDelta: {x: 1.26536, y: 0.24881}
+  m_AnchoredPosition: {x: 0.59502, y: -1.331}
+  m_SizeDelta: {x: 1.28139, y: 0.24881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817864705
 MonoBehaviour:
@@ -15698,6 +15871,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1817864707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817864703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e835a037c85a654f87f96d3c1739880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  koreanText: "\uAE30\uB85D\uB41C \uB9C8\uBC95\uC774 \uC5C6\uC2B5\uB2C8\uB2E4 "
+  englishText: No recorded magic
 --- !u!1 &1828274944
 GameObject:
   m_ObjectHideFlags: 0
@@ -16401,8 +16588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  description: "\uBAAC\uC2A4\uD130 \uC5D0\uAC8C \uBC1B\uB294 \uD53C\uD574\uAC00 \nN
+  description: "\uBAAC\uC2A4\uD130 \uC5D0\uAC8C \uBC1B\uB294 \uD53C\uD574\uAC00 \n@
     \uB9CC\uD07C \uAC10\uC18C\uD569\uB2C8\uB2E4."
+  engDescription: "The damage caused \nby the monster \nDecreases by @."
   descriptionText: {fileID: 1222998680}
   upgradeButton: {fileID: 1454026936}
 --- !u!1 &1899588248
@@ -17433,8 +17621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  description: "\uC2A4\uD14C\uBBF8\uB098 \uAC10\uC18C\uC728\uC774\nN \uB9CC\uD07C
+  description: "\uC2A4\uD14C\uBBF8\uB098 \uAC10\uC18C\uC728\uC774\n@ \uB9CC\uD07C
     \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  engDescription: "Stemina reduction \nrate is Increase by @."
   descriptionText: {fileID: 847143297}
   upgradeButton: {fileID: 1375474879}
 --- !u!1 &2013873103

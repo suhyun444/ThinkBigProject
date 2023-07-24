@@ -47,8 +47,8 @@ public class PetDataUI : MonoBehaviour
     {
         petId = index;
         mainSprite.sprite = petUI.petDatas[index].mainSprite;
-        name.text = petUI.petDatas[index].name;
-        description.text = petUI.petDatas[index].description;
+        name.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? petUI.petDatas[index].name : petUI.petDatas[index].engName;
+        description.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? petUI.petDatas[index].description : petUI.petDatas[index].engDescription;
         SetAcceptButton();
     }
     private void SetAcceptButton()
@@ -63,12 +63,12 @@ public class PetDataUI : MonoBehaviour
             if(SaveManager.Instance.GetPetList().Contains(petId))
             {
                 acceptButton.BindClickEvent(Despawn);
-                acceptText.text = "소환 해제";
+                acceptText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ?  "소환 해제" : "Release";
             }
             else
             {
                 acceptButton.BindClickEvent(OpenSlotUI);
-                acceptText.text = "소환";
+                acceptText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? "소환" : "Summon";
             }
         }
         else
@@ -88,7 +88,7 @@ public class PetDataUI : MonoBehaviour
         costText.transform.parent.gameObject.SetActive(true);
         acceptText.gameObject.SetActive(false);
         acceptButton.BindClickEvent(BuyPet);
-        acceptText.text = "구매";
+        acceptText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? "구매" : "Buy";
         costText.text = petUI.petDatas[petId].cost.ToString();
     }
     private void BuyPet()
@@ -111,7 +111,7 @@ public class PetDataUI : MonoBehaviour
     {
         acceptButton.gameObject.SetActive(false);
         requirementText.gameObject.SetActive(true);
-        requirementText.text = petUI.petDatas[petId].requirementDescription;
+        requirementText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? petUI.petDatas[petId].requirementDescription : petUI.petDatas[petId].engRequirementDescription;
         mainSprite.color = Color.black;
     }
     private void OpenSlotUI()

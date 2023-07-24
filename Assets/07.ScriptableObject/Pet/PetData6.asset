@@ -16,4 +16,10 @@ MonoBehaviour:
   lockSprite: {fileID: 0}
   id: 6
   name: "\uB9C8\uBC95"
+  engName: magic
   description: "\uB9C8\uBC95\uC11C"
+  engDescription: magicbook
+  farmingType: 0
+  cost: 0
+  requirementKey: 
+  requirementDescription: 

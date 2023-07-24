@@ -16,7 +16,9 @@ MonoBehaviour:
   lockSprite: {fileID: 0}
   id: 1
   name: "\uBAAC\uC2A4\uD130"
+  engName: monster
   description: "\uD56D\uC544\uB9AC"
+  engDescription: jar
   farmingType: 0
   cost: 1000
   requirementKey: 

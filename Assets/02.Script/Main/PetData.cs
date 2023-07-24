@@ -14,11 +14,16 @@ public class PetData : ScriptableObject
     public Sprite lockSprite;
     public int id;
     public string name;
+    public string engName;
     [TextArea]
     public string description;
+    [TextArea]
+    public string engDescription;
     public FarmingType farmingType;
     public int cost;
     public string requirementKey;
     [TextArea]
     public string requirementDescription;
+    [TextArea]
+    public string engRequirementDescription;
 }

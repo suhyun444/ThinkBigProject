@@ -16,4 +16,10 @@ MonoBehaviour:
   lockSprite: {fileID: 0}
   id: 7
   name: "\uD37C\uC988"
+  engName: pause
   description: "\uBA48\uCDB0"
+  engDescription: stop
+  farmingType: 0
+  cost: 0
+  requirementKey: 
+  requirementDescription: 

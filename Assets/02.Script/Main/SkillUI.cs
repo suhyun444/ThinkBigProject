@@ -28,7 +28,7 @@ public class SkillUI : MonoBehaviour
     }
     private void UpdateSkillPointText()
     {
-        skillPointText.text = "보유 SP : " + (SaveManager.Instance.GetLevelData() - SaveManager.Instance.GetUsedSkillPoint()).ToString();
+        skillPointText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ?  "보유 SP : " : "Remain SP : ")+ (SaveManager.Instance.GetLevelData() - SaveManager.Instance.GetUsedSkillPoint()).ToString();
     }
     private void ResetSkillPoint()
     {

@@ -152,6 +152,7 @@
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXLinkBase.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDraw3D.cs" />
+     <Compile Include="Assets\02.Script\Main\SoundSlider.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexConstantUpdater.cs" />
@@ -184,6 +185,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FrameAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\MouseSketch.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+     <Compile Include="Assets\02.Script\Main\OptionUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDraw.cs" />
      <Compile Include="Assets\02.Script\Battle\KNNAlgorithm.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputLogger.cs" />
@@ -210,8 +212,9 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\BattleSketchManager.cs" />
-     <Compile Include="Assets\02.Script\Main\OptionUI.cs" />
-     <Compile Include="Assets\02.Script\Main\SoundSlider.cs" />
+     <Compile Include="Assets\02.Script\Main\LanguageManager.cs" />
+     <Compile Include="Assets\02.Script\Main\temporary.cs" />
+     <Compile Include="Assets\02.Script\Main\LanguageText.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

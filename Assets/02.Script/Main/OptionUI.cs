@@ -14,6 +14,7 @@ public class OptionUI : MonoBehaviour
     [SerializeField] private GameObject comboBox;
     [SerializeField] private CustomButton closeComboBoxButton;
     [SerializeField] private CustomButton[] selectLanguageButton;
+    [SerializeField] private LanguageText[] languageTexts;
     
     private LanguageType languageType;
     private void Awake() {
@@ -48,15 +49,23 @@ public class OptionUI : MonoBehaviour
     {
         languageType = type;
         curLanguage.text = (languageType == LanguageType.Korean) ? "한국어" : "English";
+        BindOptionTextLanguage(languageType);
         SettingComboBox();
         SetActiveComboBox(false);
+    }
+    private void BindOptionTextLanguage(LanguageType type)
+    {
+        for(int i=0;i<languageTexts.Length;i++)
+        {
+            languageTexts[i].BindText(type);
+        }
     }
     private void Save()
     {
         SaveManager.Instance.SetVolumeData(soundSlider.GetVolume());
         //AudioManager에 볼륨 저장
         SaveManager.Instance.SetLanguagueTypeData(languageType);
-        //LanguageManager에서 언어 바꿔주기
+        LanguageManager.Instance.ChangeLanguage(languageType);
         SaveManager.Instance.SaveOptionData();
         optionUI.SetActive(false);
     }

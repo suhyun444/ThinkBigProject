@@ -82,16 +82,19 @@ public class PetCollectionUI : MonoBehaviour
         spriteRenderer.sprite = petUI.petDatas[index].mainSprite;
         name.fontMaterial.SetFloat("_Stencil",1);
         name.fontMaterial.SetFloat("_StencilComp",3);
+        LanguageText languageText = name.GetComponent<LanguageText>();
         if (petUI.petDatas[index].farmingType == FarmingType.Requirement && !SaveManager.Instance.GetHavingPetList().Contains(petUI.petDatas[index].id))
         {
             spriteRenderer.color = Color.black;
-            name.text = "???";
+            languageText.koreanText = "???";
+            languageText.englishText = "???";
         }
         else
         {
             spriteRenderer.color = Color.white;
-            name.text = petUI.petDatas[index].name;
+            languageText.koreanText = petUI.petDatas[index].name;
+            languageText.englishText = petUI.petDatas[index].engName;
         }
-
+        LanguageManager.Instance.AddText(languageText);
     }
 }
