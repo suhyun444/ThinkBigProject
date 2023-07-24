@@ -15,5 +15,6 @@ public static class Const
     public static class Data{
         public static readonly string USERDATA_SAVE_PATH = Application.persistentDataPath + "/UserData.json";
         public static readonly string MAGICBOOKDATA_SAVE_PATH = Application.persistentDataPath + "/MagicBookData.json";
+        public static readonly string OPTIONDATA_SAVE_PATH = Application.persistentDataPath + "/OptionData.json";
     }
 }

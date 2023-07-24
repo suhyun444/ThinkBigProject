@@ -34,6 +34,21 @@ public class SaveData
         }
     }
 }
+public enum LanguageType
+{
+    Korean,
+    English
+}
+public class OptionData
+{
+    public float volume;
+    public LanguageType languageType; 
+    public OptionData()
+    {
+        volume = 1.0f;
+        languageType = LanguageType.Korean;
+    }
+}
 public class MagicBookData
 {
     public int gage;
@@ -50,26 +65,29 @@ public class SaveManager : Singleton<SaveManager>
 {
     private SaveData data;
     private MagicBookData magicBookData;
+    private OptionData optionData;
     private void Awake() {
         Init();
     }
     private void Init()
     {
-        if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH))
+        if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH) && File.Exists(Const.Data.OPTIONDATA_SAVE_PATH))
         {
             string userDataLoadJson = File.ReadAllText(Const.Data.USERDATA_SAVE_PATH);
             string magicBookDataLoadJson = File.ReadAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH);
-            LoadData(userDataLoadJson,magicBookDataLoadJson);
+            string optionDataLoadJson = File.ReadAllText(Const.Data.OPTIONDATA_SAVE_PATH);
+            LoadData(userDataLoadJson,magicBookDataLoadJson,optionDataLoadJson);
         }
         else
         {
             InitData();
         }
     }
-    public void LoadData(string userDataJson,string magicBookDataJson)
+    public void LoadData(string userDataJson,string magicBookDataJson,string optionDataLoadJson)
     {
         data = JsonUtility.FromJson<SaveData>(userDataJson);
         magicBookData = JsonUtility.FromJson<MagicBookData>(magicBookDataJson);
+        optionData = JsonUtility.FromJson<OptionData>(optionDataLoadJson);
     }
     public void InitData()
     {
@@ -79,6 +97,9 @@ public class SaveManager : Singleton<SaveManager>
         MagicBookData initMagicBookData = new MagicBookData();
         string magicBookJson = JsonUtility.ToJson(initMagicBookData);
         File.WriteAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH,magicBookJson);
+        OptionData initOptionData = new OptionData();
+        string optionJson = JsonUtility.ToJson(initOptionData);
+        File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
     }
     public void SaveData()
     {
@@ -89,6 +110,27 @@ public class SaveManager : Singleton<SaveManager>
     {
         string json = JsonUtility.ToJson(magicBookData);
         File.WriteAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH,json);
+    }
+    public void SaveOptionData()
+    {
+        string optionJson = JsonUtility.ToJson(optionData);
+        File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
+    }
+    public void SetVolumeData(float volume)
+    {
+        optionData.volume = volume;
+    }
+    public float GetVolumeData()
+    {
+        return optionData.volume;
+    }
+    public void SetLanguagueTypeData(LanguageType languageType)
+    {
+        optionData.languageType = languageType;
+    }
+    public LanguageType GetLanguageTypeData()
+    {
+        return optionData.languageType;
     }
     public void ResetSkillPoint()
     {
