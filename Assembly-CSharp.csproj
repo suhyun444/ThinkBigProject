@@ -161,11 +161,13 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\StrikeBox.cs" />
      <Compile Include="Assets\02.Script\Util.cs" />
      <Compile Include="Assets\02.Script\Main\MainManager.cs" />
+     <Compile Include="Assets\02.Script\Main\LanguageText.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ITEXDraw.cs" />
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXScroll.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\BigOperatorAtom.cs" />
+     <Compile Include="Assets\02.Script\Main\temporary.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TEXPreferenceUtility.cs" />
      <Compile Include="Assets\02.Script\Main\MagicBookUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\RootAtom.cs" />
@@ -203,6 +205,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\LayoutAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\Monster.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+     <Compile Include="Assets\02.Script\Main\LanguageManager.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\02.Script\Battle\DrawingCalculator.cs" />
@@ -212,9 +215,6 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\BattleSketchManager.cs" />
-     <Compile Include="Assets\02.Script\Main\LanguageManager.cs" />
-     <Compile Include="Assets\02.Script\Main\temporary.cs" />
-     <Compile Include="Assets\02.Script\Main\LanguageText.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

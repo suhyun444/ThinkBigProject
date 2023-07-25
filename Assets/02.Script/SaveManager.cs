@@ -4,9 +4,15 @@ using UnityEngine;
 using System.IO;
 using System;
 
-
+public enum CostumeType
+{
+    Magician,
+    Witch
+}
 public class SaveData
 {
+    public CostumeType costumeType;
+    public List<int> havingCostumeList;
     public int level;
     public int usedSkillPoint;
     public List<int> skillLevels;
@@ -17,6 +23,9 @@ public class SaveData
     public List<int> havingPetList;
     public SaveData()
     {
+        costumeType = CostumeType.Magician;
+        havingCostumeList = new List<int>();
+        havingCostumeList.Add(0);
         level = 0;
         usedSkillPoint = 0;
         expAmount = 0;
@@ -115,6 +124,22 @@ public class SaveManager : Singleton<SaveManager>
     {
         string optionJson = JsonUtility.ToJson(optionData);
         File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
+    }
+    public void SetCostumeTypeData(CostumeType type)
+    {
+        data.costumeType = type;
+    }
+    public CostumeType GetCostumeTypeData()
+    {
+        return data.costumeType;
+    }
+    public void AddHavingCostumeList(int item)
+    {
+        data.havingCostumeList.Add(item);
+    }
+    public List<int> GetHavingCostumeList()
+    {
+        return data.havingCostumeList;
     }
     public void SetVolumeData(float volume)
     {

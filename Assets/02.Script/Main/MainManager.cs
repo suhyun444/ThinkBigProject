@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] private Material expBarProgressMaterial;
     [SerializeField] private TextMeshPro levelText;
     [SerializeField] private SpriteRenderer fadeIn;
+    private GameObject playerCostume;
     private Pet[] pets = new Pet[4];
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,17 @@ public class MainManager : MonoBehaviour
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
         expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / 100.0f);
         SpawnPet();
+        SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
+    }
+    private void SpawnPlayerCostume(CostumeType costumeType)
+    {
+        GameObject costume = (GameObject)Resources.Load<GameObject>("Players/Main/"+costumeType.ToString() + "Main");
+        playerCostume = Instantiate(costume);
+    }
+    public void ChangePlayerCostime(CostumeType costumeType)
+    {
+        Destroy(playerCostume);
+        SpawnPlayerCostume(costumeType); 
     }
     private IEnumerator FadeIn()
     {

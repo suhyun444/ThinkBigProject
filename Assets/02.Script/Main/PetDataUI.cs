@@ -15,7 +15,7 @@ public class PetDataUI : MonoBehaviour
     [SerializeField] private TextMeshPro acceptText;
     [SerializeField] private CustomButton denyButton;
     [SerializeField] private TextMeshPro requirementText;
-    [SerializeField] private TextMeshPro costText;
+    [SerializeField] private SortPosition costText;
     [SerializeField] private TextMeshPro warningText;
     float warningTime = 0.0f;
 
@@ -89,7 +89,7 @@ public class PetDataUI : MonoBehaviour
         acceptText.gameObject.SetActive(false);
         acceptButton.BindClickEvent(BuyPet);
         acceptText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? "구매" : "Buy";
-        costText.text = petUI.petDatas[petId].cost.ToString();
+        costText.SetText("x" + petUI.petDatas[petId].cost.ToString());
     }
     private void BuyPet()
     {

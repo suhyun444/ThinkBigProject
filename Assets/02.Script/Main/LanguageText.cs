@@ -8,8 +8,10 @@ public class LanguageText : MonoBehaviour
     private TextMeshPro textMeshPro;
     [TextArea]
     public string koreanText;
+    public float koreanFontSize = -1;
     [TextArea]
     public string englishText;
+    public float englishFontSize;
     public void Init()
     {
         textMeshPro = GetComponent<TextMeshPro>();
@@ -18,5 +20,7 @@ public class LanguageText : MonoBehaviour
     public void BindText(LanguageType type)
     {
         textMeshPro.text = (type == LanguageType.Korean)? koreanText:englishText;
+        if(koreanFontSize != -1)
+            textMeshPro.fontSize = (type == LanguageType.Korean) ? koreanFontSize : englishFontSize;
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8aa93c4e021994bb5043678cbb8761, type: 3}
   m_Name: Costume Data 0
   m_EditorClassIdentifier: 
-  id: 0
+  type: 0
   sprite: {fileID: 502646156, guid: 811880d5d3062134b971b634cc2ebb96, type: 3}
   cost: 0
