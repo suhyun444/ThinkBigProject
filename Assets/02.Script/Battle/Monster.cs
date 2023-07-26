@@ -4,15 +4,22 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 
+public enum MonsterType
+{
+    Jar,
+    End
+}
 public class Monster : MonoBehaviour
 {
+    [SerializeField] private BattleManager battleManager;
     [SerializeField] private QuestionBox questionBox;
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private AnimationCurve particleCurve;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-    [SerializeField] private Player player;
     [SerializeField] private GameObject crystal;
+    private Player player;
+    private MonsterType monsterType;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
@@ -28,23 +35,27 @@ public class Monster : MonoBehaviour
         } 
         
     }
+    public void BindPlayer(Player player)
+    {
+        this.player = player;
+    }
     private IEnumerator Attack()
     {
-        animator.Play("JarAttack");
-        yield return new WaitForSeconds(0.4f);
+        animator.Play(monsterType.ToString() + "Attack");
+        yield return new WaitForSeconds(Const.Battle.ATTACK_MOTION_DELAY[(int)monsterType]);
         player.Hitted();
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(Const.Battle.ATTACK_LEFT_MOTION[(int)monsterType]);
         questionBox.SetProblemText();
     }
     public void Hitted()
     {
-        animator.Play("JarHitted");
+        animator.Play(monsterType.ToString() + "Hitted");
         StartCoroutine(DeadAnimation());
     }
     public string GetProblemText(){return questionBox.GetProblemText();}
     private IEnumerator DeadAnimation()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(Const.Battle.DEAD_MOTION_DELAY[(int)monsterType]);
         float time = 0;
         particleSystem.Play();
         bool spawnCrystal = false;
@@ -60,6 +71,7 @@ public class Monster : MonoBehaviour
             {
                 Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,1.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
                 spawnCrystal = true;
+                battleManager.EarnCrystal();
             }
         }
         yield return new WaitForSeconds(0.5f);
@@ -67,7 +79,8 @@ public class Monster : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
-        animator.Play("JarIdle");
+        monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
+        animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
         spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);
         Vector3 start = new Vector3(4.37f,-4.48f,0.0f);

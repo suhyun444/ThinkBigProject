@@ -7,13 +7,20 @@ enum PlayerAnimationState{
     Attack,
     Hitted,
 }
+[System.Serializable]
+public struct EffectInfo{
+    public Vector3 position;
+    public GameObject prefab;
+    public float duration;
+    public float hitDelay;
+}
 public class Player : MonoBehaviour
 {
     private Animator animator;
-    public Vector3 effectPosition;
-    public GameObject effectObject;
-    [SerializeField] private Monster monster;
+    [SerializeField] private float attackMotionDelay;
+    [SerializeField] private EffectInfo effectInfo;
     [SerializeField] private GameObject hitParticle;
+    private Monster monster;
     private Vector3 hitParticlePivot;
 
     private void Awake() {
@@ -31,6 +38,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         PlayAnimation(PlayerAnimationState.Attack);
+        StartCoroutine(Effect());
     }
     public void Hitted()
     {
@@ -44,20 +52,22 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         hitParticle.SetActive(false);
     }
-    public void InsEffect()
+
+    private IEnumerator Effect()
     {
-        StartCoroutine(effect());
-    }
-    private IEnumerator effect()
-    {
-        GameObject effect = Instantiate(effectObject,effectPosition,Quaternion.identity);
-        Destroy(effect,0.5f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(attackMotionDelay);
+        GameObject effect = Instantiate(effectInfo.prefab,effectInfo.position,Quaternion.identity);
+        Destroy(effect,effectInfo.duration);
+        yield return new WaitForSeconds(effectInfo.hitDelay);
         monster.Hitted();
     }
 
     private void PlayAnimation(PlayerAnimationState state)
     {
         animator.Play(state.ToString());
+    }
+    public void BindMonster(Monster monster)
+    {
+        this.monster = monster;
     }
 }

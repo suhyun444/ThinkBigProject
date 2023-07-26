@@ -38,7 +38,7 @@ public class SkillInformation : MonoBehaviour
     public void BindInformation()
     {
         string curDescription = (LanguageManager.Instance.languageType == LanguageType.Korean) ? description : engDescription;
-        descriptionText.text = curDescription.Replace("@",(Const.Skill.effectIncreaseAmount[(int)skillType] * SaveManager.Instance.GetSkillLevel(skillType)).ToString() + "%");
+        descriptionText.text = curDescription.Replace("@",(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)skillType] * SaveManager.Instance.GetSkillLevel(skillType)).ToString() + "%");
         levelText.text = SaveManager.Instance.GetSkillLevel(skillType).ToString();
     }
     public void AddUpgradeButtonEvent(CustomButton.ButtonClickFunc clickEvent)
