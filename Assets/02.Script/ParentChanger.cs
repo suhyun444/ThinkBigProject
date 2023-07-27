@@ -9,5 +9,6 @@ public class ParentChanger : MonoBehaviour
     void Start()
     {
         transform.parent = parent;   
+        transform.localPosition = new Vector3(-0.035f,0.45f,0.0f);
     }
 }

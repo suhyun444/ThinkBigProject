@@ -44,6 +44,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private BattleUI battleUI;
     [SerializeField] private ResultUI resultUI;
     [SerializeField] private PauseUI pauseUI;
+    private CameraShaking cameraShaking;
     private float leftTimeAmount = 1.0f;
     bool isInHitAnimation = false;
     private int maxCombo = 0;
@@ -55,10 +56,12 @@ public class BattleManager : MonoBehaviour
     private float correctCount = 0;
     private float problemCount = 0;
     private void Awake() {
+        battleUI.ScoreText.text = "Score : 0";
         totalCrystal = SaveManager.Instance.GetCrystalData();
         SpawnPlayer();
         InitPauseUI();
         StartCoroutine(FadeIn());
+        cameraShaking = Camera.main.GetComponent<CameraShaking>();
     }
     private void SpawnPlayer()
     {
@@ -212,7 +215,7 @@ public class BattleManager : MonoBehaviour
     {
         float decreaseAmount = (1.0f / 12.0f) * (1.0f - (float)(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Defense] * SaveManager.Instance.GetSkillLevel(SkillType.Defense)) * 0.01f);
         yield return new WaitForSeconds(0.4f);
-        Camera.main.GetComponent<CameraShaking>().ShakeScreen(1.0f,0.2f);
+        cameraShaking.ShakeScreen(1.0f,0.2f);
         isInHitAnimation = true;
         float start = leftTimeAmount;
         float end = leftTimeAmount - decreaseAmount;

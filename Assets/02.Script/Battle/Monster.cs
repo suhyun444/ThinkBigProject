@@ -18,11 +18,13 @@ public class Monster : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject crystal;
+    private CameraShaking cameraShaking;
     private Player player;
     private MonsterType monsterType;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
+        cameraShaking = Camera.main.GetComponent<CameraShaking>();
         spriteRenderer.GetPropertyBlock(dissolveMaterialBlock);
     }
     public void Act(bool isCorrect,float solveTime)
@@ -50,6 +52,7 @@ public class Monster : MonoBehaviour
     public void Hitted()
     {
         animator.Play(monsterType.ToString() + "Hitted");
+        cameraShaking.ShakeScreen(0.2f,0.2f);
         StartCoroutine(DeadAnimation());
     }
     public string GetProblemText(){return questionBox.GetProblemText();}
@@ -83,7 +86,7 @@ public class Monster : MonoBehaviour
         animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
         spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);
-        Vector3 start = new Vector3(4.37f,-4.48f,0.0f);
+        Vector3 start = new Vector3(8.74f,-8.12f,0.0f);
         Vector3 end = new Vector3(0,-0.4f,0.0f);
         spriteRenderer.transform.localPosition = start;
         float time = 0;

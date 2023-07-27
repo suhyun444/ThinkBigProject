@@ -15,6 +15,7 @@ public class MagicBookUI : MonoBehaviour
     [SerializeField] private CustomButton crystalPopupExitButton;
     [SerializeField] private GameObject crystalPopup;
     [SerializeField] private CustomButton gageButton;
+    [SerializeField] private SortPosition gageEarnCrystalText;
 
     private int problemIndex;
     private string curProblem;
@@ -130,14 +131,16 @@ public class MagicBookUI : MonoBehaviour
     }
     private void EarnCrystal()
     {
-        if(gageAmount < 10) return;
+        //if(gageAmount < 10) return;
         gageAmount = 0;
+        int earnCrystal = Random.Range(80,110);
         gageMaterial.SetFloat("_FillAmount", (float)gageAmount / 10);
         gageMaterial.SetFloat("_isHighlighted", 0);
         SaveManager.Instance.SetGageData(0);
-        SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() + 500);
+        SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() + earnCrystal);
         SaveManager.Instance.SaveMagicBookData();
         SaveManager.Instance.SaveData();
+        gageEarnCrystalText.SetText("+ "+earnCrystal.ToString());
         crystalPopup.SetActive(true);
     }
     public IEnumerator IncreaseGage()
