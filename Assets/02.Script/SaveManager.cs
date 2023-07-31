@@ -11,6 +11,7 @@ public enum CostumeType
 }
 public class SaveData
 {
+    public string name;
     public CostumeType costumeType;
     public List<int> havingCostumeList;
     public int level;
@@ -23,6 +24,7 @@ public class SaveData
     public List<int> havingPetList;
     public SaveData()
     {
+        name = "";
         costumeType = CostumeType.Magician;
         havingCostumeList = new List<int>();
         havingCostumeList.Add(0);
@@ -124,6 +126,14 @@ public class SaveManager : Singleton<SaveManager>
     {
         string optionJson = JsonUtility.ToJson(optionData);
         File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
+    }
+    public string GetNameData()
+    {
+        return data.name;
+    }
+    public void SetNameDate(string name)
+    {
+        data.name = name;
     }
     public void SetCostumeTypeData(CostumeType type)
     {

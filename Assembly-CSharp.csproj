@@ -61,7 +61,6 @@
      <Compile Include="Assets\02.Script\Main\SortingOrder.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\FillHelper.cs" />
      <Compile Include="Assets\02.Script\Battle\Crystal.cs" />
-     <Compile Include="Assets\Examples\TableQueryAndScanExample.cs" />
      <Compile Include="Assets\02.Script\Main\SkillUI.cs" />
      <Compile Include="Assets\02.Script\Main\PetCollectionUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexBoxingState.cs" />
@@ -104,8 +103,6 @@
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-     <Compile Include="Assets\Examples\LowLevelTableExample.cs" />
-     <Compile Include="Assets\Examples\CognitoSyncManagerSample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawRenderer.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\CounterAtom.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -145,11 +142,9 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
      <Compile Include="Assets\09.assets\WJ_API_2023\Scripts\WJ_Sample.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Examples\DynamoDBExample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexAsset.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ReflectionUtility.cs" />
-     <Compile Include="Assets\Examples\DynamoDBBaseExample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\LayoutBox.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FlexibleAtom.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexSampleInputDemo.cs" />
@@ -195,7 +190,6 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexOrchestrator.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\RotatedCharBox.cs" />
      <Compile Include="Assets\02.Script\SliderHandle.cs" />
-     <Compile Include="Assets\Examples\HighLevelTableExample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TEXPreference.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FrameAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\MouseSketch.cs" />
@@ -229,6 +223,7 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\BattleSketchManager.cs" />
+     <Compile Include="Assets\02.Script\Main\RankingUI.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -250,7 +245,6 @@
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\Examples\License.txt" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\PracticeSamples.txt" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawGUIAlphaOnly.shader" />
@@ -498,26 +492,29 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.24f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="AWSSDK.Core">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\AWSSDK\AWSSDK.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.CognitoIdentity">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\AWSSDK\AWSSDK.CognitoIdentity.dll</HintPath>
-    </Reference>
     <Reference Include="Google.Protobuf">
         <HintPath>C:\Users\winds\Downloads\barracuda-release-release-3.0.0\barracuda-release-release-3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AWSSDK.CognitoSync">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\AWSSDK\AWSSDK.CognitoSync.dll</HintPath>
+    <Reference Include="AWSSDK.CognitoIdentity">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.CognitoIdentity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.Core">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.DynamoDBv2">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\AWSSDK\AWSSDK.DynamoDBv2.dll</HintPath>
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.DynamoDBv2.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.SecurityToken">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\AWSSDK\AWSSDK.SecurityToken.dll</HintPath>
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.SecurityToken.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.24f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>

@@ -5,7 +5,26 @@ using Amazon;
 using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using System;
 
+[DynamoDBTable("ranking_info")]
+public class Ranking
+{
+    [DynamoDBHashKey] // Hash key.
+    public string name { get; set; }
+    [DynamoDBProperty]
+    public int score { get; set; }
+}
+public class RankingComparer : IComparer<Ranking>
+{
+    public int Compare(Ranking x, Ranking y)
+    {
+        if(x.score == y.score) return String.Compare(x.name,y.name);
+        if(x.score == y.score) return 0;
+        else if(x.score > y.score) return -1;
+        else return 1;
+    }
+}
 public class AWSConnection : MonoBehaviour
 {
     public string poolID;
@@ -14,62 +33,19 @@ public class AWSConnection : MonoBehaviour
     AmazonDynamoDBClient client;
     private CognitoAWSCredentials credentials;
     private void Awake() {
-        UnityInitializer.AttachToGameObject(this.gameObject);
         credentials = new CognitoAWSCredentials(poolID, RegionEndpoint.APNortheast2);
         client = new AmazonDynamoDBClient(credentials,RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(client);
-        //CreateItem();
-        FindItem();
     }
-    [DynamoDBTable("ranking_info")]
-    public class Ranking
+    private void SaveItem()
     {
-        [DynamoDBHashKey] // Hash key.
-        public string name { get; set; }
-        [DynamoDBProperty]
-        public int score { get; set; }
+        //string name = 
     }
-    private void CreateItem()
-    {
-        Debug.Log("Create");
-        Ranking r = new Ranking
-        {
-            name = "suhyun",
-            score = 100,
-        };
-        context.SaveAsync(r,(result) => 
-        {
-            if(result.Exception == null)
-                Debug.Log("Success");
-            else
-                Debug.Log(result.Exception);
-        });
-    }
-    public void FindItem() //DB에서 캐릭터 정보 받기
+    public List<Ranking> GetRankingList() //DB에서 캐릭터 정보 받기
     {
         ScanCondition[] conditions = new ScanCondition[1];
         conditions[0] = new ScanCondition("score",Amazon.DynamoDBv2.DocumentModel.ScanOperator.GreaterThanOrEqual,0);
-        context.ScanAsync<Ranking>(conditions);
-        // .GetNextSetAsync((AmazonDynamoDBResult<List<Ranking>> result)=>{
-        //     if(result.Exception != null)
-        //     {
-        //         Debug.Log("ASDASDAS");
-        //         Debug.LogException(result.Exception);
-        //     }
-        //     Debug.Log(result.Result.Count);
-        // });
-        // Debug.Log("Find");
-        // Ranking c;
-        // context.LoadAsync<Ranking>("guest1", (AmazonDynamoDBResult<Ranking> result) =>
-        // {
-        //     // id가 abcd인 캐릭터 정보를 DB에서 받아옴
-        //     if (result.Exception != null)
-        //     {
-        //         Debug.LogException(result.Exception);
-        //         return;
-        //     }
-        //     c = result.Result;
-        //     Debug.Log(c.name); //찾은 캐릭터 정보 중 아이템 정보 출력
-        // }, null);
+        var result = context.ScanAsync<Ranking>(conditions).GetNextSetAsync();
+        return result.Result;
     }
 }
