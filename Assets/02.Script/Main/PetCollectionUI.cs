@@ -14,7 +14,7 @@ public class PetCollectionUI : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
     [SerializeField] private float dragSensitivy;
-    List<PetButton> petButtons = new List<PetButton>();
+    List<FlexibleButton> petButtons = new List<FlexibleButton>();
     private Vector3 prevMousePosition;
     private bool onDrag = false;
     private bool firstDrag = true;
@@ -69,7 +69,7 @@ public class PetCollectionUI : MonoBehaviour
             Vector3 position = new Vector3(0.345f + 0.62f * (i % 2),0.345f + -0.82f * (i/2 + 1),0);
             GameObject gameObject = Instantiate(petButton,Vector3.zero,Quaternion.identity);
             int index =  i;
-            petButtons.Add(gameObject.GetComponent<PetButton>());
+            petButtons.Add(gameObject.GetComponent<FlexibleButton>());
             petButtons[i].BindClickEvent(()=>petUI.OpenPetDataUI(index));
             gameObject.transform.parent = buttonParents.transform;
             gameObject.transform.localScale = new Vector3(1.2f,1.2f,1.0f);

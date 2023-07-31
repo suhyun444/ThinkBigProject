@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Utils;
+using CustomUtils;
 
 public class MainManager : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class MainManager : MonoBehaviour
         Application.targetFrameRate = 60;
         StartCoroutine(FadeIn());
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
-        expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / 100.0f);
+        expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[SaveManager.Instance.GetLevelData()]);
         SpawnPet();
         SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
     }

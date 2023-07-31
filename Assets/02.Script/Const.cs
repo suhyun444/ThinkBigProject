@@ -13,7 +13,19 @@ public static class Const
     }
     public static class Skill
     {
-        public static int[] EFFECT_INCREASE_AMOUNT = {3,3,3,3};
+        public static float UPGRADE_BUTTON_DELAY = 0.25f;
+        public static int RESET_COST = 1000;
+        public static float[] EFFECT_INCREASE_AMOUNT = {0.3f,0.66f,0.33f,1.5f,0.33f,0.15f,0.2f};
+        public static readonly int[] LEVEL_REQUIREMENT_EXP = {2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,
+                                                              2500, 2500, 2500, 2500, 2500, 3000, 3500, 4000, 4500, 5000,
+                                                              10000, 11000, 12000, 13000, 14000, 15000, 18000, 21000, 24000, 27000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,
+                                                              30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000,1};
     }
     public static class Data{
         public static readonly string USERDATA_SAVE_PATH = Application.persistentDataPath + "/UserData.json";

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 [CustomEditor(typeof(SoundData))]
 public class SoundEditor : Editor
@@ -48,3 +47,5 @@ public class SoundEditor : Editor
         EditorUtility.SetDirty(target);
     }
 }
+
+#endif

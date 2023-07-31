@@ -29,6 +29,7 @@ public class CostumeUI : MonoBehaviour
     }
     private void Update() {
         SetSubCostumeSize();
+        waringTime -= Time.deltaTime;
         if(waringTime < 0.0f)
         {
             warningText.SetActive(false);
@@ -50,6 +51,7 @@ public class CostumeUI : MonoBehaviour
     }
     private void OpenUI()
     {
+        warningText.SetActive(false);
         index = 0;
         ui.SetActive(true);
         Show();

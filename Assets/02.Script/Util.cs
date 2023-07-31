@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Utils{
+namespace CustomUtils{
 
     public static class Util 
     {
@@ -26,6 +26,15 @@ namespace Utils{
                 resultText = "," + resultText;
             }
             return num.ToString() + resultText;
+        }
+        public static string SplitRemainZero(string s)
+        {
+            int index = s.Length - 1;
+            while(index > 0 && (s[index] == '0' || s[index] == '.'))
+            {
+                --index;
+            }
+            return s.Substring(0,index + 1);
         }
     }
 }

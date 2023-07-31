@@ -17,6 +17,8 @@ public class PetDataUI : MonoBehaviour
     [SerializeField] private TextMeshPro requirementText;
     [SerializeField] private SortPosition costText;
     [SerializeField] private TextMeshPro warningText;
+    [SerializeField] private CustomButton slotExitButton;
+
     float warningTime = 0.0f;
 
     [Header("Slot")]
@@ -30,6 +32,7 @@ public class PetDataUI : MonoBehaviour
     private void Awake() {
         denyButton.BindClickEvent(()=>warningText.gameObject.SetActive(false));
         denyButton.AddClickEvent(petUI.ClosePetDataUI);
+        slotExitButton.BindClickEvent(()=>slotUI.SetActive(false));
         for(int i=0;i<4;i++)
         {
             int index = i;
@@ -45,6 +48,7 @@ public class PetDataUI : MonoBehaviour
     }
     public void OpenPetData(int index)
     {
+        warningText.gameObject.SetActive(false);
         petId = index;
         mainSprite.sprite = petUI.petDatas[index].mainSprite;
         name.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? petUI.petDatas[index].name : petUI.petDatas[index].engName;

@@ -74,7 +74,7 @@ public class Monster : MonoBehaviour
             {
                 Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,1.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
                 spawnCrystal = true;
-                battleManager.EarnCrystal();
+                battleManager.GetReward();
             }
         }
         yield return new WaitForSeconds(0.5f);

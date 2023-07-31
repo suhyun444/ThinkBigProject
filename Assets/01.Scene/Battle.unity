@@ -9673,6 +9673,8 @@ MonoBehaviour:
     comboText: {fileID: 2115628552}
     ScoreText: {fileID: 659920297}
   resultUI:
+    levelText: {fileID: 329045981}
+    expBar: {fileID: 2100000, guid: 3b4ae1e02cb295141ac38b8face9fa69, type: 2}
     parentObject: {fileID: 1515734788}
     padeOutRenderer: {fileID: 2037354962}
     scoreText: {fileID: 409411724}

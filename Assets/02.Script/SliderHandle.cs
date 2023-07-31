@@ -6,13 +6,9 @@ public class SliderHandle : MonoBehaviour
 {
     [SerializeField] private float minY = -2.15f;
     [SerializeField] private float maxY = -0.54f;
-    [SerializeField] private PetCollectionUI petCollectionUI;
+    [SerializeField] private PetCollectionUI sliderArea;
     private bool onDrag = false;
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +26,7 @@ public class SliderHandle : MonoBehaviour
             transform.position = new Vector3(transform.position.x, mousePosition.y, -1);
             float nextY = Mathf.Clamp(transform.localPosition.y, minY, maxY);
             transform.localPosition = new Vector3(transform.localPosition.x, nextY, -1);
-            petCollectionUI.SetButtonViewPosition((nextY - minY) / (maxY - minY));
+            sliderArea.SetButtonViewPosition((nextY - minY) / (maxY - minY));
         }
         if (Input.GetMouseButtonUp(0))
         {

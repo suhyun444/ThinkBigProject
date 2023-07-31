@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Utils;
+using CustomUtils;
 
 [System.Serializable]
 struct BattleUI
@@ -16,6 +16,8 @@ struct BattleUI
 [System.Serializable]
 struct ResultUI
 {
+    public TextMeshPro levelText;
+    public Material expBar;
     public GameObject parentObject;
     public SpriteRenderer padeOutRenderer;
     public TextMeshPro scoreText;
@@ -45,6 +47,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private ResultUI resultUI;
     [SerializeField] private PauseUI pauseUI;
     private CameraShaking cameraShaking;
+    private int earnExpAmount = 0;
+    private float totalTime = 0.0f;
     private float leftTimeAmount = 1.0f;
     bool isInHitAnimation = false;
     private int maxCombo = 0;
@@ -89,7 +93,9 @@ public class BattleManager : MonoBehaviour
         fadeIn.gameObject.SetActive(false);
     }
     private void Update() {
-        if(!isInHitAnimation) leftTimeAmount -= (Time.deltaTime / Const.Battle.BATTLE_TIME) * (1.0f - (float)(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Stamina] * SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
+        if(isEnd)return;
+        totalTime += Time.deltaTime;
+        if(!isInHitAnimation) leftTimeAmount -= (Time.deltaTime / Const.Battle.BATTLE_TIME) * (1.0f - (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Stamina] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
         if(!isEnd && leftTimeAmount < 0)
         {
             isEnd = true;
@@ -121,6 +127,7 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator LoadResultScene()
     {
+        earnExpAmount += (int)totalTime * 5;
         yield return new WaitForSeconds(0.1f);
         float time = 0;
         float t = 1f;
@@ -132,7 +139,27 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        int bonusCrystal = (int)((float)crystal * (float)(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Crystal] * SaveManager.Instance.GetSkillLevel(SkillType.Crystal)) * 0.01f);
+        int curLevel = SaveManager.Instance.GetLevelData();
+        earnExpAmount = (int)(((float)earnExpAmount) * (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Exp] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Exp) * 0.01f));
+        int curExpAmount = SaveManager.Instance.GetExpAmountData() + earnExpAmount;
+        while(curLevel < 99 && Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel] <= earnExpAmount)
+        {
+            earnExpAmount -= Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel++];
+            if(curLevel % 10 == 0)
+            {
+                crystal += 500;
+                totalCrystal += 500;
+            }
+            else
+            {
+                crystal += 100;
+                totalCrystal += 100;
+            }
+        }
+        if(curLevel == 99)earnExpAmount = 1;
+        resultUI.levelText.text = curLevel.ToString();
+        resultUI.expBar.SetFloat("_FillAmount",(float)earnExpAmount / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel]);
+        int bonusCrystal = (int)((float)crystal * (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Crystal] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Crystal)) * 0.01f);
         crystal += bonusCrystal;
         totalCrystal += bonusCrystal;
         resultUI.scoreText.text = Util.SplitIntByComma(score);
@@ -141,7 +168,8 @@ public class BattleManager : MonoBehaviour
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
         SaveManager.Instance.SetCrystalData(totalCrystal);
-        SaveManager.Instance.SetExpAmountData(100);
+        SaveManager.Instance.SetLevelData(curLevel);
+        SaveManager.Instance.SetExpAmountData(earnExpAmount);
         SaveManager.Instance.SaveData();
         SaveManager.Instance.SaveMagicBookData();
         resultUI.parentObject.SetActive(true);
@@ -206,14 +234,15 @@ public class BattleManager : MonoBehaviour
         }
         
     }
-    public void EarnCrystal()
+    public void GetReward()
     {
         crystal += 10;
         totalCrystal += 10;
+        earnExpAmount += 100;
     }
     private IEnumerator DecreaseStamina()
     {
-        float decreaseAmount = (1.0f / 12.0f) * (1.0f - (float)(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Defense] * SaveManager.Instance.GetSkillLevel(SkillType.Defense)) * 0.01f);
+        float decreaseAmount = (1.0f / 12.0f) * (1.0f - (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Defense] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Defense)) * 0.01f);
         yield return new WaitForSeconds(0.4f);
         cameraShaking.ShakeScreen(1.0f,0.2f);
         isInHitAnimation = true;
@@ -231,16 +260,21 @@ public class BattleManager : MonoBehaviour
     }
     private void GetScore(float solveTime)
     {
-        float plusScore = 50000;
+        float plusScore = 50000 * (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Kill]  * (float)SaveManager.Instance.GetSkillLevel(SkillType.Kill) * 0.01f);
+        float speedBonus;
         if(solveTime < 5)
-            plusScore += 50000;
+            speedBonus = 50000;
         else if(solveTime < 7)
-            plusScore += 30000;
+            speedBonus = 30000;
         else
-            plusScore += 15000;
+            speedBonus = 15000;
+        speedBonus *= (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Speed] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Speed) * 0.01f);
         //if(tag == "다항식") 몬스터에서 문제 정보 가져와서 판정
-        plusScore *= (1.0f + (float)((comboCount) / 5)) * 1 + (float)(Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Combo] * SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f;
-        score += (int)plusScore;
+        float comboBonus = 0;
+        if(comboCount >= 5)
+            comboBonus = 5000.0f *  ((((float)comboCount) / 5)) * (1 + (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Combo] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f);
+
+        score += (int)plusScore + (int)speedBonus + (int)comboBonus;
         battleUI.ScoreText.text = "Score : " + score.ToString();
     }
     
