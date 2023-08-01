@@ -72,33 +72,46 @@ public class MagicBookData
         answers = new List<string>();
     }
 }
+public class MathpidData
+{
+    public string memberId;
+    public string authorization;
+    public MathpidData()
+    {
+        memberId = "null";
+        authorization = "null";
+    }
+}
 public class SaveManager : Singleton<SaveManager>
 {
     private SaveData data;
     private MagicBookData magicBookData;
     private OptionData optionData;
+    private MathpidData mathpidData;
     private void Awake() {
         Init();
     }
     private void Init()
     {
-        if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH) && File.Exists(Const.Data.OPTIONDATA_SAVE_PATH))
+        if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH) && File.Exists(Const.Data.OPTIONDATA_SAVE_PATH) && File.Exists(Const.Data.MATHPIDDATA_SAVE_PATH))
         {
             string userDataLoadJson = File.ReadAllText(Const.Data.USERDATA_SAVE_PATH);
             string magicBookDataLoadJson = File.ReadAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH);
             string optionDataLoadJson = File.ReadAllText(Const.Data.OPTIONDATA_SAVE_PATH);
-            LoadData(userDataLoadJson,magicBookDataLoadJson,optionDataLoadJson);
+            string mathpidDataLoadJson = File.ReadAllText(Const.Data.MATHPIDDATA_SAVE_PATH);
+            LoadData(userDataLoadJson,magicBookDataLoadJson,optionDataLoadJson, mathpidDataLoadJson);
         }
         else
         {
             InitData();
         }
     }
-    public void LoadData(string userDataJson,string magicBookDataJson,string optionDataLoadJson)
+    public void LoadData(string userDataJson,string magicBookDataJson,string optionDataLoadJson, string mathpidDataLoadJson)
     {
         data = JsonUtility.FromJson<SaveData>(userDataJson);
         magicBookData = JsonUtility.FromJson<MagicBookData>(magicBookDataJson);
         optionData = JsonUtility.FromJson<OptionData>(optionDataLoadJson);
+        mathpidData = JsonUtility.FromJson<MathpidData>(mathpidDataLoadJson);
     }
     public void InitData()
     {
@@ -111,6 +124,9 @@ public class SaveManager : Singleton<SaveManager>
         OptionData initOptionData = new OptionData();
         string optionJson = JsonUtility.ToJson(initOptionData);
         File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
+        MathpidData initMathpidData = new MathpidData();
+        string mathpidjson = JsonUtility.ToJson(initMathpidData);
+        File.WriteAllText(Const.Data.MATHPIDDATA_SAVE_PATH,mathpidjson);
     }
     public void SaveData()
     {
@@ -126,6 +142,27 @@ public class SaveManager : Singleton<SaveManager>
     {
         string optionJson = JsonUtility.ToJson(optionData);
         File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
+    }
+    public void SaveMathpidData()
+    {
+        string mathpidjson = JsonUtility.ToJson(mathpidData);
+        File.WriteAllText(Const.Data.MATHPIDDATA_SAVE_PATH, mathpidjson);
+    }
+    public void SetMemberIdData(string memberId)
+    {
+        mathpidData.memberId = memberId;
+    }
+    public string GetMemberIdData()
+    {
+        return mathpidData.memberId;
+    }
+    public void SetAuthorizationData(string authorization)
+    {
+        mathpidData.authorization = authorization;
+    }
+    public string GetAuthorizationData()
+    {
+        return mathpidData.authorization;
     }
     public string GetNameData()
     {

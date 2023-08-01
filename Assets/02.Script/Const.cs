@@ -31,5 +31,6 @@ public static class Const
         public static readonly string USERDATA_SAVE_PATH = Application.persistentDataPath + "/UserData.json";
         public static readonly string MAGICBOOKDATA_SAVE_PATH = Application.persistentDataPath + "/MagicBookData.json";
         public static readonly string OPTIONDATA_SAVE_PATH = Application.persistentDataPath + "/OptionData.json";
+        public static readonly string MATHPIDDATA_SAVE_PATH = Application.persistentDataPath + "/MathpidData.json";
     }
 }

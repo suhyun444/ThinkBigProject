@@ -53,7 +53,17 @@ public class MathpidConnector : MonoBehaviour
 
         if (strOsScnCd.Length >= 15) strOsScnCd = strOsScnCd.Substring(0, 14);
 
-        Make_MBR_ID();
+        if(SaveManager.Instance.GetMemberIdData() == "null")
+        {
+
+            Make_MBR_ID();
+        }
+        else
+        {
+            Debug.Log("StartLearning");
+            strMBR_ID = SaveManager.Instance.GetMemberIdData();
+            strAuthorization = SaveManager.Instance.GetAuthorizationData();
+        }
     }
 
     //���� �ð��� �������� MBR ID ����
@@ -119,6 +129,11 @@ public class MathpidConnector : MonoBehaviour
         request.ansrCwYn = _ansrCwYn;//"Y"; // ���� ����
         request.sid = _sid;                 // ���� ID
         request.slvTime = _nQstDelayTime;//5000;
+
+        //진단평가 8문제 푼 후 저장
+        SaveManager.Instance.SetAuthorizationData(strAuthorization);
+        SaveManager.Instance.SetMemberIdData(strMBR_ID);
+        SaveManager.Instance.SaveMathpidData();
 
         yield return StartCoroutine(UWR_Post<Request_DN_Progress, DN_Response>(request, "https://prd-brs-relay-model.mathpid.com/api/v1/contest/diagnosis/progress", true));
 
@@ -238,7 +253,12 @@ public class MathpidConnector : MonoBehaviour
                         break;
                 }
 
-                if (uwr.GetResponseHeaders().ContainsKey("Authorization")) strAuthorization = uwr.GetResponseHeader("Authorization");
+                if (uwr.GetResponseHeaders().ContainsKey("Authorization")) 
+                {
+                    strAuthorization = uwr.GetResponseHeader("Authorization");
+                    Debug.Log("autorization" +  strAuthorization);
+                    Debug.Log("member ID " +  strMBR_ID);
+                }
             }
             else //���� ��
             {

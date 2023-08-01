@@ -35,13 +35,21 @@ public class MathpidManager : MonoBehaviour
                 break;
         }
 
-        ButtonEvent_ChooseDifficulty(3);
         if (conn != null)
         {
             conn.onGetDiagnosis.AddListener(() => GetDiagnosis());
             conn.onGetLearning.AddListener(() => GetLearning(0));
         }
         else Debug.LogError("Cannot find Connector");
+        if(SaveManager.Instance.GetMemberIdData() == "null")
+        {
+            ButtonEvent_ChooseDifficulty(0);
+        }
+        else
+        {
+            currentStatus = CurrentStatus.LEARNING;
+            conn.Learning_GetQuestion();
+        }
     }
 
     private void Update()
@@ -93,7 +101,6 @@ public class MathpidManager : MonoBehaviour
     {
         
         correctAnswer = qstCransr;
-        Debug.Log("Answer : " + correctAnswer);
         wrongAnswer = qstWransr.Split(',')[0];
         battleManager.BindAnswer(correctAnswer);
         textEquation.BindQuestion(qstCn);
