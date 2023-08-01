@@ -31,7 +31,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             instance = value;
         }
     }
-    private void Awake()
+    public void InitSingleTon()
     {
         DontDestroyOnLoad(gameObject);        
     }

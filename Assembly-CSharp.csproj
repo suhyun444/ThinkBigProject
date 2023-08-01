@@ -148,6 +148,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\LayoutBox.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\FlexibleAtom.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexSampleInputDemo.cs" />
+     <Compile Include="Assets\02.Script\Main\LanguageTextUI.cs" />
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\Atom.cs" />
@@ -207,6 +208,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TexChar.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Sample\Scripts\TexSampleSimpleNote.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Box\LinkBox.cs" />
+     <Compile Include="Assets\02.Script\Main\SetNamePopup.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\LayoutAtom.cs" />
@@ -215,6 +217,7 @@
      <Compile Include="Assets\02.Script\Main\LanguageManager.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+     <Compile Include="Assets\02.Script\Main\RankingUI.cs" />
      <Compile Include="Assets\02.Script\Battle\DrawingCalculator.cs" />
      <Compile Include="Assets\02.Script\Singleton.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\WordAtom.cs" />
@@ -223,7 +226,6 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\SoftBreakAtom.cs" />
      <Compile Include="Assets\02.Script\Battle\BattleSketchManager.cs" />
-     <Compile Include="Assets\02.Script\Main\RankingUI.cs" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -492,29 +494,29 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.24f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf">
-        <HintPath>C:\Users\winds\Downloads\barracuda-release-release-3.0.0\barracuda-release-release-3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="AWSSDK.CognitoIdentity">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.CognitoIdentity.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>C:\Users\winds\Downloads\barracuda-release-release-3.0.0\barracuda-release-release-3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.SecurityToken">
+        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.SecurityToken.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.Core">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.DynamoDBv2">
         <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.DynamoDBv2.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.SecurityToken">
-        <HintPath>D:\Unity\Github\RecognizeHandWrittenDigitsTest\Assets\Plugins\AWSSDK.SecurityToken.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.24f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>

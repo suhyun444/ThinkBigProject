@@ -8,6 +8,8 @@ public class RankingUI : MonoBehaviour
     [SerializeField] private GameObject ui;
     [SerializeField] private TextMeshPro[] names;
     [SerializeField] private TextMeshPro[] scores;
+    [SerializeField] private Sprite[] crownSprites;
+    [SerializeField] private SpriteRenderer myRankSprite;
     [SerializeField] private TextMeshPro myRank;
     [SerializeField] private TextMeshPro myName;
     [SerializeField] private TextMeshPro myScore;
@@ -18,7 +20,7 @@ public class RankingUI : MonoBehaviour
     {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>ui.SetActive(false));
-        awsConnection = GetComponent<AWSConnection>();
+        awsConnection = GameObject.FindObjectOfType<AWSConnection>();
         UpdateRanking();
     }
     private void OpenUI()
@@ -32,7 +34,7 @@ public class RankingUI : MonoBehaviour
         rankings.Sort(new RankingComparer());
         for(int i=0;i<10;++i)
         {
-            if(i >= rankings.Count || rankings[i].score == 0)
+            if(i >= rankings.Count)
             {
                 names[i].text = "-";
                 scores[i].text = "-";
@@ -48,12 +50,28 @@ public class RankingUI : MonoBehaviour
         {
             if(rankings[i].name == name)
             {
-                myRank.text = (i + 1).ToString("N0");
+                if(i < 3)
+                {
+                    myRankSprite.sprite = crownSprites[i];
+                    myRank.gameObject.SetActive(false);
+                    myRankSprite.gameObject.SetActive(true);
+                }
+                else
+                {
+                    myRank.text = (i + 1).ToString("N0");
+                    myRank.gameObject.SetActive(true);
+                    myRankSprite.gameObject.SetActive(false);
+                }
                 myName.text = name;
                 myScore.text = rankings[i].score.ToString("N0");
-                break;
+                return;
             }
         }
+        myRankSprite.gameObject.SetActive(false);
+        myRank.gameObject.SetActive(true);
+        myRank.text = "-";
+        myName.text = name;
+        myScore.text = "-";
     }
 
 

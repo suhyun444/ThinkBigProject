@@ -12,12 +12,12 @@ public class LanguageText : MonoBehaviour
     [TextArea]
     public string englishText;
     public float englishFontSize;
-    public void Init()
+    public virtual void Init()
     {
         textMeshPro = GetComponent<TextMeshPro>();
         BindText(LanguageManager.Instance.languageType);
     }
-    public void BindText(LanguageType type)
+    public virtual void BindText(LanguageType type)
     {
         textMeshPro.text = (type == LanguageType.Korean)? koreanText:englishText;
         if(koreanFontSize != -1)

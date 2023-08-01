@@ -7,10 +7,13 @@ using CustomUtils;
 
 public class MainManager : MonoBehaviour
 {
+    [SerializeField] private CustomButton nameButton;
+    [SerializeField] private TextMeshPro nameText;
     [SerializeField] private TextMeshPro crystalText;
     [SerializeField] private Material expBarProgressMaterial;
     [SerializeField] private TextMeshPro levelText;
     [SerializeField] private SpriteRenderer fadeIn;
+    [SerializeField] private SetNamePopup setNamePopup;
     private GameObject playerCostume;
     private Pet[] pets = new Pet[4];
     // Start is called before the first frame update
@@ -20,6 +23,9 @@ public class MainManager : MonoBehaviour
         StartCoroutine(FadeIn());
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
         expBarProgressMaterial.SetFloat("_FillAmount",(float)SaveManager.Instance.GetExpAmountData() / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[SaveManager.Instance.GetLevelData()]);
+        if(SaveManager.Instance.GetNameData() == "") setNamePopup.OpenSetNameUI();
+        else Debug.Log(SaveManager.Instance.GetNameData());
+        nameButton.BindClickEvent(setNamePopup.OpenUpdateNameUI);
         SpawnPet();
         SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
     }
@@ -27,6 +33,8 @@ public class MainManager : MonoBehaviour
     {
         GameObject costume = (GameObject)Resources.Load<GameObject>("Players/Main/"+costumeType.ToString() + "Main");
         playerCostume = Instantiate(costume);
+        nameButton.transform.position = playerCostume.transform.GetChild(0).transform.position;
+        nameButton.transform.position = new Vector3(nameButton.transform.position.x,nameButton.transform.position.y,-0.5f);
     }
     public void ChangePlayerCostime(CostumeType costumeType)
     {
@@ -51,6 +59,7 @@ public class MainManager : MonoBehaviour
     void Update()
     {
         crystalText.text = Util.SplitIntByComma(SaveManager.Instance.GetCrystalData());
+        nameText.text = SaveManager.Instance.GetNameData();
     }
 
     private Vector3 GetSpawnPosition()

@@ -47,6 +47,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private ResultUI resultUI;
     [SerializeField] private PauseUI pauseUI;
     private CameraShaking cameraShaking;
+    private AWSConnection connection;
     private int earnExpAmount = 0;
     private float totalTime = 0.0f;
     private float leftTimeAmount = 1.0f;
@@ -61,6 +62,7 @@ public class BattleManager : MonoBehaviour
     private float problemCount = 0;
     private void Awake() {
         battleUI.ScoreText.text = "Score : 0";
+        connection = GameObject.FindObjectOfType<AWSConnection>();
         totalCrystal = SaveManager.Instance.GetCrystalData();
         SpawnPlayer();
         InitPauseUI();
@@ -167,6 +169,7 @@ public class BattleManager : MonoBehaviour
         resultUI.accuracyText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ? "정확도 : " : "Accuracy : ") + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
+        connection.UpdateScore(score);
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetLevelData(curLevel);
         SaveManager.Instance.SetExpAmountData(earnExpAmount);
