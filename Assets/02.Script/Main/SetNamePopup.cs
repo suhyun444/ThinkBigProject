@@ -48,12 +48,14 @@ public class SetNamePopup : MonoBehaviour
     {
         if(inputField.text == "​")
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             enterNameWarningText.SetActive(true);
             return;
         }
         if(connection.FindPlayer(inputField.text))
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             warningText.SetActive(true);
             return;
@@ -67,12 +69,14 @@ public class SetNamePopup : MonoBehaviour
     {
         if (inputField.text == "​") 
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             enterNameWarningText.SetActive(true);
             return;
         }
         if (connection.FindPlayer(inputField.text))
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             warningText.SetActive(true);
             return;

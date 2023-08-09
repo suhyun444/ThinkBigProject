@@ -9,6 +9,7 @@ public class CustomButton : MonoBehaviour,IPointerClickHandler//,IPointerDownHan
     public delegate void ButtonClickFunc();
     private ButtonClickFunc onClick;
     private SpriteRenderer spriteRenderer;
+    public bool useSound = true;
     private void Awake() 
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); 
@@ -23,6 +24,7 @@ public class CustomButton : MonoBehaviour,IPointerClickHandler//,IPointerDownHan
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(useSound)SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         onClick.Invoke();
     }
     // public void OnPointerUp(PointerEventData eventData)

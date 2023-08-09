@@ -56,6 +56,7 @@ public class MouseSketch : MonoBehaviour
         for (int i = 0; i < 3; i++) sketchedDigitsOnFrac[i] = new SketchedDigit();
         drawingCalculator = new DrawingCalculator();
         eraseButton.BindClickEvent(EraseSketch);
+        eraseButton.AddClickEvent(()=>SoundManager.Instance.PlaySoundEffect(Sound.Erase));
     }
     public void SetFracSpaceHelper(Vector3 spaceHelper)
     {

@@ -107,6 +107,7 @@ public class PetDataUI : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             warningText.gameObject.SetActive(true);
         }

@@ -42,10 +42,12 @@ public class MainSketchManger : MonoBehaviour
             mouseSketch.nonDrawingTime = -100000.0f;
             if (magicBookUI.CheckAnswer(predicteValue))
             {
+                SoundManager.Instance.PlaySoundEffect(Sound.MagicSuccess);
                 StartCoroutine(RuneEngrave());
             }
             else
             {
+                SoundManager.Instance.PlaySoundEffect(Sound.MagicFailed);
                 mouseSketch.EraseSketch();
             }
         }

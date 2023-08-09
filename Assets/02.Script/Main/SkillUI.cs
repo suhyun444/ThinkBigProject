@@ -82,6 +82,7 @@ public class SkillUI : MonoBehaviour
     {
         if(SaveManager.Instance.GetCrystalData() < Const.Skill.RESET_COST)
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
             warningText.SetActive(true);
             return;
