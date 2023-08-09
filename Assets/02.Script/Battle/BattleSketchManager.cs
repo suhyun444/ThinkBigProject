@@ -57,10 +57,12 @@ public class BattleSketchManager : MonoBehaviour
             mouseSketch.nonDrawingTime = -100000.0f;
             if (battleManager.CheckAnswer(predicteValue))
             {
+                SoundManager.Instance.PlaySoundEffect(Sound.MagicSuccess);
                 StartCoroutine(RuneEngrave());
             }
             else
             {
+                SoundManager.Instance.PlaySoundEffect(Sound.MagicFailed);
                 mouseSketch.ShowDrawingBoxByType();
                 mouseSketch.EraseSketch();
                 mouseSketch.onAnimation = true;

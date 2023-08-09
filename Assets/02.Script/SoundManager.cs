@@ -2,37 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
 
-    public static SoundManager instance = null;
     [SerializeField] SoundData soundSetting;
 
     [SerializeField] private AudioSource audioSource = null;
     [SerializeField] private AudioSource bgmAudioSource = null;
-    private Dictionary<string, AudioClip> soundEffectDictionary;
+    private Dictionary<Sound, AudioClip> soundEffectDictionary;
     private float sfxVolume = 1.0f;
     private float bgmVolume = 1.0f;
     private bool isStopped = false;
-    public bool isOnTeleport = false;
-    public bool isDead = false;
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            soundEffectDictionary = new Dictionary<string, AudioClip>();
-            InitSoundDictionary();
-            //audioSource.volume = ES3.Load("SFXVolume", 1.0f);
-            sfxVolume = audioSource.volume;
-            //bgmAudioSource.volume = ES3.Load("BGMVolume", 1.0f);
-            bgmVolume = bgmAudioSource.volume;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        soundEffectDictionary = new Dictionary<Sound, AudioClip>();
+        InitSoundDictionary();
+        //audioSource.volume = ES3.Load("SFXVolume", 1.0f);
+        //sfxVolume = audioSource.volume;
+        //bgmAudioSource.volume = ES3.Load("BGMVolume", 1.0f);
+        //bgmVolume = bgmAudioSource.volume;
     }
     private void InitSoundDictionary()
     {
@@ -43,9 +31,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(string name)
+    public void PlaySoundEffect(Sound name)
     {
-        if (isDead) return;
         if (!soundEffectDictionary.ContainsKey(name))
         {
             Debug.LogError($"{name} is not available");
@@ -54,9 +41,8 @@ public class SoundManager : MonoBehaviour
         RandomPitch();
         audioSource.PlayOneShot(soundEffectDictionary[name]);
     }
-    public void PlayBGM(string name)
+    public void PlayBGM(Sound name)
     {
-        if (isOnTeleport) return;
         if (!soundEffectDictionary.ContainsKey(name))
         {
             Debug.LogError($"{name} is not available");
@@ -67,7 +53,6 @@ public class SoundManager : MonoBehaviour
     }
     public void StopBGM()
     {
-        if (isOnTeleport) return;
         StopAllCoroutines();
         isStopped = true;
         StartCoroutine(FadeOutBGMVolume());

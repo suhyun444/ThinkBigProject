@@ -120,6 +120,7 @@ public class CostumeUI : MonoBehaviour
         int curCrystal = SaveManager.Instance.GetCrystalData();
         if(curCrystal < costumeDatas[index].cost)
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             waringTime = 0.7f;
             warningText.SetActive(true);
             return;

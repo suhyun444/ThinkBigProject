@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
     {
         animator.Play(monsterType.ToString() + "Attack");
         yield return new WaitForSeconds(Const.Battle.ATTACK_MOTION_DELAY[(int)monsterType]);
+        SoundManager.Instance.PlaySoundEffect((Sound)System.Enum.Parse(typeof(Sound),monsterType.ToString()+"Attack"));
         player.Hitted();
         yield return new WaitForSeconds(Const.Battle.ATTACK_LEFT_MOTION[(int)monsterType]);
         questionBox.SetProblemText();
@@ -74,6 +75,7 @@ public class Monster : MonoBehaviour
             {
                 Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,1.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
                 spawnCrystal = true;
+                SoundManager.Instance.PlaySoundEffect(Sound.EarnCrystal);
                 battleManager.GetReward();
             }
         }

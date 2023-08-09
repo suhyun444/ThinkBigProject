@@ -14,7 +14,7 @@ public class SoundEditor : Editor
         if (GUILayout.Button("plusSound"))
         {
             soundSetting.count++;
-            soundSetting.nameList.Insert(0, null);
+            soundSetting.nameList.Insert(0, Sound.ButtonClick);
             soundSetting.clipList.Insert(0, null);
         }
         if (GUILayout.Button("minusSound"))
@@ -39,7 +39,7 @@ public class SoundEditor : Editor
             EditorGUILayout.LabelField(i.ToString());
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("name", labelOptions);
-            soundSetting.nameList[i] = EditorGUILayout.TextField(soundSetting.nameList[i], fieldOptions);
+            soundSetting.nameList[i] = (Sound)EditorGUILayout.EnumPopup(soundSetting.nameList[i], fieldOptions);
             EditorGUILayout.LabelField("clip", labelOptions);
             soundSetting.clipList[i] = EditorGUILayout.ObjectField(soundSetting.clipList[i], typeof(AudioClip), false, fieldOptions) as AudioClip;
             EditorGUILayout.EndHorizontal();
