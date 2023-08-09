@@ -36,7 +36,7 @@ struct PauseUI
 }
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    private Player player;
     [SerializeField] private Monster monster;
     [SerializeField] private MathpidManager mathpidManager;
     [SerializeField] private BattleSketchManager sketchManager;
@@ -100,8 +100,6 @@ public class BattleManager : MonoBehaviour
         if(!isInHitAnimation) leftTimeAmount -= (Time.deltaTime / Const.Battle.BATTLE_TIME) * (1.0f - (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Stamina] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
         if(!isEnd && leftTimeAmount < 0)
         {
-            isEnd = true;
-            sketchManager.isEnd = true;
             StartCoroutine(LoadResultScene());
         }
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
@@ -115,7 +113,8 @@ public class BattleManager : MonoBehaviour
     {
         pauseUI.pauseButton.BindClickEvent(PauseOn);
         pauseUI.resumeButton.BindClickEvent(PauseOff);
-        pauseUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
+        pauseUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadResultScene()));
+        pauseUI.exitButton.AddClickEvent(PauseOff);
     }
     private void PauseOn()
     {
@@ -129,6 +128,8 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator LoadResultScene()
     {
+        isEnd = true;
+        sketchManager.isEnd = true;
         earnExpAmount += (int)totalTime * 5;
         yield return new WaitForSeconds(0.1f);
         float time = 0;
@@ -166,7 +167,9 @@ public class BattleManager : MonoBehaviour
         totalCrystal += bonusCrystal;
         resultUI.scoreText.text = Util.SplitIntByComma(score);
         resultUI.comboText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ? "최대 콤보 : " : "Max Combo : ") + maxCombo.ToString();
+        resultUI.comboText.fontSize = ((LanguageManager.Instance.languageType == LanguageType.Korean) ?  7.5f : 5.75f);
         resultUI.accuracyText.text = ((LanguageManager.Instance.languageType == LanguageType.Korean) ? "정확도 : " : "Accuracy : ") + ((problemCount == 0) ? "0" : ((int)((correctCount / problemCount) * 100)).ToString());
+        resultUI.accuracyText.fontSize = ((LanguageManager.Instance.languageType == LanguageType.Korean) ?  7.5f : 5.75f);
         resultUI.crystalText.text = "+" + crystal.ToString();
         resultUI.exitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
         connection.UpdateScore(score);
@@ -186,12 +189,11 @@ public class BattleManager : MonoBehaviour
         float t = 0.5f;
         while (!op.isDone)
         {
-            timer += Time.unscaledDeltaTime / t;
+            timer += Time.deltaTime / t;
             fadeIn.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, timer));
             if (timer >= 1.0f)
             {
                 sketchManager.Dispose();
-                Time.timeScale = 1.0f;
                 op.allowSceneActivation = true;
                 yield break;
             }

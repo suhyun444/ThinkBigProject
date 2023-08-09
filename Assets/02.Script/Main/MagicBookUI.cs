@@ -26,6 +26,7 @@ public class MagicBookUI : MonoBehaviour
     private void Awake() {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(() => ui.gameObject.SetActive(false));
+        exitButton.AddClickEvent(() => Tutorial.Instance.NextPage(3));
         crystalPopupExitButton.BindClickEvent(()=>crystalPopup.SetActive(false));
         gageButton.BindClickEvent(EarnCrystal);
         moveButton[0].BindClickEvent(()=>SetProblem(problemIndex - 1));
@@ -66,6 +67,7 @@ public class MagicBookUI : MonoBehaviour
     }
     private void OpenUI()
     {
+        Tutorial.Instance.Close();
         gageAmount = SaveManager.Instance.GetGageData();
         ui.gameObject.SetActive(true);
         sketchUI.SetActive(true);
@@ -99,11 +101,13 @@ public class MagicBookUI : MonoBehaviour
             moveButton[1].gameObject.SetActive(true);
         else
             moveButton[1].gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(true);
     }
     public void HideButton()
     {
         moveButton[0].gameObject.SetActive(false);
         moveButton[1].gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
     }  
     private void SetEmpty()
     {
@@ -131,7 +135,7 @@ public class MagicBookUI : MonoBehaviour
     }
     private void EarnCrystal()
     {
-        //if(gageAmount < 10) return;
+        if(gageAmount < 10) return;
         gageAmount = 0;
         int earnCrystal = Random.Range(80,110);
         gageMaterial.SetFloat("_FillAmount", (float)gageAmount / 10);

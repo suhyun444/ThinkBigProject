@@ -67,5 +67,7 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     {
         time = 0.0f;
         onPointer = true;
+        Tutorial.Instance.Close();
+        Tutorial.Instance.NextPage(4);
     }
 }

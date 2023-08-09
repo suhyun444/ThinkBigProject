@@ -10,6 +10,6 @@ public class SortingOrder : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update() {
-        spriteRenderer.sortingOrder = 50 - (int)pivot.position.y;
+        spriteRenderer.sortingOrder = 20 - (int)pivot.position.y;
     }
 }

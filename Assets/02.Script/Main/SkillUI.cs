@@ -25,6 +25,7 @@ public class SkillUI : MonoBehaviour
     private void Awake() {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>skillUI.SetActive(false));
+        exitButton.AddClickEvent(()=> Tutorial.Instance.NextPage(0));
         for(int i=0;i<skillInformations.Length;++i)
         {
             skillInformations[i].Init();
@@ -65,6 +66,7 @@ public class SkillUI : MonoBehaviour
     }
     private void OpenUI()
     {
+        Tutorial.Instance.Close();
         warningText.SetActive(false);
         skillUI.SetActive(true);
         levelText.text = "Lv."+SaveManager.Instance.GetLevelData().ToString();

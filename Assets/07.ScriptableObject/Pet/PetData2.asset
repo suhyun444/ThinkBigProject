@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData2
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 21300000, guid: aa45fa4b3ceec3a4a893ec954f8f4d4a, type: 3}
-  lockSprite: {fileID: 0}
+  mainSprite: {fileID: -861929210, guid: 7b5e4f49f3f87194db11e123f75a02c2, type: 3}
   id: 2
-  name: "\uD06C\uB9AC\uC2A4\uD0C8"
-  engName: crystal
-  description: "\uBC18\uC9DD\uC774\uB294 \uD06C\uB9AC\uC2A4\uD0C8"
-  engDescription: bling crystal
-  farmingType: 1
+  name: "\uD638\uBC15"
+  engName: Pumpkin
+  description: "\uC7AD\uC624\uB79C\uD134"
+  engDescription: Jack-O-lantern
+  farmingType: 0
   cost: 0
   requirementKey: Combo
   requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"

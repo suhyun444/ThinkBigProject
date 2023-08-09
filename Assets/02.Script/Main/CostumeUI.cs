@@ -24,6 +24,7 @@ public class CostumeUI : MonoBehaviour
     private void Awake() {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(() => ui.SetActive(false));
+        exitButton.AddClickEvent(() => Tutorial.Instance.NextPage(1));
         moveButton[0].BindClickEvent(()=>StartCoroutine(MoveLeft()));
         moveButton[1].BindClickEvent(()=>StartCoroutine(MoveRight()));
     }
@@ -51,6 +52,7 @@ public class CostumeUI : MonoBehaviour
     }
     private void OpenUI()
     {
+        Tutorial.Instance.Close();
         warningText.SetActive(false);
         index = 0;
         ui.SetActive(true);

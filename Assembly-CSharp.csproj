@@ -63,6 +63,7 @@
      <Compile Include="Assets\02.Script\Battle\Crystal.cs" />
      <Compile Include="Assets\02.Script\Main\SkillUI.cs" />
      <Compile Include="Assets\02.Script\Main\PetCollectionUI.cs" />
+     <Compile Include="Assets\02.Script\Main\Tutorial.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Engine\TexBoxingState.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawRendererFactory.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInput.cs" />
@@ -116,6 +117,7 @@
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ListPool.cs" />
      <Compile Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\02.Script\Battle\HelpUI.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\TabularAtom.cs" />
      <Compile Include="Assets\02.Script\SaveManagerEditor.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXInputCursor.cs" />

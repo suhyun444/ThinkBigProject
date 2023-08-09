@@ -17,9 +17,11 @@ public class PetUI : MonoBehaviour
         petDataUI.petUI = this;
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>ui.SetActive(false));
+        exitButton.AddClickEvent(() => Tutorial.Instance.NextPage(2));
     }
     private void OpenUI()
     {
+        Tutorial.Instance.Close();
         OpenPetCollectionUI(0);
         ui.SetActive(true);
     }

@@ -7,7 +7,8 @@ using System;
 public enum CostumeType
 {
     Magician,
-    Witch
+    Witch,
+    Thief
 }
 public class SaveData
 {
@@ -52,10 +53,12 @@ public enum LanguageType
 }
 public class OptionData
 {
+    public bool endTutorial;
     public float volume;
     public LanguageType languageType; 
     public OptionData()
     {
+        endTutorial = false;
         volume = 1.0f;
         languageType = LanguageType.Korean;
     }
@@ -147,6 +150,14 @@ public class SaveManager : Singleton<SaveManager>
     {
         string mathpidjson = JsonUtility.ToJson(mathpidData);
         File.WriteAllText(Const.Data.MATHPIDDATA_SAVE_PATH, mathpidjson);
+    }
+    public void SetEndTutorialData(bool end)
+    {
+        optionData.endTutorial = end;
+    }
+    public bool GetEndTutorialData()
+    {
+        return optionData.endTutorial;
     }
     public void SetMemberIdData(string memberId)
     {

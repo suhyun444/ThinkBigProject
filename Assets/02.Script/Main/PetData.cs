@@ -11,7 +11,6 @@ public enum FarmingType
 public class PetData : ScriptableObject
 {
     public Sprite mainSprite;
-    public Sprite lockSprite;
     public int id;
     public string name;
     public string engName;

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData1
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 1251743970, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
-  lockSprite: {fileID: 0}
+  mainSprite: {fileID: 2031519813, guid: 6486bb84da082c74094951f95be8d445, type: 3}
   id: 1
-  name: "\uBAAC\uC2A4\uD130"
-  engName: monster
-  description: "\uD56D\uC544\uB9AC"
-  engDescription: jar
+  name: "\uC5EC\uC6B0"
+  engName: Fox
+  description: "\uADC0\uC5EC\uC6B4 \uC5EC\uC6B0"
+  engDescription: Cute Fox
   farmingType: 0
-  cost: 1000
+  cost: 0
   requirementKey: 
   requirementDescription: 
+  engRequirementDescription: 

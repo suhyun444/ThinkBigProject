@@ -18,6 +18,7 @@ public class MainSketchManger : MonoBehaviour
     }
     public void Open()
     {
+        mouseSketch.EraseSketch();
         drawingMaterial.SetFloat("_HighLightedAmount", 1);
         drawingMaterial.SetFloat("_Alpha", 1);
         drawingBookMaterial.SetFloat("_OutLineAlpha", 0);
@@ -49,10 +50,6 @@ public class MainSketchManger : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            mouseSketch.EraseSketch();
-        }
     }
     public void ShowDrawingBoxByType()
     {
