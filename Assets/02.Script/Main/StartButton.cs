@@ -17,7 +17,6 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     private void Awake()         
     {
         progressMateiral.SetFloat("_FillAmount",0.0f);
-        
     }
 
     // Update is called once per frame
@@ -27,20 +26,22 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         {  
             time += Time.deltaTime / needTimeToStart;
             progressMateiral.SetFloat("_FillAmount",time);
-            if(time > 1.1f)
+            if(time > 1.0f)
             {
                 onEnter = true;
+                SoundManager.Instance.PlaySoundEffect(Sound.GameStart);
                 StartCoroutine(LoadBattleScene());
             }
         }
     }
     private IEnumerator LoadBattleScene()
     {
+        yield return new WaitForSeconds(0.2f);
         fadeOut.gameObject.SetActive(true);
         AsyncOperation op = SceneManager.LoadSceneAsync(1);
         op.allowSceneActivation = false;
         float timer = 0.0f;
-        float t = 0.5f;
+        float t = 0.8f;
         while (!op.isDone)
         {
             timer += Time.deltaTime / t;

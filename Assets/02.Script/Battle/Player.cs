@@ -20,11 +20,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float attackMotionDelay;
     [SerializeField] private EffectInfo effectInfo;
     [SerializeField] private GameObject hitParticle;
+    private CostumeType costumeType;
     private Monster monster;
     private Vector3 hitParticlePivot;
 
     private void Awake() {
         animator = GetComponent<Animator>();
+        costumeType = SaveManager.Instance.GetCostumeTypeData();
         hitParticlePivot = hitParticle.transform.position;
     }
     public void Act(bool isCorrect)
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
     }
     public void Hitted()
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.Hitted);
         PlayAnimation(PlayerAnimationState.Hitted);
         hitParticle.transform.localPosition = Random.insideUnitCircle * 0.1f;
         hitParticle.SetActive(true);
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(attackMotionDelay);
         GameObject effect = Instantiate(effectInfo.prefab,effectInfo.position,Quaternion.identity);
+        SoundManager.Instance.PlaySoundEffect((Sound)System.Enum.Parse(typeof(Sound),costumeType.ToString()+"Attack"));
         Destroy(effect,effectInfo.duration);
         yield return new WaitForSeconds(effectInfo.hitDelay);
         monster.Hitted();

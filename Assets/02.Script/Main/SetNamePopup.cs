@@ -60,6 +60,7 @@ public class SetNamePopup : MonoBehaviour
             warningText.SetActive(true);
             return;
         }
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         connection.InitPlayer(inputField.text);
         SaveManager.Instance.SetNameDate(inputField.text);
         SaveManager.Instance.SaveData();
@@ -81,6 +82,7 @@ public class SetNamePopup : MonoBehaviour
             warningText.SetActive(true);
             return;
         }
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         connection.UpdateName(SaveManager.Instance.GetNameData(),inputField.text);
         SaveManager.Instance.SetNameDate(inputField.text);
         SaveManager.Instance.SaveData();

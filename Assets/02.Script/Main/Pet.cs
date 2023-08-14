@@ -41,6 +41,7 @@ public class Pet : MonoBehaviour
     }
     private void EarnCrystal()
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.HarvestPetCrystal);
         int curCrystal = SaveManager.Instance.GetCrystalData();
         SaveManager.Instance.SetCrystalData(curCrystal + 10);
         SaveManager.Instance.SetLastEarnedTimeDate(index,DateTime.Now);

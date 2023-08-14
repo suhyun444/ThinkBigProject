@@ -63,7 +63,8 @@ public class OptionUI : MonoBehaviour
     private void Save()
     {
         SaveManager.Instance.SetVolumeData(soundSlider.GetVolume());
-        //AudioManager에 볼륨 저장
+        SoundManager.Instance.ChangeSFXVolume(soundSlider.GetVolume());
+        SoundManager.Instance.ChangeBGMVolue(soundSlider.GetVolume());
         SaveManager.Instance.SetLanguagueTypeData(languageType);
         LanguageManager.Instance.ChangeLanguage(languageType);
         SaveManager.Instance.SaveOptionData();

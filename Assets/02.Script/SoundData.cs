@@ -14,6 +14,15 @@ public enum Sound
     Erase,
     JarAttack,
     EarnCrystal,
+    Hitted,
+    MonsterDead,
+    Buy,
+    OpenResultPopup,
+    GameStart,
+    WitchAttack,
+    MagicianAttack,
+    HarvestPetCrystal,
+    ThiefAttack
 }
 
 [CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Object/Sound")]

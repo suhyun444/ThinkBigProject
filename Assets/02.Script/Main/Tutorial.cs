@@ -30,7 +30,7 @@ public class Tutorial : Singleton<Tutorial>
     [SerializeField] private GameObject[] infoTexts;
     private int curPage;
     private void Awake() {
-        curPage = 0;
+        curPage = -1;
         if(!SaveManager.Instance.GetEndTutorialData())
         {
             OpenPage(0);
@@ -50,9 +50,12 @@ public class Tutorial : Singleton<Tutorial>
     }
     public void Close()
     {
-        ui.SetActive(false);
-        infoTexts[curPage].SetActive(false);
-        tutorials[curPage].SetDefault();
+        if(curPage >= 0)
+        {
+            ui.SetActive(false);
+            infoTexts[curPage].SetActive(false);
+            tutorials[curPage].SetDefault();
+        }
     }
     public void NextPage(int page)
     {

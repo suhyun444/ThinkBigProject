@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackMotionDelay: 0.25
   effectInfo:
-    position: {x: 4.92, y: -4.18, z: 0}
+    position: {x: 5.54, y: -6.6, z: 0}
     prefab: {fileID: 959632019495259897, guid: 81f32e14d0c91d94c933826b03cefdc6, type: 3}
     duration: 1
     hitDelay: 0.76

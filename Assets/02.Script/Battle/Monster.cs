@@ -63,6 +63,7 @@ public class Monster : MonoBehaviour
         float time = 0;
         particleSystem.Play();
         bool spawnCrystal = false;
+        bool soundPlayed = false;
         while(time < 1)
         {
             time += Time.deltaTime;
@@ -71,9 +72,14 @@ public class Monster : MonoBehaviour
             var emission = particleSystem.emission;
             emission.rateOverTime = Mathf.Lerp(0,100,time / 0.5f);
             yield return null;
+            if(time > 0.1f && !soundPlayed)
+            {
+                soundPlayed = true;
+                SoundManager.Instance.PlaySoundEffect(Sound.MonsterDead);
+            }
             if(time > 0.5f && !spawnCrystal)
             {
-                Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,1.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
+                Instantiate(crystal,transform.position  + new Vector3(Random.Range(-1.0f,0.0f),4.5f + Random.Range(-0.2f,0.2f),0),Quaternion.identity);
                 spawnCrystal = true;
                 SoundManager.Instance.PlaySoundEffect(Sound.EarnCrystal);
                 battleManager.GetReward();
@@ -88,8 +94,8 @@ public class Monster : MonoBehaviour
         animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
         spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);
-        Vector3 start = new Vector3(8.74f,-8.12f,0.0f);
-        Vector3 end = new Vector3(0,-0.4f,0.0f);
+        Vector3 start = new Vector3(9.82f,-3.28f,0.0f);
+        Vector3 end = new Vector3(0,0.4f,0.0f);
         spriteRenderer.transform.localPosition = start;
         float time = 0;
         float t = 0.25f;

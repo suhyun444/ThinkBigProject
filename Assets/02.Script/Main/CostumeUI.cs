@@ -112,6 +112,7 @@ public class CostumeUI : MonoBehaviour
     }
     private void SelectMethod()
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         SaveManager.Instance.SetCostumeTypeData(costumeDatas[index].type);
         SaveManager.Instance.SaveData();
         mainManager.ChangePlayerCostime(costumeDatas[index].type);
@@ -127,6 +128,7 @@ public class CostumeUI : MonoBehaviour
             warningText.SetActive(true);
             return;
         }
+        SoundManager.Instance.PlaySoundEffect(Sound.Buy);
         curCrystal -= costumeDatas[index].cost;
         SaveManager.Instance.AddHavingCostumeList(index);
         SaveManager.Instance.SaveData();

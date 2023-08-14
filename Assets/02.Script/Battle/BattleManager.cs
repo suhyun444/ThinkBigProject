@@ -58,6 +58,7 @@ public class BattleManager : MonoBehaviour
     private int totalCrystal;
     private int crystal = 0;
     private bool isEnd = false;
+    private bool onLoadMainScene = false;
     private float correctCount = 0;
     private float problemCount = 0;
     private void Awake() {
@@ -182,6 +183,9 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator LoadMainScene()
     {
+        if(onLoadMainScene)yield break;
+        onLoadMainScene = true;
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         fadeIn.gameObject.SetActive(true);
         AsyncOperation op = SceneManager.LoadSceneAsync(0);
         op.allowSceneActivation = false;

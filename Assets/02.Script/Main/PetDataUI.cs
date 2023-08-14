@@ -100,6 +100,7 @@ public class PetDataUI : MonoBehaviour
         int curCrystal = SaveManager.Instance.GetCrystalData();
         if(curCrystal >= petUI.petDatas[petId].cost)
         {
+            SoundManager.Instance.PlaySoundEffect(Sound.Buy);
             SaveManager.Instance.SetCrystalData(curCrystal - petUI.petDatas[petId].cost);
             SaveManager.Instance.AddHavingPetList(petId);
             SaveManager.Instance.SaveData();
@@ -121,6 +122,7 @@ public class PetDataUI : MonoBehaviour
     }
     private void OpenSlotUI()
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         List<int> petList = SaveManager.Instance.GetPetList();
         for(int i=0;i<4;i++)
         {
@@ -135,6 +137,7 @@ public class PetDataUI : MonoBehaviour
     }
     private void Despawn()
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         List<int> petList = SaveManager.Instance.GetPetList();
         for (int i = 0; i < 4; i++)
         {

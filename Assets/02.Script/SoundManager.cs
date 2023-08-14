@@ -17,10 +17,10 @@ public class SoundManager : Singleton<SoundManager>
     {
         soundEffectDictionary = new Dictionary<Sound, AudioClip>();
         InitSoundDictionary();
-        //audioSource.volume = ES3.Load("SFXVolume", 1.0f);
-        //sfxVolume = audioSource.volume;
-        //bgmAudioSource.volume = ES3.Load("BGMVolume", 1.0f);
-        //bgmVolume = bgmAudioSource.volume;
+        audioSource.volume = SaveManager.Instance.GetVolumeData();
+        sfxVolume = audioSource.volume;
+        bgmAudioSource.volume = SaveManager.Instance.GetVolumeData();
+        bgmVolume = bgmAudioSource.volume;
     }
     private void InitSoundDictionary()
     {
@@ -95,20 +95,17 @@ public class SoundManager : Singleton<SoundManager>
     }
     public void RandomPitch()
     {
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
     }
     public void ChangeSFXVolume(float value)
     {
-        Debug.Log(value);
         audioSource.volume = value;
         sfxVolume = value;
-        //ES3.Save("SFXVolume", value);
     }
     public void ChangeBGMVolue(float value)
     {
-        if (!isStopped) bgmAudioSource.volume = value   ;
+        bgmAudioSource.volume = value;
         bgmVolume = value;
-        //ES3.Save("BGMVolume", value);
     }
 
 }

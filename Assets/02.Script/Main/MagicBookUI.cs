@@ -130,6 +130,7 @@ public class MagicBookUI : MonoBehaviour
     }
     public void CorrectProblem()
     {
+        ShowButton();
         StartCoroutine(IncreaseGage());
         RemoveProblem(problemIndex);
     }

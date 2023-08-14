@@ -87,6 +87,7 @@ public class SkillUI : MonoBehaviour
             warningText.SetActive(true);
             return;
         }
+        SoundManager.Instance.PlaySoundEffect(Sound.Buy);
         SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() - 1000);
         SaveManager.Instance.ResetSkillPoint();
         SaveManager.Instance.SaveData();

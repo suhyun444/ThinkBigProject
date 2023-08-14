@@ -29,7 +29,10 @@ public class FlexibleButton : MonoBehaviour,IPointerClickHandler,IPointerDownHan
     public void OnPointerClick(PointerEventData eventData)
     {
         if(isClicked)
+        {
+            SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
             onClick.Invoke();
+        }
     }
     // public void OnPointerUp(PointerEventData eventData)
     // {
