@@ -19,6 +19,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.PlayBGM(Sound.MainBGM);
         Application.targetFrameRate = 60;
         StartCoroutine(FadeIn());
         levelText.text = SaveManager.Instance.GetLevelData().ToString();
@@ -79,11 +80,15 @@ public class MainManager : MonoBehaviour
     }
     private void SpawnPet()
     {
+        PetPosition petPosition = GameObject.FindObjectOfType<PetPosition>();
         List<int> petList = SaveManager.Instance.GetPetList();
         for(int i=0;i<petList.Count;i++)
         {
             if(petList[i] != -1)
-                InstantitePetObject(i,petList[i]);
+            {
+                if(petPosition != null) InstantitePetObject(i, petList[i],petPosition.petPositions[i]);
+                else InstantitePetObject(i,petList[i],Vector3.zero);
+            }
         }
     }
     public void ChangePet(int index,int id)
@@ -93,12 +98,13 @@ public class MainManager : MonoBehaviour
         if(pets[index] != null)
             Destroy(pets[index].gameObject);
         if(id != -1)
-            InstantitePetObject(index,id);
+            InstantitePetObject(index,id, Vector3.zero);
     }
-    private void InstantitePetObject(int index,int id)
+    private void InstantitePetObject(int index,int id,Vector3 position)
     {
         GameObject petObject = Resources.Load<GameObject>("Pets/Pet" + id.ToString());
-        Vector3 spawnPosition = GetSpawnPosition();
+        Vector3 spawnPosition = position;
+        if(position == Vector3.zero) spawnPosition = GetSpawnPosition();
         pets[index] = Instantiate(petObject, spawnPosition, Quaternion.identity).GetComponent<Pet>();
         pets[index].index = index;
     }

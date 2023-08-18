@@ -96,6 +96,7 @@ public class SaveManager : Singleton<SaveManager>
     }
     private void Init()
     {
+        InitSingleTon(this);
         if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH) && File.Exists(Const.Data.OPTIONDATA_SAVE_PATH) && File.Exists(Const.Data.MATHPIDDATA_SAVE_PATH))
         {
             string userDataLoadJson = File.ReadAllText(Const.Data.USERDATA_SAVE_PATH);

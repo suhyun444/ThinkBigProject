@@ -22,11 +22,12 @@ public class PetUI : MonoBehaviour
     private void OpenUI()
     {
         Tutorial.Instance.Close();
-        OpenPetCollectionUI(0);
+        OpenPetCollectionUI();
         ui.SetActive(true);
     }
-    private void OpenPetCollectionUI(int page)
+    private void OpenPetCollectionUI()
     {
+        petCollectionUI.Open();
         petDataUI.gameObject.SetActive(false);
         petCollectionUI.gameObject.SetActive(true);
     }

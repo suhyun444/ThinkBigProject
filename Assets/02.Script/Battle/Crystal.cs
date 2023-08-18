@@ -14,6 +14,15 @@ public class Crystal : MonoBehaviour
     {
         StartCoroutine(Move());        
     }
+    public void ChangeText(string s)
+    {
+        text.text = s;
+    }
+    public void ChangeSortingOrder(int order)
+    {
+        sr.sortingOrder = order;
+        text.sortingOrder = order;
+    }
     private IEnumerator Move()
     {
         Vector3 start = transform.position;

@@ -31,6 +31,9 @@ public class Tutorial : Singleton<Tutorial>
     private int curPage;
     private void Awake() {
         curPage = -1;
+    }
+    public void StartTutorial()
+    {
         if(!SaveManager.Instance.GetEndTutorialData())
         {
             OpenPage(0);

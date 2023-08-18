@@ -13,7 +13,7 @@ public static class Const
     }
     public static class Skill
     {
-        public static float UPGRADE_BUTTON_DELAY = 0.25f;
+        public static float UPGRADE_BUTTON_DELAY = 0.2f;
         public static int RESET_COST = 1000;
         public static float[] EFFECT_INCREASE_AMOUNT = {0.3f,0.66f,0.33f,1.5f,0.33f,0.15f,0.2f};
         public static readonly int[] LEVEL_REQUIREMENT_EXP = {2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,

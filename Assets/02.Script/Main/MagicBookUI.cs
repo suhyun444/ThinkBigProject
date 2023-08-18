@@ -137,6 +137,7 @@ public class MagicBookUI : MonoBehaviour
     private void EarnCrystal()
     {
         if(gageAmount < 10) return;
+        SoundManager.Instance.PlaySoundEffect(Sound.MagicBookReward);
         gageAmount = 0;
         int earnCrystal = Random.Range(80,110);
         gageMaterial.SetFloat("_FillAmount", (float)gageAmount / 10);

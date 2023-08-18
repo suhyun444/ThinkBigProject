@@ -14,13 +14,11 @@ public class RankingUI : MonoBehaviour
     [SerializeField] private TextMeshPro myName;
     [SerializeField] private TextMeshPro myScore;
     [SerializeField] private CustomButton exitButton;
-    AWSConnection awsConnection;
     // Start is called before the first frame update
     void Awake()
     {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>ui.SetActive(false));
-        awsConnection = GameObject.FindObjectOfType<AWSConnection>();
         UpdateRanking();
     }
     private void OpenUI()
@@ -30,7 +28,7 @@ public class RankingUI : MonoBehaviour
     }
     private void UpdateRanking()
     {
-        List<Ranking> rankings = awsConnection.GetRankingList();
+        List<Ranking> rankings = AWSConnection.Instance.GetRankingList();
         rankings.Sort(new RankingComparer());
         for(int i=0;i<10;++i)
         {

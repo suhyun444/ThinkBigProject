@@ -22,7 +22,10 @@ public enum Sound
     WitchAttack,
     MagicianAttack,
     HarvestPetCrystal,
-    ThiefAttack
+    ThiefAttack,
+    MagicBookReward,
+    BattleBGM,
+    MainBGM
 }
 
 [CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Object/Sound")]

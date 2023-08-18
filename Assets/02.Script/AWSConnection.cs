@@ -25,27 +25,25 @@ public class RankingComparer : IComparer<Ranking>
         else return 1;
     }
 }
-public class AWSConnection : MonoBehaviour
+public class AWSConnection : Singleton<AWSConnection>
 {
     public string poolID;
     DynamoDBContext context;
     AmazonDynamoDBClient client;
     private CognitoAWSCredentials credentials;
     private void Awake() {
+        InitSingleTon(this);
         credentials = new CognitoAWSCredentials(poolID, RegionEndpoint.APNortheast2);
         client = new AmazonDynamoDBClient(credentials,RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(client);
     }
     public bool FindPlayer(string name)
     {
-        Debug.Log(name);
         var result = context.LoadAsync<Ranking>(name);
         if(result.Result != null)
         {
-            Debug.Log("Already");
             return true;
         }
-        Debug.Log("Empty");
         return false;
     }
     public void UpdateName(string prevName, string name)

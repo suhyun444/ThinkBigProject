@@ -14,6 +14,7 @@ public class SkillUI : MonoBehaviour
     [SerializeField] private CustomButton resetPopupAcceptButton;
     [SerializeField] private CustomButton resetPopupExitButton;
     [SerializeField] private GameObject warningText;
+    [SerializeField] private GameObject exclamationMark;
 
     [SerializeField] private GameObject buttonParents;
     [SerializeField] private float minY;
@@ -37,6 +38,8 @@ public class SkillUI : MonoBehaviour
     }
     void Update()
     {
+        if(SaveManager.Instance.GetUsedSkillPoint() < (SaveManager.Instance.GetLevelData() + 1) * 5)exclamationMark.SetActive(true);
+        else exclamationMark.SetActive(false);
         warningTime -= Time.deltaTime;
         if(warningTime < 0.0f)warningText.SetActive(false);
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));

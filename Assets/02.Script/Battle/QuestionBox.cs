@@ -37,12 +37,11 @@ public class QuestionBox : MonoBehaviour
     }
     public void SetCorrectText(float solveTime)
     {
-        Debug.Log("Time : " + solveTime.ToString());
-        if(solveTime < 5)
+        if(solveTime < 2.5f)
         {
             this.question.text = "PERFECT";
         }
-        else if(solveTime < 7)
+        else if(solveTime < 4)
         {
             this.question.text = "GREAT";
         }
@@ -75,7 +74,6 @@ public class QuestionBox : MonoBehaviour
     }
     private string SetQuestionVerticalToHorizontal(string q)
     {
-        Debug.Log(q);
         q = q.Replace("\\times", "*").Replace("&","").Replace("\\","").Replace(" ","");
         char oper = ' ';
         if(q.Contains('-'))

@@ -26,6 +26,7 @@ public class PressingButton : MonoBehaviour, IPointerClickHandler, IPointerDownH
             pressingTime += Time.deltaTime;
             if (pressingTime >= Const.Skill.UPGRADE_BUTTON_DELAY)
             {
+                SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
                 pressingTime = 0.0f;
                 onClick.Invoke();
                 isPressed = true;
@@ -49,7 +50,10 @@ public class PressingButton : MonoBehaviour, IPointerClickHandler, IPointerDownH
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!isPressed)
+        {
+            SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
             onClick.Invoke();
+        }
     }
     public void OnPointerUp(PointerEventData eventData)
     {

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: PetData6
   m_EditorClassIdentifier: 
   mainSprite: {fileID: -1687811880, guid: 87bd5b7e6bec9784da5f65251e6ee372, type: 3}
-  lockSprite: {fileID: 0}
   id: 6
   name: "\uB9C8\uBC95"
   engName: magic
   description: "\uB9C8\uBC95\uC11C"
   engDescription: magicbook
   farmingType: 0
-  cost: 0
+  cost: 1000
   requirementKey: 
   requirementDescription: 
+  engRequirementDescription: 

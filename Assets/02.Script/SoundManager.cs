@@ -15,11 +15,12 @@ public class SoundManager : Singleton<SoundManager>
     private bool isStopped = false;
     private void Awake()
     {
+        InitSingleTon(this);
         soundEffectDictionary = new Dictionary<Sound, AudioClip>();
         InitSoundDictionary();
         audioSource.volume = SaveManager.Instance.GetVolumeData();
         sfxVolume = audioSource.volume;
-        bgmAudioSource.volume = SaveManager.Instance.GetVolumeData();
+        bgmAudioSource.volume = 0.3f * SaveManager.Instance.GetVolumeData();
         bgmVolume = bgmAudioSource.volume;
     }
     private void InitSoundDictionary()
@@ -69,7 +70,7 @@ public class SoundManager : Singleton<SoundManager>
         float start = 0;
         float end = bgmVolume;
         float time = 0;
-        float t = 2;
+        float t = 1.0f;
         while(time < 1)
         {
             time += Time.deltaTime / t;
@@ -84,7 +85,7 @@ public class SoundManager : Singleton<SoundManager>
         float start = bgmVolume;
         float end = 0;
         float time = 0;
-        float t = 1.5f;
+        float t = 0.8f;
         while (time < 1)
         {
             time += Time.deltaTime / t;

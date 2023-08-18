@@ -55,6 +55,10 @@ public class MouseSketch : MonoBehaviour
         ai.Init();
         for (int i = 0; i < 3; i++) sketchedDigitsOnFrac[i] = new SketchedDigit();
         drawingCalculator = new DrawingCalculator();
+        Camera camera = Instantiate(cameraObject, Vector3.zero, Quaternion.identity).GetComponent<Camera>();
+        drawingCalculator.BindCamera(camera);
+        ai.Calc(drawingCalculator);
+        Destroy(camera.gameObject);
         eraseButton.BindClickEvent(EraseSketch);
         eraseButton.AddClickEvent(()=>SoundManager.Instance.PlaySoundEffect(Sound.Erase));
     }

@@ -38,7 +38,8 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     {
         yield return new WaitForSeconds(0.2f);
         fadeOut.gameObject.SetActive(true);
-        AsyncOperation op = SceneManager.LoadSceneAsync(1);
+        SoundManager.Instance.StopBGM();
+        AsyncOperation op = SceneManager.LoadSceneAsync(2);
         op.allowSceneActivation = false;
         float timer = 0.0f;
         float t = 0.8f;

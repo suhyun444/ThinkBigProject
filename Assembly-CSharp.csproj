@@ -175,6 +175,7 @@
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Internal\ITEXDraw.cs" />
      <Compile Include="Assets\09.assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXScroll.cs" />
+     <Compile Include="Assets\02.Script\PetPosition.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\Atom\BigOperatorAtom.cs" />
      <Compile Include="Assets\02.Script\Main\temporary.cs" />
      <Compile Include="Assets\09.assets\Plugins\TEXDraw\Core\TEXPreferenceUtility.cs" />
@@ -231,6 +232,7 @@
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\10.Sound\ArcadeGameBGM#3\ReadMe.txt" />
      <None Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\09.assets\Plugins\TEXDraw\Script\TEXDrawShaderDefault.shader" />
      <None Include="Assets\09.assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />

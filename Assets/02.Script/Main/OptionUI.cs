@@ -8,6 +8,7 @@ public class OptionUI : MonoBehaviour
     [SerializeField] private GameObject optionUI;
     [SerializeField] private CustomButton exitButton;
     [SerializeField] private CustomButton acceptButton;
+    [SerializeField] private CustomButton resetButton;
     [SerializeField] private SoundSlider soundSlider;
     [SerializeField] private CustomButton languageButton;
     [SerializeField] private TextMeshPro curLanguage;
@@ -21,6 +22,8 @@ public class OptionUI : MonoBehaviour
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>optionUI.SetActive(false));
         acceptButton.BindClickEvent(Save);
+        resetButton.BindClickEvent(()=>SaveManager.Instance.InitData());
+        resetButton.AddClickEvent(()=>Application.Quit());
         languageButton.BindClickEvent(()=>SetActiveComboBox(true));
         languageButton.AddClickEvent(()=>SettingComboBox());
         closeComboBoxButton.BindClickEvent(()=>SetActiveComboBox(false));

@@ -9,7 +9,6 @@ public class PetCollectionUI : MonoBehaviour
     [SerializeField] private GameObject petCollectionUI;
     [SerializeField] private GameObject buttonParents;
     [SerializeField] private GameObject petButton;
-    private int page = 0;
     [SerializeField] private GameObject handle;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
@@ -20,6 +19,10 @@ public class PetCollectionUI : MonoBehaviour
     private bool firstDrag = true;
     private void Awake() {
         InstantiatePetButtons();
+    }
+    public void Open()
+    {
+        onDrag = false;
     }
     // Update is called once per frame
     void Update()

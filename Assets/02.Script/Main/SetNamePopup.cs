@@ -6,7 +6,6 @@ using TMPro;
 public class SetNamePopup : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
-    [SerializeField] private AWSConnection connection;
     [SerializeField] private CustomButton acceptButton;
     [SerializeField] private CustomButton updateButton;
     [SerializeField] private CustomButton exitButton;
@@ -53,7 +52,7 @@ public class SetNamePopup : MonoBehaviour
             enterNameWarningText.SetActive(true);
             return;
         }
-        if(connection.FindPlayer(inputField.text))
+        if(AWSConnection.Instance.FindPlayer(inputField.text))
         {
             SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
@@ -61,10 +60,11 @@ public class SetNamePopup : MonoBehaviour
             return;
         }
         SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
-        connection.InitPlayer(inputField.text);
+        AWSConnection.Instance.InitPlayer(inputField.text);
         SaveManager.Instance.SetNameDate(inputField.text);
         SaveManager.Instance.SaveData();
         ui.SetActive(false);
+        Tutorial.Instance.StartTutorial();
     }
     public void UpdateName()
     {
@@ -75,7 +75,7 @@ public class SetNamePopup : MonoBehaviour
             enterNameWarningText.SetActive(true);
             return;
         }
-        if (connection.FindPlayer(inputField.text))
+        if (AWSConnection.Instance.FindPlayer(inputField.text))
         {
             SoundManager.Instance.PlaySoundEffect(Sound.Warning);
             warningTime = 0.7f;
@@ -83,7 +83,7 @@ public class SetNamePopup : MonoBehaviour
             return;
         }
         SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
-        connection.UpdateName(SaveManager.Instance.GetNameData(),inputField.text);
+        AWSConnection.Instance.UpdateName(SaveManager.Instance.GetNameData(),inputField.text);
         SaveManager.Instance.SetNameDate(inputField.text);
         SaveManager.Instance.SaveData();
         ui.SetActive(false);
