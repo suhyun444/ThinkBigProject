@@ -8,8 +8,8 @@ public enum SkillType
 {
     Stamina,
     Defense,
-    Combo,
     Crystal,
+    Combo,
     Speed,
     Kill,
     Exp,
@@ -26,6 +26,7 @@ public class SkillInformation : MonoBehaviour
     [SerializeField] private PressingButton upgradeButton;
     public void Init()
     {
+        upgradeButton.skillType = (int)skillType;
         upgradeButton.BindClickEvent(UpgradeSkill);
         BindInformation();
         nameText.fontMaterial.SetFloat("_Stencil", 1);
@@ -37,11 +38,12 @@ public class SkillInformation : MonoBehaviour
     }
     public bool CheckHasSkillPoint()
     {
-        return (((SaveManager.Instance.GetLevelData() + 1)* 5) - SaveManager.Instance.GetUsedSkillPoint()) > 0;
+        return (((SaveManager.Instance.GetLevelData() + 1)* 5 + SaveManager.Instance.GetBoughtSkillPoint()) - SaveManager.Instance.GetUsedSkillPoint()) > 0;
     }
     public void UpgradeSkill()
     {
         if(!CheckHasSkillPoint())return;
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         SaveManager.Instance.UseSkillPoint(skillType);
         SaveManager.Instance.SaveData();
         BindInformation();

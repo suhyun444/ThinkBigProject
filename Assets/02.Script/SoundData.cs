@@ -25,6 +25,8 @@ public enum Sound
     ThiefAttack,
     MagicBookReward,
     BattleBGM,
+    GhostAttack,
+    BookAttack,
     MainBGM
 }
 

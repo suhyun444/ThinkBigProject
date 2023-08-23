@@ -10,7 +10,15 @@ TagManager:
   - PetSlider
   - Handle
   - SkillSlider
-  - SkillUpgradeButton
+  - SkillUpgradeButton0
+  - SkillUpgradeButton1
+  - SkillUpgradeButton2
+  - SkillUpgradeButton3
+  - SkillUpgradeButton4
+  - SkillUpgradeButton5
+  - SkillUpgradeButton6
+  - Handle0
+  - Handle1
   layers:
   - Default
   - TransparentFX

@@ -14,15 +14,32 @@ public class RankingUI : MonoBehaviour
     [SerializeField] private TextMeshPro myName;
     [SerializeField] private TextMeshPro myScore;
     [SerializeField] private CustomButton exitButton;
+    [SerializeField] private GameObject warningText;
+    float warningTime = 0;
     // Start is called before the first frame update
     void Awake()
     {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
         exitButton.BindClickEvent(()=>ui.SetActive(false));
-        UpdateRanking();
+        if (Application.internetReachability != NetworkReachability.NotReachable) UpdateRanking();
+    }
+    private void Update() {
+        warningTime -= Time.deltaTime;
+        if(warningTime <= 0.0f)
+        {
+            warningText.SetActive(false);
+        }
     }
     private void OpenUI()
     {
+        if (Application.internetReachability == NetworkReachability.NotReachable) 
+        {
+            warningTime = 0.7f;
+            warningText.SetActive(true);
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
+            return;
+        }
+        SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
         ui.SetActive(true);
         UpdateRanking();
     }

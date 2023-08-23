@@ -7,6 +7,8 @@ using System.Linq;
 public enum MonsterType
 {
     Jar,
+    Ghost,
+    Book,
     End
 }
 public class Monster : MonoBehaviour
@@ -18,6 +20,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject crystal;
+    [SerializeField] private Texture2D[] monsterTexture;
     private CameraShaking cameraShaking;
     private Player player;
     private MonsterType monsterType;
@@ -26,6 +29,7 @@ public class Monster : MonoBehaviour
         dissolveMaterialBlock = new MaterialPropertyBlock();
         cameraShaking = Camera.main.GetComponent<CameraShaking>();
         spriteRenderer.GetPropertyBlock(dissolveMaterialBlock);
+        StartCoroutine(Spawn());
     }
     public void Act(bool isCorrect,float solveTime)
     {
@@ -91,6 +95,7 @@ public class Monster : MonoBehaviour
     private IEnumerator Spawn()
     {
         monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
+        dissolveMaterialBlock.SetTexture("_MainTex",monsterTexture[(int)monsterType]);
         animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);
         spriteRenderer.SetPropertyBlock(dissolveMaterialBlock);

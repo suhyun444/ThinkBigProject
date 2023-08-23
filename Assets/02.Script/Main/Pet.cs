@@ -26,7 +26,7 @@ public class Pet : MonoBehaviour
     {
         DateTime now = DateTime.Now;
         TimeSpan ts = now - lastEarnedTime;
-        if(ts.TotalSeconds > 10.0f)
+        if(ts.TotalSeconds >= 600.0f)
         {
             earnedButton.gameObject.SetActive(true);
         }
@@ -65,6 +65,14 @@ public class Pet : MonoBehaviour
             }
 
         }
+    }
+    public bool GetDirection()
+    {
+        return isLeft;
+    }
+    public void SetDirection(bool isLeft)
+    {
+        this.isLeft = isLeft;
     }
     private void ChangeViewDirection(int direction)
     {

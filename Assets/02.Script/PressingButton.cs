@@ -9,6 +9,7 @@ public class PressingButton : MonoBehaviour, IPointerClickHandler, IPointerDownH
     public delegate void ButtonClickFunc();
     private ButtonClickFunc onClick;
     private SpriteRenderer spriteRenderer;
+    public int skillType;
     public bool isPressed = false;
     private bool isClicked = false;
     float pressingTime = 0.0f;
@@ -21,12 +22,11 @@ public class PressingButton : MonoBehaviour, IPointerClickHandler, IPointerDownH
         if (!isClicked) return;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
         RaycastHit2D raycastHit2D = Physics2D.Raycast(mousePosition, transform.forward, 999);
-        if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("SkillUpgradeButton"))
+        if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("SkillUpgradeButton" + skillType.ToString()))
         {
             pressingTime += Time.deltaTime;
             if (pressingTime >= Const.Skill.UPGRADE_BUTTON_DELAY)
             {
-                SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
                 pressingTime = 0.0f;
                 onClick.Invoke();
                 isPressed = true;
@@ -51,7 +51,6 @@ public class PressingButton : MonoBehaviour, IPointerClickHandler, IPointerDownH
     {
         if (!isPressed)
         {
-            SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
             onClick.Invoke();
         }
     }

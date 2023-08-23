@@ -40,6 +40,7 @@ public class PetUI : MonoBehaviour
     public void ClosePetDataUI()
     {
         petDataUI.gameObject.SetActive(false);
+        petCollectionUI.Open();
         petCollectionUI.gameObject.SetActive(true);
     }
     

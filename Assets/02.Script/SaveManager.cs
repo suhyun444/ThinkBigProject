@@ -17,6 +17,7 @@ public class SaveData
     public List<int> havingCostumeList;
     public int level;
     public int usedSkillPoint;
+    public int boughtSkillPoint;
     public List<int> skillLevels;
     public int expAmount;
     public int crystal;
@@ -31,6 +32,7 @@ public class SaveData
         havingCostumeList.Add(0);
         level = 0;
         usedSkillPoint = 0;
+        boughtSkillPoint = 0;
         expAmount = 0;
         crystal = 0;
         skillLevels = new List<int>((int)SkillType.End);
@@ -54,12 +56,16 @@ public enum LanguageType
 public class OptionData
 {
     public bool endTutorial;
+    public bool endBattleTutorial;
     public float volume;
+    public float bgmVolume;
     public LanguageType languageType; 
     public OptionData()
     {
         endTutorial = false;
+        endBattleTutorial = false;
         volume = 1.0f;
+        bgmVolume = 1.0f;
         languageType = LanguageType.Korean;
     }
 }
@@ -92,10 +98,6 @@ public class SaveManager : Singleton<SaveManager>
     private OptionData optionData;
     private MathpidData mathpidData;
     private void Awake() {
-        Init();
-    }
-    private void Init()
-    {
         InitSingleTon(this);
         if (File.Exists(Const.Data.USERDATA_SAVE_PATH) && File.Exists(Const.Data.MAGICBOOKDATA_SAVE_PATH) && File.Exists(Const.Data.OPTIONDATA_SAVE_PATH) && File.Exists(Const.Data.MATHPIDDATA_SAVE_PATH))
         {
@@ -119,17 +121,17 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void InitData()
     {
-        SaveData initData = new SaveData();
-        string json = JsonUtility.ToJson(initData);
+        data = new SaveData();
+        string json = JsonUtility.ToJson(data);
         File.WriteAllText(Const.Data.USERDATA_SAVE_PATH, json);
-        MagicBookData initMagicBookData = new MagicBookData();
-        string magicBookJson = JsonUtility.ToJson(initMagicBookData);
+        magicBookData = new MagicBookData();
+        string magicBookJson = JsonUtility.ToJson(magicBookData);
         File.WriteAllText(Const.Data.MAGICBOOKDATA_SAVE_PATH,magicBookJson);
-        OptionData initOptionData = new OptionData();
-        string optionJson = JsonUtility.ToJson(initOptionData);
+        optionData = new OptionData();
+        string optionJson = JsonUtility.ToJson(optionData);
         File.WriteAllText(Const.Data.OPTIONDATA_SAVE_PATH, optionJson);
-        MathpidData initMathpidData = new MathpidData();
-        string mathpidjson = JsonUtility.ToJson(initMathpidData);
+        mathpidData = new MathpidData();
+        string mathpidjson = JsonUtility.ToJson(mathpidData);
         File.WriteAllText(Const.Data.MATHPIDDATA_SAVE_PATH,mathpidjson);
     }
     public void SaveData()
@@ -152,6 +154,14 @@ public class SaveManager : Singleton<SaveManager>
         string mathpidjson = JsonUtility.ToJson(mathpidData);
         File.WriteAllText(Const.Data.MATHPIDDATA_SAVE_PATH, mathpidjson);
     }
+    public void BuySkillPoint()
+    {
+        ++data.boughtSkillPoint;
+    }
+    public int GetBoughtSkillPoint()
+    {
+        return data.boughtSkillPoint;
+    }
     public void SetEndTutorialData(bool end)
     {
         optionData.endTutorial = end;
@@ -159,6 +169,14 @@ public class SaveManager : Singleton<SaveManager>
     public bool GetEndTutorialData()
     {
         return optionData.endTutorial;
+    }
+    public void SetEndBattleTutorialData(bool end)
+    {
+        optionData.endBattleTutorial = end;
+    }
+    public bool GetEndBattleTutorialData()
+    {
+        return optionData.endBattleTutorial;
     }
     public void SetMemberIdData(string memberId)
     {
@@ -200,13 +218,21 @@ public class SaveManager : Singleton<SaveManager>
     {
         return data.havingCostumeList;
     }
-    public void SetVolumeData(float volume)
+    public void SetSFXVolumeData(float volume)
     {
         optionData.volume = volume;
     }
-    public float GetVolumeData()
+    public float GetSFXVolumeData()
     {
         return optionData.volume;
+    }
+    public void SetBGMVolumeData(float volume)
+    {
+        optionData.bgmVolume = volume;
+    }
+    public float GetBGMVolumeData()
+    {
+        return optionData.bgmVolume;
     }
     public void SetLanguagueTypeData(LanguageType languageType)
     {

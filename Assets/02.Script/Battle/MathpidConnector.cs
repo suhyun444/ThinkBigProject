@@ -41,6 +41,14 @@ public class MathpidConnector : MonoBehaviour
     public UnityEvent onGetLearning;
     #endregion
 
+    public string GetMBR_ID()
+    {
+        return strMBR_ID;
+    }
+    public string GetAutorization()
+    {
+        return strAuthorization;
+    }
     private void Awake()
     {
         if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -130,10 +138,6 @@ public class MathpidConnector : MonoBehaviour
         request.sid = _sid;                 // ���� ID
         request.slvTime = _nQstDelayTime;//5000;
 
-        //진단평가 8문제 푼 후 저장
-        SaveManager.Instance.SetAuthorizationData(strAuthorization);
-        SaveManager.Instance.SetMemberIdData(strMBR_ID);
-        SaveManager.Instance.SaveMathpidData();
 
         yield return StartCoroutine(UWR_Post<Request_DN_Progress, DN_Response>(request, "https://prd-brs-relay-model.mathpid.com/api/v1/contest/diagnosis/progress", true));
 

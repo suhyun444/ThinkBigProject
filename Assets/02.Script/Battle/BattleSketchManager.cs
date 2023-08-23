@@ -28,10 +28,10 @@ public class BattleSketchManager : MonoBehaviour
     private void InitFracLine()
     {
         mouseSketch.SetFracSpaceHelper(drawingCanvas.position);
-        float ratio = (drawingCanvas.lossyScale.x - 11) / (13.23f - 11);
-        fracVerticalLine.SetPosition(0,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y - Mathf.Lerp(2.25f,2.75f,ratio),0));
-        fracVerticalLine.SetPosition(1,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y + Mathf.Lerp(2.25f,2.75f,ratio),0));
-        float centerX = Mathf.Lerp(-1.0f,-4.5f,ratio);
+        float ratio = (drawingCanvas.lossyScale.x - 11) / (14.07f - 11);
+        fracVerticalLine.SetPosition(0,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y - Mathf.Lerp(2.25f,2.85f,ratio),0));
+        fracVerticalLine.SetPosition(1,new Vector3(drawingCanvas.position.x,drawingCanvas.position.y + Mathf.Lerp(2.25f,2.85f,ratio),0));
+        float centerX = Mathf.Lerp(-1.0f,-6.1f,ratio);
         fracHorizontalLine.SetPosition(0, new Vector3(centerX - Mathf.Lerp(1.8f,2.5f,ratio), drawingCanvas.position.y, 0));
         fracHorizontalLine.SetPosition(1, new Vector3(centerX + Mathf.Lerp(1.8f, 2.5f, ratio),drawingCanvas.position.y, 0));
     }
@@ -48,6 +48,11 @@ public class BattleSketchManager : MonoBehaviour
         string predicteValue = "";
         if (!mouseSketch.isOnFracDrawing) predicteValue = mouseSketch.DrawDefault();
         else predicteValue = mouseSketch.DrawFrac();
+        if(mouseSketch.nonDrawingTime >= 0.0f)
+        {
+            BattleTutorial.Instance.Close();
+            BattleTutorial.Instance.NextPage(1);
+        }
         if (mouseSketch.nonDrawingTime > 1.0f)
         {
             mouseSketch.nonDrawingTime = -100000.0f;

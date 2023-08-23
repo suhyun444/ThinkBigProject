@@ -301,7 +301,13 @@ public class TEXDraw3D : MonoBehaviour, ITEXDraw
 
     public RectTransform rectTransform => _cRT ? _cRT : (_cRT = GetComponent<RectTransform>());
 
-
+    public void UpdateSortingOrder()
+    {
+        for(int i=0;i<m_Renderers.Count;++i)
+        {
+            m_Renderers[i].UpdateSortingOrder();
+        }
+    }
     private TEXDraw3DRenderer CreateNewRenderer()
     {
         var g = new GameObject("TEXDraw 3D Renderer");

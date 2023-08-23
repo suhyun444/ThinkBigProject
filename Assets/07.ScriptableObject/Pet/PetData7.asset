@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData7
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 525709469, guid: 87bd5b7e6bec9784da5f65251e6ee372, type: 3}
-  lockSprite: {fileID: 0}
+  mainSprite: {fileID: 332445963, guid: 4e1ececb06e257342b463d4bdb0f942a, type: 3}
   id: 7
-  name: "\uD37C\uC988"
-  engName: pause
-  description: "\uBA48\uCDB0"
-  engDescription: stop
+  name: "\uC624\uC5FC\uB41C \uC2DC\uD5D8\uAD00"
+  engName: Polluted Test-tube
+  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
+    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
+  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
   farmingType: 0
-  cost: 0
-  requirementKey: 
-  requirementDescription: 
+  cost: 800
+  requirementKey: Combo
+  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when Combo 10 is achieved

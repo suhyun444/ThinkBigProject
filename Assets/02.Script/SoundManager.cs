@@ -18,9 +18,9 @@ public class SoundManager : Singleton<SoundManager>
         InitSingleTon(this);
         soundEffectDictionary = new Dictionary<Sound, AudioClip>();
         InitSoundDictionary();
-        audioSource.volume = SaveManager.Instance.GetVolumeData();
+        audioSource.volume = SaveManager.Instance.GetSFXVolumeData();
         sfxVolume = audioSource.volume;
-        bgmAudioSource.volume = 0.3f * SaveManager.Instance.GetVolumeData();
+        bgmAudioSource.volume = 0.3f * SaveManager.Instance.GetBGMVolumeData();
         bgmVolume = bgmAudioSource.volume;
     }
     private void InitSoundDictionary()
@@ -96,7 +96,7 @@ public class SoundManager : Singleton<SoundManager>
     }
     public void RandomPitch()
     {
-        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.pitch = Random.Range(0.99f, 1.05f);
     }
     public void ChangeSFXVolume(float value)
     {
@@ -105,7 +105,7 @@ public class SoundManager : Singleton<SoundManager>
     }
     public void ChangeBGMVolue(float value)
     {
-        bgmAudioSource.volume = value;
+        bgmAudioSource.volume = 0.3f * value;
         bgmVolume = value;
     }
 

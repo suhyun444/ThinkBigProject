@@ -8,6 +8,8 @@ using CustomUtils;
 public class MainManager : MonoBehaviour
 {
     [SerializeField] private CustomButton nameButton;
+    [SerializeField] private TextMeshPro exitText;
+    [SerializeField] private TextMeshPro exitTextForIntro;
     [SerializeField] private TextMeshPro nameText;
     [SerializeField] private TextMeshPro crystalText;
     [SerializeField] private Material expBarProgressMaterial;
@@ -16,6 +18,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] private SetNamePopup setNamePopup;
     private GameObject playerCostume;
     private Pet[] pets = new Pet[4];
+    private bool onExitButton = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,49 @@ public class MainManager : MonoBehaviour
         SpawnPet();
         SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
     }
+    public IEnumerator TryExit()
+    {
+        onExitButton = true;
+        exitText.gameObject.SetActive(true);
+        exitTextForIntro.gameObject.SetActive(true);
+        float time = 0;
+        float t = 0.25f;
+        Color color = exitText.color;
+        while(time <= 1)
+        {
+            time += Time.deltaTime / t;
+            exitText.color = new Color(color.r,color.g,color.b,Mathf.Lerp(0,1,time));
+            exitTextForIntro.color = exitText.color;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        time = 0;
+        t = 0.2f;
+        while(time <= 1)
+        {
+            time += Time.deltaTime / t;
+            exitText.color = new Color(color.r,color.g,color.b,Mathf.Lerp(1,0,time));
+            exitTextForIntro.color = exitText.color;
+            yield return null;
+        }
+        exitText.gameObject.SetActive(false);
+        exitTextForIntro.gameObject.SetActive(false);
+        onExitButton = false;
+    }
+    public void LoadMainSceneFromIntro()
+    {
+        SpawnPet();
+        SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
+    }
+    public void SetPetPosition(Vector3[] position,bool[] directionInfo)
+    {
+        for(int i=0;i<directionInfo.Length;++i)
+        {
+            pets[i].transform.position = position[i * 2];
+            pets[i].transform.localScale = position[i * 2 + 1];
+            pets[i].SetDirection(directionInfo[i]);
+        }
+    } 
     private void SpawnPlayerCostume(CostumeType costumeType)
     {
         GameObject costume = (GameObject)Resources.Load<GameObject>("Players/Main/"+costumeType.ToString() + "Main");
@@ -61,6 +107,17 @@ public class MainManager : MonoBehaviour
     {
         crystalText.text = Util.SplitIntByComma(SaveManager.Instance.GetCrystalData());
         nameText.text = SaveManager.Instance.GetNameData();
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!onExitButton)
+            {
+                StartCoroutine(TryExit());
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
     }
 
     private Vector3 GetSpawnPosition()
@@ -80,14 +137,12 @@ public class MainManager : MonoBehaviour
     }
     private void SpawnPet()
     {
-        PetPosition petPosition = GameObject.FindObjectOfType<PetPosition>();
         List<int> petList = SaveManager.Instance.GetPetList();
         for(int i=0;i<petList.Count;i++)
         {
             if(petList[i] != -1)
             {
-                if(petPosition != null) InstantitePetObject(i, petList[i],petPosition.petPositions[i]);
-                else InstantitePetObject(i,petList[i],Vector3.zero);
+                InstantitePetObject(i,petList[i],Vector3.zero);
             }
         }
     }

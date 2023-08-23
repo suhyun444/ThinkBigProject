@@ -8,8 +8,12 @@ public class SoundSlider : MonoBehaviour
     [SerializeField] private float maxX;
     [SerializeField] private GameObject handle;
     [SerializeField] private Material fillMaterial;
+    public delegate void ValueChangeCallBack();
+    public ValueChangeCallBack onValueChanged;
+    [SerializeField] public int soundType;
     private Vector3 prevMousePosition;
     bool onDrag = false;
+    
     private float ratio = 1.0f;
 
     public void Open(float volume)
@@ -26,7 +30,7 @@ public class SoundSlider : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D raycastHit2D = Physics2D.Raycast(mousePosition, transform.forward, 999);
-            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("Handle"))
+            if (raycastHit2D.collider != null && raycastHit2D.transform.CompareTag("Handle" + soundType.ToString()))
             {
                 prevMousePosition = mousePosition;
                 onDrag = true;
@@ -41,6 +45,7 @@ public class SoundSlider : MonoBehaviour
                 ratio = (nextX - minX) / (maxX - minX);
                 fillMaterial.SetFloat("_FillAmount",ratio);
                 prevMousePosition = mousePosition;
+                onValueChanged.Invoke();
             }
         }
         if (Input.GetMouseButtonUp(0))

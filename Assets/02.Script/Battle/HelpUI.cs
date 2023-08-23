@@ -18,6 +18,8 @@ public class HelpUI : MonoBehaviour
     }
     private void OpenUI()
     {
+        Debug.Log("Close");
+        BattleTutorial.Instance.Close();
         Time.timeScale = 0;
         ui.SetActive(true);
         BindPage(0);
@@ -26,6 +28,7 @@ public class HelpUI : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         ui.SetActive(false);
+        BattleTutorial.Instance.NextPage(0);
     }
     private void BindPage(int page)
     {

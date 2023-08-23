@@ -15,11 +15,14 @@ MonoBehaviour:
   mainSprite: {fileID: 144232084, guid: c0b4384be65547542b76f9e0bbbb5c28, type: 3}
   id: 0
   name: "\uC544\uBCF4\uCE74\uB3C4"
-  engName: avocado
-  description: "\uADC0\uC5EC\uC6B4 \uC544\uBCF4\uCE74\uB3C4"
-  engDescription: Cute avocado
+  engName: Avocado
+  description: "\uD638\uAE30\uC2EC \uB9CE\uC740 \uC544\uBCF4\uCE74\uB3C4\uB2E4.\r\n\uC528\uC557\uC5D0
+    \uB9C8\uBC95\uC774 \uAE43\uB4E4\uC5B4\r\uC788\uB2E4.\r"
+  engDescription: 'A curious avocado.
+
+    Seeds contain magic.'
   farmingType: 0
-  cost: 0
+  cost: 800
   requirementKey: 
   requirementDescription: 
   engRequirementDescription: 

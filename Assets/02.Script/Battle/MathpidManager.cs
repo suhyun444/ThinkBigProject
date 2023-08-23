@@ -75,6 +75,9 @@ public class MathpidManager : MonoBehaviour
                             conn.cDiagnotics.data.qstWransr);
                 break;
             case "E":
+                SaveManager.Instance.SetAuthorizationData(conn.GetAutorization());
+                SaveManager.Instance.SetMemberIdData(conn.GetMBR_ID());
+                SaveManager.Instance.SaveMathpidData();
                 Debug.Log("������ ��! �н� �ܰ�� �Ѿ�ϴ�.");
                 currentStatus = CurrentStatus.LEARNING;
                 break;

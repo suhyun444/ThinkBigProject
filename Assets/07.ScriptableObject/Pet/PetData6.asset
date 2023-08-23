@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData6
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: -1687811880, guid: 87bd5b7e6bec9784da5f65251e6ee372, type: 3}
+  mainSprite: {fileID: 951315299, guid: 7b59e4c4a6f7bdd439a79e848bc562d0, type: 3}
   id: 6
-  name: "\uB9C8\uBC95"
-  engName: magic
-  description: "\uB9C8\uBC95\uC11C"
-  engDescription: magicbook
+  name: "\uD1A0\uB07C \uC778\uD615"
+  engName: Rabbit Doll
+  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
+    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
+  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
   farmingType: 0
-  cost: 1000
-  requirementKey: 
-  requirementDescription: 
-  engRequirementDescription: 
+  cost: 800
+  requirementKey: Combo
+  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when Combo 10 is achieved

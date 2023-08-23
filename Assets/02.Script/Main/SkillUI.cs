@@ -9,12 +9,19 @@ public class SkillUI : MonoBehaviour
     [SerializeField] private SkillInformation[] skillInformations;
     [SerializeField] private TextMeshPro levelText;
     [SerializeField] private TextMeshPro skillPointText;
+
     [SerializeField] private CustomButton resetButton;
     [SerializeField] private GameObject resetPopup;
     [SerializeField] private CustomButton resetPopupAcceptButton;
     [SerializeField] private CustomButton resetPopupExitButton;
     [SerializeField] private GameObject warningText;
     [SerializeField] private GameObject exclamationMark;
+
+    [SerializeField] private CustomButton buySPButton;
+    [SerializeField] private GameObject buySPPopup;
+    [SerializeField] private CustomButton buySPAcceptButton;
+    [SerializeField] private GameObject buySPWarningText;
+    [SerializeField] private CustomButton buySPExitButton;
 
     [SerializeField] private GameObject buttonParents;
     [SerializeField] private float minY;
@@ -35,13 +42,20 @@ public class SkillUI : MonoBehaviour
         resetButton.BindClickEvent(()=>resetPopup.SetActive(true));
         resetPopupExitButton.BindClickEvent(()=>resetPopup.SetActive(false));
         resetPopupAcceptButton.BindClickEvent(ResetSkillPoint);
+        buySPButton.BindClickEvent(()=>buySPPopup.SetActive(true));
+        buySPExitButton.BindClickEvent(()=>buySPPopup.SetActive(false));
+        buySPAcceptButton.BindClickEvent(BuySkillPoint);
     }
     void Update()
     {
         if(SaveManager.Instance.GetUsedSkillPoint() < (SaveManager.Instance.GetLevelData() + 1) * 5)exclamationMark.SetActive(true);
         else exclamationMark.SetActive(false);
         warningTime -= Time.deltaTime;
-        if(warningTime < 0.0f)warningText.SetActive(false);
+        if(warningTime < 0.0f)
+        {
+            warningText.SetActive(false);
+            buySPWarningText.SetActive(false);
+        }
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
         if (Input.GetMouseButtonDown(0))
         {
@@ -71,6 +85,7 @@ public class SkillUI : MonoBehaviour
     {
         Tutorial.Instance.Close();
         warningText.SetActive(false);
+        buySPWarningText.SetActive(false);
         skillUI.SetActive(true);
         levelText.text = "Lv."+SaveManager.Instance.GetLevelData().ToString();
         UpdateSkillPointText();
@@ -79,7 +94,7 @@ public class SkillUI : MonoBehaviour
     }
     private void UpdateSkillPointText()
     {
-        skillPointText.text =  "SP : "+ (((SaveManager.Instance.GetLevelData() + 1) * 5) - SaveManager.Instance.GetUsedSkillPoint()).ToString();
+        skillPointText.text =  "SP : "+ (((SaveManager.Instance.GetLevelData() + 1) * 5 + SaveManager.Instance.GetBoughtSkillPoint()) - SaveManager.Instance.GetUsedSkillPoint()).ToString();
     }
     private void ResetSkillPoint()
     {
@@ -91,12 +106,27 @@ public class SkillUI : MonoBehaviour
             return;
         }
         SoundManager.Instance.PlaySoundEffect(Sound.Buy);
-        SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() - 1000);
+        SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() - Const.Skill.RESET_COST);
         SaveManager.Instance.ResetSkillPoint();
         SaveManager.Instance.SaveData();
         UpdateSkillPointText();
         for(int i=0;i<skillInformations.Length;++i)
             skillInformations[i].BindInformation();
         resetPopup.SetActive(false);
+    }
+    private void BuySkillPoint()
+    {
+        if (SaveManager.Instance.GetCrystalData() < Const.Skill.SP_COST)
+        {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
+            warningTime = 0.7f;
+            buySPWarningText.SetActive(true);
+            return;
+        }
+        SoundManager.Instance.PlaySoundEffect(Sound.Buy);
+        SaveManager.Instance.SetCrystalData(SaveManager.Instance.GetCrystalData() - Const.Skill.SP_COST);
+        SaveManager.Instance.BuySkillPoint();
+        SaveManager.Instance.SaveData();
+        UpdateSkillPointText();
     }
 }

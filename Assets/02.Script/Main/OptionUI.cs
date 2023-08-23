@@ -7,32 +7,40 @@ public class OptionUI : MonoBehaviour
 {
     [SerializeField] private GameObject optionUI;
     [SerializeField] private CustomButton exitButton;
-    [SerializeField] private CustomButton acceptButton;
     [SerializeField] private CustomButton resetButton;
-    [SerializeField] private SoundSlider soundSlider;
+    [SerializeField] private SoundSlider sfxSoundSlider;
+    [SerializeField] private SoundSlider bgmSoundSlider;
     [SerializeField] private CustomButton languageButton;
     [SerializeField] private TextMeshPro curLanguage;
     [SerializeField] private GameObject comboBox;
     [SerializeField] private CustomButton closeComboBoxButton;
     [SerializeField] private CustomButton[] selectLanguageButton;
-    [SerializeField] private LanguageText[] languageTexts;
     
     private LanguageType languageType;
     private void Awake() {
         GetComponent<CustomButton>().BindClickEvent(OpenUI);
-        exitButton.BindClickEvent(()=>optionUI.SetActive(false));
-        acceptButton.BindClickEvent(Save);
-        resetButton.BindClickEvent(()=>SaveManager.Instance.InitData());
-        resetButton.AddClickEvent(()=>Application.Quit());
+        exitButton.BindClickEvent(Save);
+        resetButton.BindClickEvent(TutorialAgain);
         languageButton.BindClickEvent(()=>SetActiveComboBox(true));
         languageButton.AddClickEvent(()=>SettingComboBox());
         closeComboBoxButton.BindClickEvent(()=>SetActiveComboBox(false));
+        sfxSoundSlider.onValueChanged = (() => SaveManager.Instance.SetSFXVolumeData(sfxSoundSlider.GetVolume()));
+        sfxSoundSlider.onValueChanged += (() => SoundManager.Instance.ChangeSFXVolume(sfxSoundSlider.GetVolume()));
+        bgmSoundSlider.onValueChanged = (() => SaveManager.Instance.SetBGMVolumeData(bgmSoundSlider.GetVolume()));
+        bgmSoundSlider.onValueChanged += (() => SoundManager.Instance.ChangeBGMVolue(bgmSoundSlider.GetVolume()));
         selectLanguageButton[0].BindClickEvent(()=>SelectLanguage(LanguageType.Korean));
         selectLanguageButton[1].BindClickEvent(()=>SelectLanguage(LanguageType.English));
     }
+    private void TutorialAgain()
+    {
+        Tutorial.Instance.StartTutorialAgain();
+        SaveManager.Instance.SaveOptionData();
+        optionUI.SetActive(false);
+    }
     private void OpenUI()
     {
-        soundSlider.Open(SaveManager.Instance.GetVolumeData());
+        sfxSoundSlider.Open(SaveManager.Instance.GetSFXVolumeData());
+        bgmSoundSlider.Open(SaveManager.Instance.GetBGMVolumeData());
         SelectLanguage(SaveManager.Instance.GetLanguageTypeData());
         optionUI.SetActive(true);
     }
@@ -51,25 +59,14 @@ public class OptionUI : MonoBehaviour
     private void SelectLanguage(LanguageType type)
     {
         languageType = type;
+        SaveManager.Instance.SetLanguagueTypeData(languageType);
+        LanguageManager.Instance.ChangeLanguage(languageType);
         curLanguage.text = (languageType == LanguageType.Korean) ? "한국어" : "English";
-        BindOptionTextLanguage(languageType);
         SettingComboBox();
         SetActiveComboBox(false);
     }
-    private void BindOptionTextLanguage(LanguageType type)
-    {
-        for(int i=0;i<languageTexts.Length;i++)
-        {
-            languageTexts[i].BindText(type);
-        }
-    }
     private void Save()
     {
-        SaveManager.Instance.SetVolumeData(soundSlider.GetVolume());
-        SoundManager.Instance.ChangeSFXVolume(soundSlider.GetVolume());
-        SoundManager.Instance.ChangeBGMVolue(soundSlider.GetVolume());
-        SaveManager.Instance.SetLanguagueTypeData(languageType);
-        LanguageManager.Instance.ChangeLanguage(languageType);
         SaveManager.Instance.SaveOptionData();
         optionUI.SetActive(false);
     }

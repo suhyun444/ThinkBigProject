@@ -12,6 +12,7 @@ public class SetNamePopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI inputField;
     [SerializeField] private GameObject enterNameWarningText;
     [SerializeField] private GameObject warningText;
+    [SerializeField] private GameObject noInternetWarningText;
 
     private float warningTime = 0.0f;
     private void Awake() {
@@ -25,12 +26,15 @@ public class SetNamePopup : MonoBehaviour
         {
             warningText.SetActive(false);
             enterNameWarningText.SetActive(false);
+            noInternetWarningText.SetActive(false);
         }
     }
     public void OpenSetNameUI()
     {
         ui.SetActive(true);
         warningText.SetActive(false);
+        enterNameWarningText.SetActive(false);
+        noInternetWarningText.SetActive(false);
         acceptButton.gameObject.SetActive(true);
         updateButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
@@ -39,12 +43,21 @@ public class SetNamePopup : MonoBehaviour
     {
         ui.SetActive(true);
         warningText.SetActive(false);
+        enterNameWarningText.SetActive(false);
+        noInternetWarningText.SetActive(false);
         acceptButton.gameObject.SetActive(false);
         updateButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
     }
     public void SetName()
     {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
+            warningTime = 0.7f;
+            noInternetWarningText.SetActive(true);
+            return;
+        }
         if(inputField.text == "​")
         {
             SoundManager.Instance.PlaySoundEffect(Sound.Warning);
@@ -68,6 +81,13 @@ public class SetNamePopup : MonoBehaviour
     }
     public void UpdateName()
     {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            SoundManager.Instance.PlaySoundEffect(Sound.Warning);
+            warningTime = 0.7f;
+            noInternetWarningText.SetActive(true);
+            return;
+        }
         if (inputField.text == "​") 
         {
             SoundManager.Instance.PlaySoundEffect(Sound.Warning);

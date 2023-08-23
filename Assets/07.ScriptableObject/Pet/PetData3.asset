@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedd2df265a578948b586caf6843f66b, type: 3}
   m_Name: PetData3
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 2131748877, guid: fc4f8eba750a6d4429908d07304d238f, type: 3}
-  lockSprite: {fileID: 0}
+  mainSprite: {fileID: -1165651875, guid: e5ceb3a44953feb4ca4a2e751e6e997d, type: 3}
   id: 3
-  name: "\uC544\uBCF4\uCE74\uB3C4"
-  engName: avocado
-  description: "\uADC0\uC5EC\uC6B4 \uC544\uBCF4\uCE74\uB3C4"
-  engDescription: cute avocado
-  farmingType: 1
-  cost: 0
-  requirementKey: Score
-  requirementDescription: "\uC810\uC218 100,000 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
-  engRequirementDescription: Earn when you achieve 100,000 points of 100,000
+  name: "\uC0DD\uC950"
+  engName: Mouse
+  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
+    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
+  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
+  farmingType: 0
+  cost: 800
+  requirementKey: Combo
+  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when Combo 10 is achieved

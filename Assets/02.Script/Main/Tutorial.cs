@@ -11,9 +11,9 @@ public struct TutorialPage
     public void SetHighlighted()
     {
         for(int i=0;i<spriteRenderers.Count;++i)
-            spriteRenderers[i].sortingOrder = 51;
+            spriteRenderers[i].sortingOrder = 51 + i;
         for(int i=0;i<texts.Count;++i)
-            texts[i].sortingOrder = 52;
+            texts[i].sortingOrder = 61 + i;
     }
     public void SetDefault()
     {
@@ -38,6 +38,10 @@ public class Tutorial : Singleton<Tutorial>
         {
             OpenPage(0);
         }
+    }
+    public void StartTutorialAgain()
+    {
+        OpenPage(0);
     }
     private void OpenPage(int page)
     {

@@ -31,14 +31,37 @@ public class AWSConnection : Singleton<AWSConnection>
     DynamoDBContext context;
     AmazonDynamoDBClient client;
     private CognitoAWSCredentials credentials;
+    bool isConnected = false;
     private void Awake() {
         InitSingleTon(this);
-        credentials = new CognitoAWSCredentials(poolID, RegionEndpoint.APNortheast2);
-        client = new AmazonDynamoDBClient(credentials,RegionEndpoint.APNortheast2);
-        context = new DynamoDBContext(client);
+        if (Application.internetReachability != NetworkReachability.NotReachable)
+        {
+            isConnected = true;
+            credentials = new CognitoAWSCredentials(poolID, RegionEndpoint.APNortheast2);
+            client = new AmazonDynamoDBClient(credentials,RegionEndpoint.APNortheast2);
+            context = new DynamoDBContext(client);
+        }
+    }
+    public bool CheckConnect()
+    {
+        if(isConnected)
+            return true;
+        else
+        {
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                isConnected = true;
+                credentials = new CognitoAWSCredentials(poolID, RegionEndpoint.APNortheast2);
+                client = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
+                context = new DynamoDBContext(client);
+                return true;
+            }
+            return false;
+        }
     }
     public bool FindPlayer(string name)
     {
+        if(!CheckConnect())return true;
         var result = context.LoadAsync<Ranking>(name);
         if(result.Result != null)
         {
@@ -48,7 +71,13 @@ public class AWSConnection : Singleton<AWSConnection>
     }
     public void UpdateName(string prevName, string name)
     {
-        int score = context.LoadAsync<Ranking>(prevName).Result.score;
+        if (!CheckConnect()) return;
+        int score = 0;
+        var result = context.LoadAsync<Ranking>(prevName);
+        if(result.Result != null)
+        {
+            score = result.Result.score;
+        }
         context.DeleteAsync<Ranking>(prevName);
         Ranking r = new Ranking{
             name = name,
@@ -58,8 +87,14 @@ public class AWSConnection : Singleton<AWSConnection>
     }
     public void UpdateScore(int score)
     {
+        if (!CheckConnect()) return;
         string name= SaveManager.Instance.GetNameData();
-        int maxScore = context.LoadAsync<Ranking>(name).Result.score;
+        int maxScore = 0;
+        var result = context.LoadAsync<Ranking>(name);
+        if(result.Result != null)
+        {
+            maxScore = result.Result.score;
+        }
         if(maxScore >= score)return;
         Ranking r = new Ranking
         {
@@ -78,10 +113,12 @@ public class AWSConnection : Singleton<AWSConnection>
     }
     private void SaveItem(Ranking r)
     {
+        if (!CheckConnect()) return;
         context.SaveAsync<Ranking>(r);
     }
     public List<Ranking> GetRankingList() //DB에서 캐릭터 정보 받기
     {
+        if (!CheckConnect()) return new List<Ranking>();
         ScanCondition[] conditions = new ScanCondition[1];
         conditions[0] = new ScanCondition("score",Amazon.DynamoDBv2.DocumentModel.ScanOperator.GreaterThan,0);
         var result = context.ScanAsync<Ranking>(conditions).GetRemainingAsync();

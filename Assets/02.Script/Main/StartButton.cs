@@ -9,8 +9,10 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     [SerializeField] private Material progressMateiral;
     [SerializeField] private SpriteRenderer fadeOut;
     [SerializeField] private MagicBookUI magicBookUI;
+    [SerializeField] private GameObject warningText;
     private float time;
     private readonly float needTimeToStart = 0.9f;
+    private float warningTime = 0;
     private bool onPointer;
     private bool onEnter = false;
     // Start is called before the first frame update
@@ -22,12 +24,24 @@ public class StartButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     // Update is called once per frame
     void Update()
     {
+        warningTime -= Time.deltaTime;
+        if(warningTime <= 0)
+            warningText.SetActive(false);
         if(onPointer && !onEnter)
         {  
             time += Time.deltaTime / needTimeToStart;
             progressMateiral.SetFloat("_FillAmount",time);
             if(time > 1.0f)
             {
+                if (Application.internetReachability == NetworkReachability.NotReachable)
+                {
+                    SoundManager.Instance.PlaySoundEffect(Sound.Warning);
+                    warningTime = 0.7f;
+                    warningText.SetActive(true);
+                    progressMateiral.SetFloat("_FillAmount", 0.0f);
+                    onPointer = false;
+                    return;
+                }
                 onEnter = true;
                 SoundManager.Instance.PlaySoundEffect(Sound.GameStart);
                 StartCoroutine(LoadBattleScene());

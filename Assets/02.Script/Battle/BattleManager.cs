@@ -55,6 +55,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private BattleUI battleUI;
     [SerializeField] private ResultUI resultUI;
     [SerializeField] private PauseUI pauseUI;
+    [SerializeField] private GameObject exitUI;
+    [SerializeField] private CustomButton internetExitButton;
+    private bool openInternetExitUI = false;
     private CameraShaking cameraShaking;
     private int earnExpAmount = 0;
     private float totalTime = 0.0f;
@@ -78,6 +81,7 @@ public class BattleManager : MonoBehaviour
         InitPauseUI();
         StartCoroutine(FadeIn());
         cameraShaking = Camera.main.GetComponent<CameraShaking>();
+        battleUI.staminaProgressMaterial.SetFloat("_FillAmount", leftTimeAmount); 
     }
     private void SpawnPlayer()
     {
@@ -105,7 +109,17 @@ public class BattleManager : MonoBehaviour
         fadeIn.gameObject.SetActive(false);
     }
     private void Update() {
-        if(isEnd)return;
+        if(isEnd || openInternetExitUI || !BattleTutorial.Instance.isTutorialEnd)return;
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            openInternetExitUI = true;
+            exitUI.SetActive(true);
+            internetExitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseOn();
+        }
         totalTime += Time.deltaTime;
         if(!isInHitAnimation) leftTimeAmount -= (Time.deltaTime / Const.Battle.BATTLE_TIME) * (1.0f - (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Stamina] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Stamina)) * 0.01f);
         if(!isEnd && leftTimeAmount < 0)
@@ -114,10 +128,6 @@ public class BattleManager : MonoBehaviour
         }
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
         battleUI.crystalText.text = ": " +totalCrystal.ToString();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            mathpidManager.SelectAnswer(true);
-        }
     }
     private void InitPauseUI()
     {
@@ -139,25 +149,26 @@ public class BattleManager : MonoBehaviour
     private void SaveGame()
     {
         AWSConnection.Instance.UpdateScore(score);
-        SaveManager.Instance.SetCrystalData(totalCrystal);
         int curLevel = SaveManager.Instance.GetLevelData();
-        while (curLevel < 99 && Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel] <= earnExpAmount)
+        int curExpAmount = SaveManager.Instance.GetExpAmountData() + earnExpAmount;
+        while (curLevel < 99 && Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel] <= curExpAmount)
         {
-            earnExpAmount -= Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel++];
+            curExpAmount -= Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel++];
             if (curLevel % 10 == 0)
-            {
-                crystal += 500;
-                totalCrystal += 500;
-            }
-            else
             {
                 crystal += 100;
                 totalCrystal += 100;
             }
+            else
+            {
+                crystal += 50;
+                totalCrystal += 50;
+            }
         }
-        if (curLevel == 99) earnExpAmount = 1;
+        if (curLevel == 99) curExpAmount = 1;
+        SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetLevelData(curLevel);
-        SaveManager.Instance.SetExpAmountData(earnExpAmount);
+        SaveManager.Instance.SetExpAmountData(curExpAmount);
         SaveManager.Instance.SaveData();
         SaveManager.Instance.SaveMagicBookData();
     }
@@ -170,7 +181,9 @@ public class BattleManager : MonoBehaviour
         totalCrystal += bonusCrystal;
         earnExpAmount += (int)totalTime * 5;
         earnExpAmount = (int)(((float)earnExpAmount) * (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Exp] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Exp) * 0.01f));
+        int animLevel = SaveManager.Instance.GetLevelData();
         float earnExpAmountForAnim = (float)earnExpAmount;
+        float animExp = (float)SaveManager.Instance.GetExpAmountData();
         SaveGame();
         yield return new WaitForSeconds(0.1f);
         float time = 0;
@@ -191,51 +204,49 @@ public class BattleManager : MonoBehaviour
         resultUI.scoreText.gameObject.SetActive(true);
         yield return StartCoroutine(Util.HighlightObjects(new GameObject[]{resultUI.scoreHeader,resultUI.scoreText.gameObject},resultUI.backGroundAnimCurve));
         yield return new WaitForSeconds(0.1f);
-        int curLevel = SaveManager.Instance.GetLevelData();
-        resultUI.levelText.text = curLevel.ToString();
-        resultUI.expBar.SetFloat("_FillAmount", SaveManager.Instance.GetExpAmountData() / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel]);
+        resultUI.levelText.text = animLevel.ToString();
+        resultUI.expBar.SetFloat("_FillAmount", animExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel]);
         resultUI.levelBG.SetActive(true);
         resultUI.levelText.gameObject.SetActive(true);
         resultUI.expBarObject.SetActive(true);
         float expAnimAmount = 0.0f;
-        float curExp = (float)SaveManager.Instance.GetExpAmountData();
         float expAnimSpeed = 1000.0f;
-        while(curLevel < 99 && expAnimAmount <= earnExpAmountForAnim)
+        while(animLevel < 99 && expAnimAmount <= earnExpAmountForAnim)
         {
             float amount = Time.deltaTime * expAnimSpeed;
             if(amount > earnExpAmountForAnim - expAnimAmount)
             {
-                curExp += (earnExpAmountForAnim - expAnimAmount);
+                animExp += (earnExpAmountForAnim - expAnimAmount);
                 expAnimAmount = earnExpAmountForAnim;
             }
-            curExp += amount;
+            animExp += amount;
             expAnimAmount += amount;
-            if(curExp > Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel])
+            if(animExp > Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel])
             {
-                curExp -= Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel];
-                curLevel++;
-                resultUI.levelText.text = curLevel.ToString();
+                animExp -= Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel];
+                animLevel++;
+                resultUI.levelText.text = animLevel.ToString();
                 StartCoroutine(Util.HighLightText(resultUI.levelText,15.2f));
                 int getCrystalAmount = 0;
-                if(curLevel % 10 == 0)
+                if(animLevel % 10 == 0)
                 {
-                    getCrystalAmount = 500;
+                    getCrystalAmount = 100;
                 }
                 else
                 {
-                    getCrystalAmount = 100;
+                    getCrystalAmount = 50;
                 }
                 Crystal crystalObject = Instantiate(resultUI.crystalPrefab,new Vector3(1.5f,2.75f,1.0f),Quaternion.identity).GetComponent<Crystal>();
                 crystalObject.transform.localScale = new Vector3(7.0f,7.0f);
                 crystalObject.ChangeText("+"+getCrystalAmount.ToString()); 
                 crystalObject.ChangeSortingOrder(110);
             }
-            resultUI.expBar.SetFloat("_FillAmount",curExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel]);
+            resultUI.expBar.SetFloat("_FillAmount",animExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel]);
             yield return null;
         }
-        if(curLevel == 99)curExp = 1;
-        resultUI.levelText.text = curLevel.ToString();
-        resultUI.expBar.SetFloat("_FillAmount",curExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel]);
+        if(animLevel == 99)animExp = 1;
+        resultUI.levelText.text = animLevel.ToString();
+        resultUI.expBar.SetFloat("_FillAmount",animExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel]);
         yield return new WaitForSeconds(0.1f);
 
         resultUI.comboText.gameObject.SetActive(true);
@@ -312,7 +323,7 @@ public class BattleManager : MonoBehaviour
             correctCount++;
             comboCount++;
             maxCombo = Mathf.Max(maxCombo,comboCount);
-            if(comboCount >= 3)
+            if(comboCount >= 2)
                 battleUI.comboText.ComboAnimation(comboCount);
             GetScore(solveTime);
         }   
@@ -352,16 +363,27 @@ public class BattleManager : MonoBehaviour
         float plusScore = 50000 * (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Kill]  * (float)SaveManager.Instance.GetSkillLevel(SkillType.Kill) * 0.01f);
         float speedBonus;
         if(solveTime < 2.5f)
+        {
             speedBonus = 50000;
+            earnExpAmount += 50;
+        }
         else if(solveTime < 4)
+        {
             speedBonus = 30000;
+            earnExpAmount += 30;
+        }
         else
+        {
             speedBonus = 15000;
+            earnExpAmount += 20;
+        }
         speedBonus *= (1 + Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Speed] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Speed) * 0.01f);
-        //if(tag == "다항식") 몬스터에서 문제 정보 가져와서 판정
         float comboBonus = 0;
-        if(comboCount >= 5)
-            comboBonus = 5000.0f *  ((((float)comboCount) / 5)) * (1 + (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Combo] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f);
+        if(comboCount >= 2)
+        {
+            comboBonus = 2000.0f *  comboCount * (1 + (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Combo] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Combo)) * 0.01f);
+            earnExpAmount += 15 * comboCount;   
+        }
         int prevScore = score;
         score += (int)plusScore + (int)speedBonus + (int)comboBonus;
         StartCoroutine(ScoreAnim(prevScore));

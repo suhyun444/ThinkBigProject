@@ -50,6 +50,11 @@ public class TEXDraw3DRenderer : MonoBehaviour, ITexRenderer
         m_block.SetTexture("_MainTex", mainTexture);
         renderer.SetPropertyBlock(m_block);
     }
+    public void UpdateSortingOrder()
+    {
+        var renderer = GetComponent<MeshRenderer>();
+        renderer.sortingOrder = (int)m_TEXDraw.material.GetFloat("_SortingOrder");
+    }
 
     private void OnDestroy()
     {
