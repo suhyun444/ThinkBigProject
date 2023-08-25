@@ -169,6 +169,18 @@ public class BattleManager : MonoBehaviour
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetLevelData(curLevel);
         SaveManager.Instance.SetExpAmountData(curExpAmount);
+        if(score > 1400000)
+        {
+            SaveManager.Instance.AddHavingPetList(7);
+        }
+        if(maxCombo > 11)
+        {
+            SaveManager.Instance.AddHavingPetList(2);
+        }
+        if(maxCombo > 14)
+        {
+            SaveManager.Instance.AddHavingPetList(5);
+        }
         SaveManager.Instance.SaveData();
         SaveManager.Instance.SaveMagicBookData();
     }

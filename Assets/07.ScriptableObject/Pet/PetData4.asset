@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSprite: {fileID: -735932777, guid: f434dd66c56d64a419a622c9aaba494b, type: 3}
   id: 4
-  name: "\uAF43"
+  name: "\uD654\uBD84"
   engName: Flower
-  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
-    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
-  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
+  description: "\uC815\uC6D0\uC0AC\uAC00 \uC544\uB07C\uB294 \uD654\uBD84\uC774\uB2E4.\r\n\uBD80\uB044\uB7EC\uC6B8
+    \uB550 \uC78E\uC73C\uB85C \uC5BC\uAD74\uC744 \uAC00\uB9B0\uB2E4."
+  engDescription: "\rIt is a flower pot loved by gardeners.\r\nWhen embarrassed,
+    they cover their faces with leaves."
   farmingType: 0
   cost: 800
   requirementKey: Combo

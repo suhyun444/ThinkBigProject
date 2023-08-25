@@ -101,7 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackMotionDelay: 0.55
   effectInfo:
-    position: {x: 5.26, y: 9.39, z: 0}
+    positions:
+    - {x: 5.65, y: 10.15, z: 0}
+    - {x: 4.8, y: 12.74, z: 0}
+    - {x: 5.16, y: 11.52, z: 0}
     prefab: {fileID: 8420579125608807717, guid: 52382da41eb25e846af11a7c84162e8a, type: 3}
     duration: 0.5
     hitDelay: 0.3

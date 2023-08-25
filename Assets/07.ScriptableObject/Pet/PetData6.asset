@@ -16,9 +16,12 @@ MonoBehaviour:
   id: 6
   name: "\uD1A0\uB07C \uC778\uD615"
   engName: Rabbit Doll
-  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
-    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
-  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
+  description: "\uAF2C\uB9C8 \uB9C8\uBC95\uC0AC\uC758 \uD1A0\uB07C \uC778\uD615\uC774\uB2E4.\r\n\uAF2C\uB9C8\uAC00
+    \uC18C\uC6D0\uC744 \uBE4C\uC5B4\uC11C \uC0DD\uBA85\uC774 \uBD80\uC5EC\uB418\uC5C8\uB2E4."
+  engDescription: 'It''s a little wizard''s rabbit doll.
+
+    A child made a wish
+    and was granted life.'
   farmingType: 0
   cost: 800
   requirementKey: Combo

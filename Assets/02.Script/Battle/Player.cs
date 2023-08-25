@@ -9,7 +9,7 @@ enum PlayerAnimationState{
 }
 [System.Serializable]
 public struct EffectInfo{
-    public Vector3 position;
+    public Vector3[] positions;
     public GameObject prefab;
     public float duration;
     public float hitDelay;
@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
     private IEnumerator Effect()
     {
         yield return new WaitForSeconds(attackMotionDelay);
-        GameObject effect = Instantiate(effectInfo.prefab,effectInfo.position,Quaternion.identity);
+        GameObject effect = Instantiate(effectInfo.prefab,effectInfo.positions[(int)monster.GetMonsterType()],Quaternion.identity);
+        Debug.Log(costumeType.ToString() + "Attack");
         SoundManager.Instance.PlaySoundEffect((Sound)System.Enum.Parse(typeof(Sound),costumeType.ToString()+"Attack"));
         Destroy(effect,effectInfo.duration);
         yield return new WaitForSeconds(effectInfo.hitDelay);

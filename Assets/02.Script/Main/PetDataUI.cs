@@ -119,6 +119,8 @@ public class PetDataUI : MonoBehaviour
         requirementText.gameObject.SetActive(true);
         requirementText.text = (LanguageManager.Instance.languageType == LanguageType.Korean) ? petUI.petDatas[petId].requirementDescription : petUI.petDatas[petId].engRequirementDescription;
         mainSprite.color = Color.black;
+        name.text = "???";
+        description.text = "";
     }
     private void OpenSlotUI()
     {

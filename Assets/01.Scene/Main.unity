@@ -376,7 +376,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1987398392}
   - {fileID: 37916338}
   - {fileID: 1359810665}
   - {fileID: 1671962858}
@@ -1027,7 +1026,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &37916339
 SpriteRenderer:
@@ -5733,7 +5732,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7336,11 +7335,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.658, y: -1.573}
+  m_AnchoredPosition: {x: 0.658, y: -1.546}
   m_SizeDelta: {x: 1.09765, y: 0.45697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465940540
@@ -7390,8 +7389,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.07
-  m_fontSizeBase: 1.07
+  m_fontSize: 0.95
+  m_fontSizeBase: 0.95
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15841,6 +15840,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a51b8fd9a0f8ab4283548c4e7974a0b, type: 2}
   - {fileID: 11400000, guid: 8de596797aac69249910cd9f0f724445, type: 2}
   - {fileID: 11400000, guid: 40f9459b4d67f4d4994f8b045dd38bcc, type: 2}
+  - {fileID: 11400000, guid: 60cf023aa114a2847a069f5bca7ec2e4, type: 2}
+  - {fileID: 11400000, guid: 29ffe92038cb9cf47abe68e9c7d8e7c8, type: 2}
+  - {fileID: 11400000, guid: d8aded9e86e918644af6084898474e6d, type: 2}
   exitButton: {fileID: 753900978}
   moveButton:
   - {fileID: 1394512747}
@@ -18103,7 +18105,7 @@ Transform:
   - {fileID: 1065639963}
   - {fileID: 1961071481}
   m_Father: {fileID: 6370496}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1088568295
 SpriteRenderer:
@@ -19378,11 +19380,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.62811, y: -1.76}
+  m_AnchoredPosition: {x: 0.62811, y: -1.71}
   m_SizeDelta: {x: 1.13958, y: 0.19138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129627546
@@ -21599,7 +21601,7 @@ Transform:
   - {fileID: 1592654156}
   - {fileID: 873083532}
   m_Father: {fileID: 6370496}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1181934841
 GameObject:
@@ -25275,7 +25277,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1359810666
 SpriteRenderer:
@@ -30173,11 +30175,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6370496}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.64527, y: -1.23865}
+  m_AnchoredPosition: {x: 0.64527, y: -1.21165}
   m_SizeDelta: {x: 1.1129, y: 0.18783}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671962859
@@ -30227,8 +30229,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.69
-  m_fontSizeBase: 1.69
+  m_fontSize: 1.6
+  m_fontSizeBase: 1.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -36439,90 +36441,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 110
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1987398391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987398392}
-  - component: {fileID: 1987398393}
-  m_Layer: 0
-  m_Name: BG
-  m_TagString: PetSlider
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1987398392
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987398391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.65600014, y: -1.1899999, z: -1}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 2.31384}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6370496}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1987398393
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987398391}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 101
-  m_Sprite: {fileID: 1149936076, guid: 05f0ae78ddc96e14482ff20d25d4bc4c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1988665942
 GameObject:
   m_ObjectHideFlags: 0
@@ -36854,7 +36772,7 @@ Transform:
   m_Children:
   - {fileID: 1168620554}
   m_Father: {fileID: 6370496}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2013873105
 SpriteRenderer:

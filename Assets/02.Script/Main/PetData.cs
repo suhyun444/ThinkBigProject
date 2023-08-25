@@ -20,7 +20,6 @@ public class PetData : ScriptableObject
     public string engDescription;
     public FarmingType farmingType;
     public int cost;
-    public string requirementKey;
     [TextArea]
     public string requirementDescription;
     [TextArea]

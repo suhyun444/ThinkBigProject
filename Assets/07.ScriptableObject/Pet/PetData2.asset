@@ -17,10 +17,10 @@ MonoBehaviour:
   name: "\uD638\uBC15"
   engName: Pumpkin
   description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
-    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
+    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0 \uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
   engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
-  farmingType: 0
+  farmingType: 1
   cost: 800
   requirementKey: Combo
-  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
-  engRequirementDescription: Acquired when Combo 10 is achieved
+  requirementDescription: "\uCF64\uBCF4 11 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when Combo 11 is achieved

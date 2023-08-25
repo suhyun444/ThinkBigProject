@@ -54,7 +54,7 @@ public class CostumeUI : MonoBehaviour
     {
         Tutorial.Instance.Close();
         warningText.SetActive(false);
-        index = 0;
+        index = (int)SaveManager.Instance.GetCostumeTypeData();
         ui.SetActive(true);
         Show();
     }

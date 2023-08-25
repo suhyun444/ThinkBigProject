@@ -8,7 +8,10 @@ public enum CostumeType
 {
     Magician,
     Witch,
-    Thief
+    Thief,
+    Kitsune,
+    RedHat,
+    Blind
 }
 public class SaveData
 {
@@ -305,6 +308,7 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void AddHavingPetList(int item)
     {
+        if (data.havingPetList.Contains(item)) return;
         data.havingPetList.Add(item);
     }
     public List<int> GetHavingPetList()

@@ -15,7 +15,7 @@ public class Pet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveTerm = UnityEngine.Random.Range(2.0f,2.8f);
+        moveTerm = UnityEngine.Random.Range(2.0f,4.2f);
         spriteRenderer = GetComponent<SpriteRenderer>();
         lastEarnedTime = SaveManager.Instance.GetLastEarnedTimeData(index);
         earnedButton.BindClickEvent(EarnCrystal);
@@ -56,12 +56,22 @@ public class Pet : MonoBehaviour
             float angle = UnityEngine.Random.Range(0,360);
             Vector3 destination = transform.position + new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad),Mathf.Sin(angle * Mathf.Deg2Rad),0.0f) * UnityEngine.Random.Range(3.0f,4.0f);
             RaycastHit2D[] raycastHits2D = Physics2D.RaycastAll(destination, transform.forward, 999);
+            bool canMove = false;
+            bool overlappedPet = false;
             for(int i=0;i<raycastHits2D.Length;i++)
             {
                 if (raycastHits2D[i].transform.CompareTag("PetBoundary"))
                 {
-                    return destination;
+                    canMove = true;
                 }
+                else if(raycastHits2D[i].transform.CompareTag("Pet"))
+                {
+                    overlappedPet = true;
+                }
+            }
+            if(canMove && !overlappedPet)
+            {
+                return destination;
             }
 
         }

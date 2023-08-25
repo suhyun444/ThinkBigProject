@@ -27,7 +27,10 @@ public enum Sound
     BattleBGM,
     GhostAttack,
     BookAttack,
-    MainBGM
+    MainBGM,
+    KitsuneAttack,
+    RedHatAttack,
+    BlindAttack
 }
 
 [CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Object/Sound")]

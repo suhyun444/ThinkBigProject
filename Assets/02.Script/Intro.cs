@@ -34,6 +34,7 @@ public class Intro : MonoBehaviour
                 MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
                 mainManager.LoadMainSceneFromIntro();
                 mainManager.SetPetPosition(petInfo, directionInfo);
+                SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
                 SceneManager.UnloadSceneAsync(0);
             }
         }

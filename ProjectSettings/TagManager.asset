@@ -19,6 +19,8 @@ TagManager:
   - SkillUpgradeButton6
   - Handle0
   - Handle1
+  - Pet
+  - PetInteract
   layers:
   - Default
   - TransparentFX

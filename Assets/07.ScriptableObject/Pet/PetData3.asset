@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSprite: {fileID: -1165651875, guid: e5ceb3a44953feb4ca4a2e751e6e997d, type: 3}
   id: 3
-  name: "\uC0DD\uC950"
-  engName: Mouse
-  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
-    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
-  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
+  name: "\uC544\uAE30 \uC0DD\uC950"
+  engName: Baby Mouse
+  description: "\uCEE4\uB2E4\uB780 \uADC0\uB97C \uAC00\uC9C4 \uC544\uAE30 \uC0DD\uC950\uB2E4.\r\n\uB9C8\uBC95
+    \uACB0\uC815\uCC98\uB7FC \uBC18\uC9DD\uC774\uB294 \uAC83\uC744 \uC88B\uC544\uD55C\uB2E4."
+  engDescription: 'It''s a baby mouse with big ears.
+
+    Likes shiny things like
+    magic crystals.'
   farmingType: 0
   cost: 800
   requirementKey: Combo

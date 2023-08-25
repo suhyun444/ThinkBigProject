@@ -45,6 +45,10 @@ public class Monster : MonoBehaviour
     {
         this.player = player;
     }
+    public MonsterType GetMonsterType()
+    {
+        return monsterType;
+    }
     private IEnumerator Attack()
     {
         animator.Play(monsterType.ToString() + "Attack");

@@ -86,6 +86,8 @@ public class PetCollectionUI : MonoBehaviour
         name.fontMaterial.SetFloat("_Stencil",1);
         name.fontMaterial.SetFloat("_StencilComp",3);
         LanguageText languageText = name.GetComponent<LanguageText>();
+        languageText.koreanFontSize = 0.76f;
+        languageText.englishFontSize = 0.58f;
         if (petUI.petDatas[index].farmingType == FarmingType.Requirement && !SaveManager.Instance.GetHavingPetList().Contains(petUI.petDatas[index].id))
         {
             spriteRenderer.color = Color.black;

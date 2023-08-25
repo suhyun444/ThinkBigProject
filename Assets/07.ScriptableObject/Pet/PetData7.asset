@@ -15,12 +15,12 @@ MonoBehaviour:
   mainSprite: {fileID: 332445963, guid: 4e1ececb06e257342b463d4bdb0f942a, type: 3}
   id: 7
   name: "\uC624\uC5FC\uB41C \uC2DC\uD5D8\uAD00"
-  engName: Polluted Test-tube
-  description: "\uB2E4\uB9AC\uC5D0\uC11C \uAD74\uB7EC\uC628 \uD638\uBC15\uC774\uB2E4.\n\uB9C8\uB140\uC758
-    \uAC00\uB9C8\uC1A5\uC5D0\uC11C \uB3C4\uB9DD\uCCD0\n\uB098\uC654\uB2E4\uACE0 \uD55C\uB2E4."
-  engDescription: "Pumpkin rolled off a bridge. \nHe escaped from the \nwitch's cauldron"
-  farmingType: 0
+  engName: Polluted Tube
+  description: "\uC218\uC0C1\uD55C \uC561\uCCB4\uAC00 \uB2F4\uAE34 \uC2DC\uD5D8\uAD00\uC774\uB2E4.\r\n\uBCF4\uAE30\uC640\uB294
+    \uB2E4\uB974\uAC8C \uB9CC\uC838\uB3C4 \uC704\uD5D8\uD558\uC9C0 \uC54A\uB2E4."
+  engDescription: "\rA test tube filled with a suspicious liquid.\r\nContrary to
+    appearances, it is not dangerous to touch."
+  farmingType: 1
   cost: 800
-  requirementKey: Combo
-  requirementDescription: "\uCF64\uBCF4 10 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
-  engRequirementDescription: Acquired when Combo 10 is achieved
+  requirementDescription: "\uC810\uC218 1,400,000 \uB2EC\uC131 \uC2DC \uD68D\uB4DD"
+  engRequirementDescription: Acquired when score1,400,000 is achieved
