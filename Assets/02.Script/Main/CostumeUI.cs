@@ -130,6 +130,7 @@ public class CostumeUI : MonoBehaviour
         }
         SoundManager.Instance.PlaySoundEffect(Sound.Buy);
         curCrystal -= costumeDatas[index].cost;
+        SaveManager.Instance.SetCrystalData(curCrystal);
         SaveManager.Instance.AddHavingCostumeList(index);
         SaveManager.Instance.SaveData();
         SetCheckButton();

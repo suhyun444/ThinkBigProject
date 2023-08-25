@@ -102,12 +102,12 @@ MonoBehaviour:
   attackMotionDelay: 0.5
   effectInfo:
     positions:
-    - {x: 5.65, y: 10.15, z: 0}
-    - {x: 4.8, y: 12.74, z: 0}
-    - {x: 5.16, y: 11.52, z: 0}
-    prefab: {fileID: 8420579125608807717, guid: 52382da41eb25e846af11a7c84162e8a, type: 3}
-    duration: 0.5
-    hitDelay: 0.3
+    - {x: 5.8, y: -6.68, z: 0}
+    - {x: 4.6, y: -6.6, z: 0}
+    - {x: 5.88, y: -6.84, z: 0}
+    prefab: {fileID: 1428686751704626777, guid: 85dba857a26288040983db58f9889ce7, type: 3}
+    duration: 0.8333
+    hitDelay: 0.6
   hitParticle: {fileID: 399429526581275267}
 --- !u!95 &399429525550659437
 Animator:

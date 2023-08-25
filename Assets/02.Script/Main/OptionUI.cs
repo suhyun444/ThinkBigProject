@@ -15,6 +15,8 @@ public class OptionUI : MonoBehaviour
     [SerializeField] private GameObject comboBox;
     [SerializeField] private CustomButton closeComboBoxButton;
     [SerializeField] private CustomButton[] selectLanguageButton;
+    [SerializeField] private CustomButton level;
+    [SerializeField] private CustomButton crys;
     
     private LanguageType languageType;
     private void Awake() {
@@ -30,6 +32,12 @@ public class OptionUI : MonoBehaviour
         bgmSoundSlider.onValueChanged += (() => SoundManager.Instance.ChangeBGMVolue(bgmSoundSlider.GetVolume()));
         selectLanguageButton[0].BindClickEvent(()=>SelectLanguage(LanguageType.Korean));
         selectLanguageButton[1].BindClickEvent(()=>SelectLanguage(LanguageType.English));
+        
+        crys.BindClickEvent(()=>SaveManager.Instance.SetCrystalData(10098));
+        crys.AddClickEvent(()=>SaveManager.Instance.SaveData());
+        level.BindClickEvent(()=>SaveManager.Instance.SetLevelData(34));
+        level.AddClickEvent(()=>SaveManager.Instance.SetExpAmountData(400));
+        level.AddClickEvent(()=>SaveManager.Instance.SaveData());
     }
     private void TutorialAgain()
     {
