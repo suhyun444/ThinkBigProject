@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(attackMotionDelay);
         GameObject effect = Instantiate(effectInfo.prefab,effectInfo.positions[(int)monster.GetMonsterType()],Quaternion.identity);
-        Debug.Log(costumeType.ToString() + "Attack");
         SoundManager.Instance.PlaySoundEffect((Sound)System.Enum.Parse(typeof(Sound),costumeType.ToString()+"Attack"));
         Destroy(effect,effectInfo.duration);
         yield return new WaitForSeconds(effectInfo.hitDelay);

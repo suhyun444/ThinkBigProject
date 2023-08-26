@@ -24,6 +24,7 @@ public class Monster : MonoBehaviour
     private CameraShaking cameraShaking;
     private Player player;
     private MonsterType monsterType;
+    private MonsterType prevMonsterType = MonsterType.End;
     private MaterialPropertyBlock dissolveMaterialBlock;
     private void Awake() {
         dissolveMaterialBlock = new MaterialPropertyBlock();
@@ -99,6 +100,8 @@ public class Monster : MonoBehaviour
     private IEnumerator Spawn()
     {
         monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
+        while(prevMonsterType == monsterType)
+            monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
         dissolveMaterialBlock.SetTexture("_MainTex",monsterTexture[(int)monsterType]);
         animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);

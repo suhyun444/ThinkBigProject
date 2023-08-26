@@ -205,15 +205,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52bd0199ecf19943b7634e1429f7d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMotionDelay: 0.467
+  attackMotionDelay: 0.55
   effectInfo:
     positions:
-    - {x: 5.65, y: 10.15, z: 0}
-    - {x: 4.8, y: 12.74, z: 0}
-    - {x: 5.16, y: 11.52, z: 0}
-    prefab: {fileID: 8420579125608807717, guid: 52382da41eb25e846af11a7c84162e8a, type: 3}
-    duration: 0.5
-    hitDelay: 0.3
+    - {x: 5.27, y: -5.57, z: 0}
+    - {x: 4.31, y: -4.93, z: 0}
+    - {x: 5.21, y: -7.29, z: 0}
+    prefab: {fileID: 2745511697248824115, guid: fb5795e6406de5340be9342a1b55e392, type: 3}
+    duration: 0.75
+    hitDelay: 0.55
   hitParticle: {fileID: 8820053444874124787}
 --- !u!95 &8820053445957165085
 Animator:
