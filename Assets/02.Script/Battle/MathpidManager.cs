@@ -90,11 +90,17 @@ public class MathpidManager : MonoBehaviour
     private void GetLearning(int _index)
     {
         if (_index == 0) currentQuestionIndex = 0;
-
-        MakeQuestion(conn.cLearnSet.data.qsts[_index].textCn,
-                    conn.cLearnSet.data.qsts[_index].qstCn,
-                    conn.cLearnSet.data.qsts[_index].qstCransr,
-                    conn.cLearnSet.data.qsts[_index].qstWransr);
+        try
+        {
+            MakeQuestion(conn.cLearnSet.data.qsts[_index].textCn,
+                        conn.cLearnSet.data.qsts[_index].qstCn,
+                        conn.cLearnSet.data.qsts[_index].qstCransr,
+                        conn.cLearnSet.data.qsts[_index].qstWransr);
+        }
+        catch(System.Exception e)
+        {
+            battleManager.NotReachableInternet();
+        }
     }
 
     /// <summary>

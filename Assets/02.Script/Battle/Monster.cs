@@ -102,6 +102,7 @@ public class Monster : MonoBehaviour
         monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
         while(prevMonsterType == monsterType)
             monsterType = (MonsterType)Random.Range(0,(int)MonsterType.End);
+        prevMonsterType = monsterType;
         dissolveMaterialBlock.SetTexture("_MainTex",monsterTexture[(int)monsterType]);
         animator.Play(monsterType.ToString() + "Idle");
         dissolveMaterialBlock.SetFloat("_DissolveAmount", 1);

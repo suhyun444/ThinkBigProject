@@ -40,6 +40,7 @@ public class MathpidConnector : MonoBehaviour
     [HideInInspector]
     public UnityEvent onGetLearning;
     #endregion
+    [SerializeField] private BattleManager battleManager;
 
     public string GetMBR_ID()
     {
@@ -231,7 +232,11 @@ public class MathpidConnector : MonoBehaviour
                 {
                     output = JsonUtility.FromJson<TResponse>(uwr.downloadHandler.text);
                 }
-                catch (Exception e) { Debug.LogError(e.Message); }
+                catch (Exception e) 
+                { 
+                    battleManager.NotReachableInternet();
+                    yield break;
+                }
 
                 cDiagnotics = null;
                 cLearnSet = null;
@@ -253,8 +258,8 @@ public class MathpidConnector : MonoBehaviour
                         break;
 
                     default:
-                        Debug.LogError("type error - output type : " + output.GetType().ToString());
-                        break;
+                        battleManager.NotReachableInternet();
+                        yield break;
                 }
 
                 if (uwr.GetResponseHeaders().ContainsKey("Authorization")) 
@@ -266,8 +271,8 @@ public class MathpidConnector : MonoBehaviour
             }
             else //���� ��
             {
-                Debug.LogError("����� �޾ƿ��� �� �����߽��ϴ�.");
-                Debug.LogError(uwr.error.ToString());
+                battleManager.NotReachableInternet();
+                yield break;
             }
 
             //Debug.Log($"��Response => {uwr.downloadHandler.text}");

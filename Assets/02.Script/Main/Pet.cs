@@ -30,6 +30,10 @@ public class Pet : MonoBehaviour
         {
             earnedButton.gameObject.SetActive(true);
         }
+        else
+        {
+            earnedButton.gameObject.SetActive(false);
+        }
 
         time += Time.deltaTime;
         if(time > moveTerm)

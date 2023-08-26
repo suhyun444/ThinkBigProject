@@ -6,6 +6,7 @@ using TMPro;
 
 public class Intro : MonoBehaviour
 {
+    [SerializeField] private CustomButton enterButton;
     [SerializeField] private SpriteRenderer fadeOut;
     [SerializeField] private SpriteRenderer loadingBG;
     [SerializeField] private SpriteRenderer loadingText;
@@ -16,28 +17,28 @@ public class Intro : MonoBehaviour
         SpawnPet();
         SpawnPlayerCostume(SaveManager.Instance.GetCostumeTypeData());
         StartCoroutine(LoadMainScene());
+        enterButton.BindClickEvent(EnterMainScene);
     }
-    private void Update() {
-        if(progressEnd && Input.GetMouseButtonDown(0))
+    private void EnterMainScene()
+    {
+        if (progressEnd && !onLoad)
         {
-            if(!onLoad)
+            onLoad = true;
+            Vector3[] petInfo = new Vector3[pets.Count * 2];
+            bool[] directionInfo = new bool[pets.Count];
+            for (int i = 0; i < pets.Count; ++i)
             {
-                onLoad = true;
-                Vector3[] petInfo = new Vector3[pets.Count * 2];
-                bool[] directionInfo = new bool[pets.Count];
-                for(int i=0;i<pets.Count;++i)
-                {
-                    petInfo[i * 2]=pets[i].transform.position - transform.position;
-                    petInfo[i*2 + 1] = pets[i].transform.localScale;
-                    directionInfo[i] = pets[i].GetDirection();
-                }
-                MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
-                mainManager.LoadMainSceneFromIntro();
-                mainManager.SetPetPosition(petInfo, directionInfo);
-                SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
-                SceneManager.UnloadSceneAsync(0);
+                petInfo[i * 2] = pets[i].transform.position - transform.position;
+                petInfo[i * 2 + 1] = pets[i].transform.localScale;
+                directionInfo[i] = pets[i].GetDirection();
             }
+            MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+            mainManager.LoadMainSceneFromIntro();
+            mainManager.SetPetPosition(petInfo, directionInfo);
+            SoundManager.Instance.PlaySoundEffect(Sound.ButtonClick);
+            SceneManager.UnloadSceneAsync(0);
         }
+
     }
     private IEnumerator FadeIn()
     {

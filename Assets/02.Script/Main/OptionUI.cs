@@ -33,6 +33,7 @@ public class OptionUI : MonoBehaviour
     }
     private void TutorialAgain()
     {
+        SaveManager.Instance.SetEndBattleTutorialData(false);
         Tutorial.Instance.StartTutorialAgain();
         SaveManager.Instance.SaveOptionData();
         optionUI.SetActive(false);

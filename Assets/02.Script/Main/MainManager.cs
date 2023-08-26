@@ -69,11 +69,16 @@ public class MainManager : MonoBehaviour
     }
     public void SetPetPosition(Vector3[] position,bool[] directionInfo)
     {
-        for(int i=0;i<directionInfo.Length;++i)
+        int count = 0;
+        for(int i=0;i<pets.Length;++i)
         {
-            pets[i].transform.position = position[i * 2];
-            pets[i].transform.localScale = position[i * 2 + 1];
-            pets[i].SetDirection(directionInfo[i]);
+            if(pets[i] != null)
+            {
+                pets[i].transform.position = position[count * 2];
+                pets[i].transform.localScale = position[count * 2 + 1];
+                pets[i].SetDirection(directionInfo[count]);
+                count++;
+            }
         }
     } 
     private void SpawnPlayerCostume(CostumeType costumeType)

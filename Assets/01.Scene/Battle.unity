@@ -222,7 +222,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.27450982}
   m_FlipX: 0
@@ -621,7 +621,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 102
   m_Sprite: {fileID: -2043120258, guid: 57c08e065877397438ff095a64626644, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -893,6 +893,7 @@ MonoBehaviour:
   onGetLearning:
     m_PersistentCalls:
       m_Calls: []
+  battleManager: {fileID: 1678649934}
 --- !u!4 &203528081
 Transform:
   m_ObjectHideFlags: 0
@@ -11791,7 +11792,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 102
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1525619588
 GameObject:
@@ -12279,7 +12280,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 13
+  m_SortingOrder: 103
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1563506337
 GameObject:
@@ -14125,7 +14126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 101
   m_Sprite: {fileID: 1292457095, guid: 57c08e065877397438ff095a64626644, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

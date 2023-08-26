@@ -109,13 +109,12 @@ public class BattleManager : MonoBehaviour
         fadeIn.gameObject.SetActive(false);
     }
     private void Update() {
-        if(isEnd || openInternetExitUI || !BattleTutorial.Instance.isTutorialEnd)return;
+        if(isEnd || openInternetExitUI)return;
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            openInternetExitUI = true;
-            exitUI.SetActive(true);
-            internetExitButton.BindClickEvent(()=>StartCoroutine(LoadMainScene()));
+            NotReachableInternet();
         }
+        if(!BattleTutorial.Instance.isTutorialEnd)return;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             PauseOn();
@@ -128,6 +127,12 @@ public class BattleManager : MonoBehaviour
         }
         battleUI.staminaProgressMaterial.SetFloat("_FillAmount",leftTimeAmount);
         battleUI.crystalText.text = ": " +totalCrystal.ToString();
+    }
+    public void NotReachableInternet()
+    {
+        openInternetExitUI = true;
+        exitUI.SetActive(true);
+        internetExitButton.BindClickEvent(() => StartCoroutine(LoadMainScene()));
     }
     private void InitPauseUI()
     {
@@ -151,6 +156,7 @@ public class BattleManager : MonoBehaviour
         AWSConnection.Instance.UpdateScore(score);
         int curLevel = SaveManager.Instance.GetLevelData();
         int curExpAmount = SaveManager.Instance.GetExpAmountData() + earnExpAmount;
+        Debug.Log(Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel]);
         while (curLevel < 99 && Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel] <= curExpAmount)
         {
             curExpAmount -= Const.Skill.LEVEL_REQUIREMENT_EXP[curLevel++];
@@ -165,7 +171,7 @@ public class BattleManager : MonoBehaviour
                 totalCrystal += 50;
             }
         }
-        if (curLevel == 99) curExpAmount = 1;
+        if (curLevel == 99) curExpAmount = 2;
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetLevelData(curLevel);
         SaveManager.Instance.SetExpAmountData(curExpAmount);
@@ -256,7 +262,7 @@ public class BattleManager : MonoBehaviour
             resultUI.expBar.SetFloat("_FillAmount",animExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel]);
             yield return null;
         }
-        if(animLevel == 99)animExp = 1;
+        if(animLevel == 99)animExp = 2;
         resultUI.levelText.text = animLevel.ToString();
         resultUI.expBar.SetFloat("_FillAmount",animExp / (float)Const.Skill.LEVEL_REQUIREMENT_EXP[animLevel]);
         yield return new WaitForSeconds(0.1f);
