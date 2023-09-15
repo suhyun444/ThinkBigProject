@@ -50,7 +50,7 @@ public class BattleSketchManager : MonoBehaviour
         else predicteValue = mouseSketch.DrawFrac();
         if(mouseSketch.nonDrawingTime >= 0.0f)
         {
-            BattleTutorial.Instance.Close();
+            BattleTutorial.Instance.Close(1);
             BattleTutorial.Instance.NextPage(1);
         }
         if (mouseSketch.nonDrawingTime > 1.0f)

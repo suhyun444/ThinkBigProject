@@ -52,7 +52,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _OutLineThickness: 0.73
-    - _SortingOrder: 61
+    - _SortingOrder: 0
     m_Colors:
     - _Color: {r: 0.4862745, g: 0.8901961, b: 0.8901961, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

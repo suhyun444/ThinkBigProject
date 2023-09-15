@@ -34,6 +34,11 @@ namespace CustomUtils{
             while(index > 0 && (s[index] == '0' || s[index] == '.'))
             {
                 --index;
+                if(s[index] == '.')
+                {
+                    index--;
+                    break;
+                }
             }
             return s.Substring(0,index + 1);
         }

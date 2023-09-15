@@ -175,15 +175,15 @@ public class BattleManager : MonoBehaviour
         SaveManager.Instance.SetCrystalData(totalCrystal);
         SaveManager.Instance.SetLevelData(curLevel);
         SaveManager.Instance.SetExpAmountData(curExpAmount);
-        if(score > 1400000)
+        if(score >= 1400000)
         {
             SaveManager.Instance.AddHavingPetList(7);
         }
-        if(maxCombo > 11)
+        if(maxCombo >= 11)
         {
             SaveManager.Instance.AddHavingPetList(2);
         }
-        if(maxCombo > 14)
+        if(maxCombo >= 14)
         {
             SaveManager.Instance.AddHavingPetList(5);
         }
@@ -194,7 +194,7 @@ public class BattleManager : MonoBehaviour
     {
         isEnd = true;
         sketchManager.isEnd = true;
-        int bonusCrystal = (int)((float)crystal * (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Crystal] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Crystal)) * 0.01f);
+        int bonusCrystal = (int)(((float)crystal * (Const.Skill.EFFECT_INCREASE_AMOUNT[(int)SkillType.Crystal] * (float)SaveManager.Instance.GetSkillLevel(SkillType.Crystal)) * 0.01f) + 0.5f);
         crystal += bonusCrystal;
         totalCrystal += bonusCrystal;
         earnExpAmount += (int)totalTime * 5;

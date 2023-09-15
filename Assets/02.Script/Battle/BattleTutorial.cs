@@ -11,6 +11,7 @@ public struct BattleTutorialPage
     public List<TextMeshPro> texts;
     public List<int> textOrders;
     public List<Material> materials;
+    public List<LineRenderer> fracHelper;
     public TEXDraw3D texDraw;
     public float blurSortingOrder;
     public void SetHighlighted()
@@ -24,6 +25,10 @@ public struct BattleTutorialPage
             materials[i].SetFloat("_SortingOrder",61);
             texDraw.UpdateSortingOrder();
         }
+        for(int i=0;i<fracHelper.Count;++i)
+        {
+            fracHelper[i].sortingOrder = 61;
+        }
     }
     public void SetDefault()
     {
@@ -36,6 +41,10 @@ public struct BattleTutorialPage
             materials[i].SetFloat("_SortingOrder", 0);
             texDraw.UpdateSortingOrder();
         }
+        for(int i=0;i<fracHelper.Count;++i)
+        {
+            fracHelper[i].sortingOrder = 9;
+        }
     }
 }
 public class BattleTutorial : Singleton<BattleTutorial>
@@ -43,11 +52,13 @@ public class BattleTutorial : Singleton<BattleTutorial>
     [SerializeField] private List<BattleTutorialPage> tutorials;
     [SerializeField] private GameObject ui;
     [SerializeField] private GameObject[] infoTexts;
+    [SerializeField] private Material problemTextMaterial;
     private int curPage;
     public bool isTutorialEnd = true;
     private void Awake()
     {
         curPage = -1;
+        problemTextMaterial.SetFloat("_SortingOrder", 0);
         StartTutorial();
     }
     public void StartTutorial()
@@ -71,9 +82,9 @@ public class BattleTutorial : Singleton<BattleTutorial>
         infoTexts[page].SetActive(true);
         tutorials[page].SetHighlighted();
     }
-    public void Close()
+    public void Close(int page)
     {
-        if (curPage >= 0)
+        if (curPage >= 0 && curPage == page)
         {
             ui.SetActive(false);
             ui.transform.position = new Vector3(0, 0, -1);

@@ -10,6 +10,7 @@ public class Intro : MonoBehaviour
     [SerializeField] private SpriteRenderer fadeOut;
     [SerializeField] private SpriteRenderer loadingBG;
     [SerializeField] private SpriteRenderer loadingText;
+    [SerializeField] private SpriteRenderer startText;
     private List<Pet> pets = new List<Pet>();
     private bool progressEnd = false;
     private bool onLoad = false;
@@ -40,6 +41,26 @@ public class Intro : MonoBehaviour
         }
 
     }
+    private IEnumerator StartTextAnim()
+    {
+        float time = 0.0f;
+        float t = 1.0f;
+        while(time <= 1)
+        {
+            time += Time.deltaTime / t;
+            float size = Mathf.Lerp(12,11.0f,time);
+            startText.transform.localScale = new Vector3(size,size,1);
+            yield return null;
+        }
+        while(time >= 0)
+        {
+            time -= Time.deltaTime / t;
+            float size = Mathf.Lerp(12,11.0f,time);
+            startText.transform.localScale = new Vector3(size,size,1);
+            yield return null;
+        }
+        StartCoroutine(StartTextAnim());
+    }
     private IEnumerator FadeIn()
     {
         float time = 0.0f;
@@ -52,6 +73,7 @@ public class Intro : MonoBehaviour
         }
         loadingBG.gameObject.SetActive(false);
         loadingText.gameObject.SetActive(false);
+        StartCoroutine(StartTextAnim());
     }
 
     private IEnumerator LoadMainScene()
@@ -77,12 +99,22 @@ public class Intro : MonoBehaviour
         {
             Vector3 spawnPosition = transform.position + new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-18.0f, 18.0f), 0);
             RaycastHit2D[] raycastHits2D = Physics2D.RaycastAll(spawnPosition, transform.forward, 999);
+            bool canMove = false;
+            bool overlappedPet = false;
             for (int i = 0; i < raycastHits2D.Length; i++)
             {
                 if (raycastHits2D[i].transform.CompareTag("PetBoundary"))
                 {
-                    return spawnPosition;
+                    canMove = true;
                 }
+                else if (raycastHits2D[i].transform.CompareTag("Pet"))
+                {
+                    overlappedPet = true;
+                }
+            }
+            if (canMove && !overlappedPet)
+            {
+                return spawnPosition;
             }
         }
     }

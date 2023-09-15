@@ -48,7 +48,7 @@ public class SkillUI : MonoBehaviour
     }
     void Update()
     {
-        if(SaveManager.Instance.GetUsedSkillPoint() < (SaveManager.Instance.GetLevelData() + 1) * 5)exclamationMark.SetActive(true);
+        if(SaveManager.Instance.GetUsedSkillPoint() < ((SaveManager.Instance.GetLevelData() + 1) * 5) + SaveManager.Instance.GetBoughtSkillPoint())exclamationMark.SetActive(true);
         else exclamationMark.SetActive(false);
         warningTime -= Time.deltaTime;
         if(warningTime < 0.0f)

@@ -19,7 +19,7 @@ public class HelpUI : MonoBehaviour
     private void OpenUI()
     {
         Debug.Log("Close");
-        BattleTutorial.Instance.Close();
+        BattleTutorial.Instance.Close(0);
         Time.timeScale = 0;
         ui.SetActive(true);
         BindPage(0);

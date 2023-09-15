@@ -34744,7 +34744,7 @@ MonoBehaviour:
   koreanText: "\uB808\uBCA8\uC744 \uC62C\uB824\uC11C \uC2A4\uD0AC\uC744 \n\uAC15\uD654
     \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   koreanFontSize: -1
-  englishText: "\rYou can \nstrengthen \nyourskills by \nleveling up."
+  englishText: "\rYou can \nstrengthen \nyour skills by \nleveling up."
   englishFontSize: 0
 --- !u!1 &1919294289
 GameObject:

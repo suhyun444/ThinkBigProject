@@ -10747,6 +10747,7 @@ MonoBehaviour:
     texts: []
     textOrders: 
     materials: []
+    fracHelper: []
     texDraw: {fileID: 1140122172}
     blurSortingOrder: -0.1
   - spriteRenderers:
@@ -10758,12 +10759,16 @@ MonoBehaviour:
     textOrders: 01000000
     materials:
     - {fileID: 2100000, guid: 2c74d8c99eac2784386176cb348be6a3, type: 2}
+    fracHelper:
+    - {fileID: 2108778513}
+    - {fileID: 1721400647}
     texDraw: {fileID: 1140122172}
     blurSortingOrder: 100
   ui: {fileID: 1746644150}
   infoTexts:
   - {fileID: 834025832}
   - {fileID: 1280759278}
+  problemTextMaterial: {fileID: 2100000, guid: 2c74d8c99eac2784386176cb348be6a3, type: 2}
   isTutorialEnd: 1
 --- !u!4 &1257814729
 Transform:
